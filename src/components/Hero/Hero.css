@@ -1,0 +1,97 @@
+.mountain-hero {
+  min-height: 100vh;
+  background: 
+    linear-gradient(135deg, rgba(44, 24, 16, 0.1) 0%, rgba(93, 64, 55, 0.1) 100%),
+    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 8%;
+  margin-top: 70px;
+  position: relative;
+}
+
+.mountain-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(253, 246, 227, 0.1);
+}
+
+.hero-content {
+  max-width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-family: 'Philosopher', serif;
+  font-size: 2.3rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  color: #2C1810;
+  text-shadow: 2px 2px 4px rgba(253, 246, 227, 0.8);
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  color: #5D4037;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.mountain-cta {
+  background: #5D4037;
+  color: #FDF6E3;
+  padding: 1.2rem 2.5rem;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Philosopher', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.mountain-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.mountain-cta:hover::before {
+  left: 100%;
+}
+
+.mountain-cta:hover {
+  background: #2C1810;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(93, 64, 55, 0.3);
+}
+
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 1.9rem;
+  }
+  
+  .mountain-cta {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+  }
+}

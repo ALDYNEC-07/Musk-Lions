@@ -1,0 +1,104 @@
+.mountain-header {
+  background: linear-gradient(135deg, #2C1810 0%, #5D4037 100%);
+  padding: 1.2rem 6%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid #D4AF37;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mountain-logo {
+  font-family: 'Philosopher', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #FDF6E3;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.mountain-logo span {
+  color: #D4AF37;
+}
+
+.mountain-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.mountain-btn {
+  background: none;
+  border: 1px solid #D4AF37;
+  color: #D4AF37;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mountain-btn:hover {
+  background: #D4AF37;
+  color: #2C1810;
+}
+
+.mountain-nav {
+  margin-top: 1.5rem;
+  display: none;
+  background: rgba(253, 246, 227, 0.95);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #D4AF37;
+}
+
+.mountain-nav.active {
+  display: block;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.mountain-nav ul {
+  list-style: none;
+}
+
+.mountain-nav li {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #E8D5B7;
+  padding-bottom: 1rem;
+}
+
+.mountain-nav a {
+  color: #2C1810;
+  text-decoration: none;
+  font-family: 'Philosopher', serif;
+  font-size: 1rem;
+  display: block;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+}
+
+.mountain-nav a:hover {
+  color: #5D4037;
+  padding-left: 0.5rem;
+}

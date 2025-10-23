@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import React from 'react';
+import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
+import ProductCard from './components/ProductCard/ProductCard';
+import Features from './components/Features/Features';
+import Footer from './components/Footer/Footer';
+import BottomNav from './components/BottomNav/BottomNav';
+import { products } from './data/products';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <main className="main-content">
+        <Hero />
+        
+        <section className="mountain-collection">
+          <div className="mountain-section-header">
+            <h2>Горная коллекция</h2>
+            <p>Ароматы, созданные с уважением к традициям и любовью к качеству</p>
+          </div>
+          
+          <div className="mountain-products">
+            {products.map(product => (
+              <ProductCard 
+                key={product.id}
+                product={product}
+              />
+            ))}
+          </div>
+        </section>
+
+        <Features />
+      </main>
+      
+      <Footer />
+      <BottomNav />
     </div>
   );
 }

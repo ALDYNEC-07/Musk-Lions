@@ -1,0 +1,46 @@
+.mountain-features {
+  padding: 4rem 6%;
+  background: linear-gradient(135deg, #2C1810 0%, #5D4037 100%);
+  color: #FDF6E3;
+}
+
+.mountain-features-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.mountain-feature-card {
+  background: rgba(253, 246, 227, 0.1);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+}
+
+.mountain-feature-card:hover {
+  transform: translateY(-3px);
+  border-color: #D4AF37;
+}
+
+.mountain-feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+  color: #D4AF37;
+}
+
+.mountain-feature-card h3 {
+  font-family: 'Philosopher', serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #FDF6E3;
+}
+
+.mountain-feature-card p {
+  color: #E8D5B7;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  font-weight: 300;
+}
