@@ -4,9 +4,9 @@ import Hero from './components/Hero/Hero';
 import ProductCard from './components/ProductCard/ProductCard';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
-import BottomNav from './components/BottomNav/BottomNav';
 import { products } from './data/products';
 import './App.css';
+import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
 
 function App() {
   return (
@@ -33,9 +33,8 @@ function App() {
 
         <Features />
       </main>
-      
       <Footer />
-      <BottomNav />
+      <ScrollIndicator />
     </div>
   );
 }

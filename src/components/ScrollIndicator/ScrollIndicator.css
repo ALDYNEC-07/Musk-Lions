@@ -1,0 +1,66 @@
+.scroll-down {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(212, 175, 55, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: #2C1810;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.scroll-down:hover {
+  background: #D4AF37;
+  transform: translateX(-50%) scale(1.1);
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: rgba(44, 24, 16, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+  color: #D4AF37;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  border: 1px solid #D4AF37;
+}
+
+.scroll-to-top:hover {
+  background: #2C1810;
+  transform: scale(1.1);
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 25px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+  
+  .scroll-down {
+    bottom: 25px;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  background: #D4AF37;
+  }
+}
