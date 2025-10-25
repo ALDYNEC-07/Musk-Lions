@@ -7,21 +7,21 @@ const Footer = () => {
       <div className="mountain-footer-content">
         <div className="mountain-footer-column">
           <h4>Musk Lions</h4>
-          <p>Сила традиций в современной парфюмерии. Гордимся своим наследием.</p>
+          <p>Каждый аромат - это история, которая только начинается.</p>
         </div>
         
         <div className="mountain-footer-column">
           <h4>Контакты</h4>
           <ul>
-            <li>+7 (999) 123-45-67</li>
-            <li>info@musk-lions.ru</li>
-            <li>Грозный, пр. Мухаммеда Али, 15</li>
+            <li>📞 +7 (929) 252-37-37</li>
+            <li><a href="https://www.instagram.com/musklions?igsh=MXVrb2gyaGxvajhqZA%3D%3D&utm_source=qr"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i> - Instagram</a></li>
+            <li><a href="https://t.me/musk_lions"><i class="fa fa-telegram fa-lg" aria-hidden="true"></i> - Telegramm</a></li>
           </ul>
         </div>
       </div>
       
       <div className="mountain-copyright">
-        &copy; 2024 Musk Lions. С уважением к традициям.
+        &copy; 2015-2025 Musk Lions. Все права защищены.
       </div>
     </footer>
   );

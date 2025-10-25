@@ -17,8 +17,8 @@ function App() {
         
         <section className="mountain-collection">
           <div className="mountain-section-header">
-            <h2>Горная коллекция</h2>
-            <p>Ароматы, созданные с уважением к традициям и любовью к качеству</p>
+            <h2>5 ручных авторских композиций</h2>
+            <p>Ограниченный тираж, только для истинных ценителей</p>
           </div>
           
           <div className="mountain-products">

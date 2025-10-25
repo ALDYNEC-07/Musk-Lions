@@ -23,7 +23,7 @@ const Header = () => {
           <ThemeToggle />
           <div className="cart-icon-wrapper">
             <div className="mountain-cart-icon">
-              ⛰
+              👜
             </div>
             {totalCount > 0 && (
               <span className={`cart-count ${totalCount > 0 ? 'pulse' : ''}`}>
@@ -31,8 +31,6 @@ const Header = () => {
               </span>
             )}
           </div>
-
-          <button className="mountain-btn">🔍</button>
           <button 
             className="mountain-btn" 
             onClick={toggleMenu}

@@ -1,9 +1,9 @@
 .theme-toggle {
-  background: var(--accent-primary);
-  border: 2px solid var(--border-color);
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;

@@ -15,7 +15,7 @@ const handleAddToCart = (event) => {
   const imageRect = imageElement.getBoundingClientRect();
   
   setSmokePosition({
-    x: imageRect.left + imageRect.width / 4,  // Центр изображения
+    x: imageRect.left + imageRect.width / 2.5,  // Центр изображения
     y: imageRect.top + imageRect.height * -0.8
   });
 
