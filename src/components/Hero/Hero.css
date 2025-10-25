@@ -1,7 +1,7 @@
 .mountain-hero {
   min-height: 100vh;
-  background: 
-    linear-gradient(135deg, rgba(44, 24, 16, 0.1) 0%, rgba(93, 64, 55, 0.1) 100%),
+    background: 
+    linear-gradient(135deg, rgba(26, 18, 11, 0.9) 0%, rgba(44, 24, 16, 0.8) 100%),
     url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
   background-size: cover;
   background-position: center;
@@ -10,10 +10,9 @@
   justify-content: center;
   text-align: center;
   padding: 0 8%;
-  margin-top: 70px;
+  margin-top: 10px;
   position: relative;
 }
-
 .mountain-hero::before {
   content: '';
   position: absolute;
@@ -21,9 +20,30 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(253, 246, 227, 0.1);
+  background: rgba(255, 187, 0, 0.1);
 }
 
+
+/* Для темной темы добавим затемнение */
+[data-theme="dark"] .mountain-hero {
+  background: 
+    linear-gradient(135deg, rgba(26, 18, 11, 0.9) 0%, rgba(44, 24, 16, 0.8) 100%),
+    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+}
+
+
+[data-theme="dark"] .mountain-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(51, 29, 9, 0.6);
+}
+[data-theme="dark"] .hero-title  {
+  color: #FDF6E3;
+}
 .hero-content {
   max-width: 100%;
   position: relative;
@@ -37,7 +57,6 @@
   margin-bottom: 1.5rem;
   line-height: 1.2;
   color: #2C1810;
-  text-shadow: 2px 2px 4px rgba(253, 246, 227, 0.8);
 }
 
 .hero-subtitle {
@@ -46,6 +65,9 @@
   color: #5D4037;
   font-weight: 400;
   line-height: 1.5;
+}
+[data-theme="dark"] .hero-subtitle {
+  color: #f5e9c9dc;
 }
 
 .mountain-cta {

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useCart } from '../../context/CartContext';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import './Header.css';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { totalCount } = useCart();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -17,6 +20,18 @@ const Header = () => {
       <div className="header-top">
         <a href="#" className="mountain-logo">Musk<span>Lions</span></a>
         <div className="mountain-actions">
+          <ThemeToggle />
+          <div className="cart-icon-wrapper">
+            <div className="mountain-cart-icon">
+              ⛰
+            </div>
+            {totalCount > 0 && (
+              <span className={`cart-count ${totalCount > 0 ? 'pulse' : ''}`}>
+                {totalCount}
+              </span>
+            )}
+          </div>
+
           <button className="mountain-btn">🔍</button>
           <button 
             className="mountain-btn" 

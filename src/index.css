@@ -6,3 +6,29 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+:root {
+  /* Светлая тема (текущая) */
+  --bg-primary: #FDF6E3;
+  --bg-secondary: #F5E8C8;
+  --text-primary: #2C1810;
+  --text-secondary: #5D4037;
+  --accent-primary: #D4AF37;
+  --accent-secondary: #5D4037;
+  --card-bg: #FFFFFF;
+  --border-color: #E8D5B7;
+  --header-bg: linear-gradient(135deg, #2C1810 0%, #5D4037 100%);
+}
+
+[data-theme="dark"] {
+  /* ТЕПЛАЯ ТЕМНАЯ ТЕМА */
+  --bg-primary: #1A120B;
+  --bg-secondary: #2C1810;
+  --text-primary: #E8D5B7;
+  --text-secondary: #C4A484;
+  --accent-primary: #D4AF37;
+  --accent-secondary: #8B6B3C;
+  --card-bg: #2C1810;
+  --border-color: #5D4037;
+  --header-bg: linear-gradient(135deg, #1A120B 0%, #2C1810 100%);
+}

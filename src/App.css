@@ -6,13 +6,13 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #FDF6E3;
-  color: #2C1810;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   max-width: 100vw;
   overflow-x: hidden;
+  transition: all 0.3s ease;
 }
-
 .main-content {
   padding-bottom: 70px;
 }
@@ -22,7 +22,9 @@ body {
   padding: 4rem 6%;
   background: linear-gradient(180deg, #FDF6E3 0%, #F5E8C8 100%);
 }
-
+[data-theme="dark"] .mountain-collection {
+    background: linear-gradient(180deg, #2C1810 0%, #5D4037 100%);
+}
 .mountain-section-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -36,12 +38,17 @@ body {
   margin-bottom: 1rem;
   color: #2C1810;
 }
-
+[data-theme="dark"] .mountain-section-header h2 {
+  color: #FDF6E3;
+}
 .mountain-section-header p {
   color: #5D4037;
   font-size: 1rem;
   max-width: 500px;
   margin: 0 auto;
+}
+[data-theme="dark"] .mountain-section-header p {
+  color: #F5E8C8;
 }
 
 .mountain-products {
@@ -50,7 +57,7 @@ body {
   gap: 2.5rem;
 }
 
-/* Специальные элементы для чеченского стиля */
+
 .chechen-pattern {
   background-image: 
     radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useCart } from '../../context/CartContext';
 import SmokeAnimation from '../SmokeAnimation/SmokeAnimation';
 import './ProductCard.css';
 
@@ -6,16 +7,20 @@ const ProductCard = ({ product }) => {
   const [isAdded, setIsAdded] = useState(false);
   const [showSmoke, setShowSmoke] = useState(false);
   const [smokePosition, setSmokePosition] = useState({ x: 0, y: 0 });
+  const { addItem } = useCart();
 
 const handleAddToCart = (event) => {
   // Находим позицию ИЗОБРАЖЕНИЯ флакона, а не кнопки
-  const imageElement = event.target.closest('.mountain-product-card').querySelector('.img');
+  const imageElement = event.target.closest('.mountain-product-card').querySelector('.mountain-product-image .img');
   const imageRect = imageElement.getBoundingClientRect();
   
   setSmokePosition({
     x: imageRect.left + imageRect.width / 4,  // Центр изображения
-    y: imageRect.top + imageRect.height * 0.3  // Центр изображения
+    y: imageRect.top + imageRect.height * -0.8
   });
+
+      // ДОБАВЛЯЕМ ТОВАР В КОРЗИНУ
+    addItem(product);
   
   setIsAdded(true);
   setShowSmoke(true);
@@ -30,7 +35,7 @@ const handleAddToCart = (event) => {
   return (
     <div className="mountain-product-card">
       <div className="mountain-product-image">
-        <img src={product.placeholder } className='img'/>
+        <img src={product.placeholder } className='img' alt={product.name} />
       </div>
       <div className="mountain-product-info">
         <h3>{product.name}</h3>

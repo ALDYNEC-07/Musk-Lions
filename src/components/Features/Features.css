@@ -44,3 +44,13 @@
   line-height: 1.4;
   font-weight: 300;
 }
+
+
+[data-theme="dark"] .mountain-features {
+  background: linear-gradient(135deg, #2C1810 0%, #1A120B 100%);
+}
+
+[data-theme="dark"] .mountain-feature-card {
+  background: rgba(44, 24, 16, 0.8);
+  border: 1px solid #5D4037;
+}

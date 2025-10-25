@@ -1,13 +1,18 @@
+
 .smoke-animation {
   position: fixed;
+  left: var(--start-x, 0);
+  top: var(--start-y, 0);
+  transform: none; /* убираем transform */
   pointer-events: none;
   z-index: 10000;
-  transform: translate(-50%, -50%);
 }
 
 /* Частицы дыма */
 .smoke-particle {
   position: absolute;
+  left: 0;
+  top: 0;
   width: var(--size);
   height: var(--size);
   background: radial-gradient(circle, #D4AF37 0%, #FFD700 30%, transparent 70%);
@@ -103,3 +108,5 @@
   opacity: 0;
   transition: opacity 0.7s ease-out;
 }
+
+

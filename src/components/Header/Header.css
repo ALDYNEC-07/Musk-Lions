@@ -1,5 +1,5 @@
 .mountain-header {
-  background: linear-gradient(135deg, #2C1810 0%, #5D4037 100%);
+  background: var(--header-bg);
   padding: 1.2rem 6%;
   position: fixed;
   width: 100%;
@@ -101,4 +101,85 @@
 .mountain-nav a:hover {
   color: #5D4037;
   padding-left: 0.5rem;
+}
+
+
+
+
+/* Стили для иконки корзины */
+.cart-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mountain-cart-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  background: none;
+  color: #D4AF37;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid #D4AF37;
+}
+.mountain-cart-icon:hover {
+  color: #2C1810;
+  background: #D4AF37;
+  transform: scale(1.1);
+}
+
+/* Счетчик корзины */
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #D4AF37;
+  color: #2C1810;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #2C1810;
+}
+
+/* Анимация пульсации при изменении */
+.cart-count.pulse {
+  animation: countPulse 0.6s ease-in-out;
+}
+
+@keyframes countPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .mountain-cart-icon {
+    font-size: 1.2rem;
+  }
+  
+  .cart-count {
+    width: 18px;
+    height: 18px;
+    font-size: 0.6rem;
+    top: -3px;
+    right: -3px;
+  }
 }

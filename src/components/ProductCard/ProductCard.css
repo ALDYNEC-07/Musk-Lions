@@ -1,22 +1,12 @@
 .mountain-product-card {
-  background: #FFFFFF;
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 0;
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 5px 20px rgba(44, 24, 16, 0.1);
-  border: 1px solid #E8D5B7;
-}
-
-.mountain-product-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #2C1810, #D4AF37, #2C1810);
+  border: 1px solid var(--border-color);
 }
 
 .mountain-product-card:hover {
@@ -33,9 +23,11 @@
   justify-content: center;
   padding: 2rem;
   position: relative;
+  overflow: visible;
+  border-radius: 12px 12px 0 0;
 }
 .img {
-  width: 150px;
+  width: 300px;
   height: 180px;
   object-fit: cover;
   border-radius: 5px;
@@ -48,11 +40,11 @@
   font-family: 'Philosopher', serif;
   font-size: 1.3rem;
   margin-bottom: 0.8rem;
-  color: #2C1810;
+  color: var(--text-primary);
 }
 
 .mountain-product-info p {
-  color: #5D4037;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   margin-bottom: 1.2rem;
   line-height: 1.4;
@@ -62,7 +54,7 @@
 .mountain-product-price {
   font-family: 'Philosopher', serif;
   font-size: 1.4rem;
-  color: #2C1810;
+  color: var(--text-primary);
   margin-bottom: 1.2rem;
   text-align: center;
   font-weight: 500;
@@ -80,14 +72,32 @@
   transition: all 0.3s ease;
   width: 100%;
 }
-
-.mountain-add-to-cart:hover {
+[data-theme="dark"]  .mountain-add-to-cart {
   background: #5D4037;
+}
+.mountain-add-to-cart:hover {
+  border: 0.1px solid rgba(212, 175, 55);
   transform: translateY(-2px);
 }
 
-@media (max-width: 360px) {
-  .mountain-product-image {
+@media (max-width: 425px) {
+    .mountain-product-image {
     height: 200px;
+    padding: 0;
   }
+  .mountain-product-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+}
+@media (max-width: 360px) {
+
+  .img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 5px;
+}
 }
