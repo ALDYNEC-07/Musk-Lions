@@ -4,6 +4,7 @@ import Hero from './components/Hero/Hero';
 import ProductCard from './components/ProductCard/ProductCard';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
+import OrderModal from './components/OrderModal/OrderModal';
 import { products } from './data/products';
 import './App.css';
 import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
@@ -35,6 +36,7 @@ function App() {
       </main>
       <Footer />
       <ScrollIndicator />
+      <OrderModal />
     </div>
   );
 }

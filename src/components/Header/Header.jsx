@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
+import CartModal from '../CartModal/CartModal';
 import './Header.css';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const { totalCount } = useCart();
 
   const toggleMenu = () => {
@@ -16,12 +18,13 @@ const Header = () => {
   };
 
   return (
+    <>
     <header className="mountain-header">
       <div className="header-top">
         <a href="#" className="mountain-logo">Musk<span>Lions</span></a>
         <div className="mountain-actions">
           <ThemeToggle />
-          <div className="cart-icon-wrapper">
+          <div className="cart-icon-wrapper" onClick={() => setIsCartOpen(true)}>
             <div className="mountain-cart-icon">
               👜
             </div>
@@ -50,7 +53,14 @@ const Header = () => {
         </ul>
       </nav>
     </header>
+
+     <CartModal 
+        isOpen={isCartOpen} 
+        onClose={() => setIsCartOpen(false)} 
+      />
+    </>
   );
 };
 
 export default Header;
+

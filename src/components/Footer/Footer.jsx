@@ -14,8 +14,8 @@ const Footer = () => {
           <h4>Контакты</h4>
           <ul>
             <li>📞 +7 (929) 252-37-37</li>
-            <li><a href="https://www.instagram.com/musklions?igsh=MXVrb2gyaGxvajhqZA%3D%3D&utm_source=qr"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i> - Instagram</a></li>
-            <li><a href="https://t.me/musk_lions"><i class="fa fa-telegram fa-lg" aria-hidden="true"></i> - Telegramm</a></li>
+            <li><a href="https://www.instagram.com/musklions?igsh=MXVrb2gyaGxvajhqZA%3D%3D&utm_source=qr"><i className="fa fa-instagram fa-lg" aria-hidden="true"></i> - Instagram</a></li>
+            <li><a href="https://t.me/musk_lions"><i className="fa fa-telegram fa-lg" aria-hidden="true"></i> - Telegramm</a></li>
           </ul>
         </div>
       </div>
@@ -28,3 +28,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
