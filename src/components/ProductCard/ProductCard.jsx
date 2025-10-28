@@ -33,7 +33,7 @@ const handleAddToCart = (event) => {
   };
 
   return (
-    <div className="mountain-product-card">
+    <div className="mountain-product-card" id={`product-${product.id}`}>
       <div className="mountain-product-image">
         <img src={product.placeholder } className='img' alt={product.name} />
       </div>

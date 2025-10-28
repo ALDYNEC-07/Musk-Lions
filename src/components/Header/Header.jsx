@@ -3,6 +3,7 @@ import { useCart } from '../../context/CartContext';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import CartModal from '../CartModal/CartModal';
 import './Header.css';
+import SearchBar from '../../hooks/SearchBar';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,7 +48,7 @@ const Header = () => {
         <ul>
           <li><a href="#" onClick={closeMenu}>Главная</a></li>
           <li><a href="#" onClick={closeMenu}>Горная коллекция</a></li>
-          <li><a href="#" onClick={closeMenu}>Традиции качества</a></li>
+          <li><a href="#" style={{display: 'flex', gap: '30px', color: 'black', alignItems: 'center'}}>Поиск по аромату <SearchBar onResultClick={closeMenu} setIsMenuOpen={setIsMenuOpen} /></a></li>
           <li><a href="#" onClick={closeMenu}>О нас</a></li>
           <li><a href="#" onClick={closeMenu}>Связь с нами</a></li>
         </ul>
@@ -63,4 +64,3 @@ const Header = () => {
 };
 
 export default Header;
-

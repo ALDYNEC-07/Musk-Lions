@@ -21,12 +21,6 @@
 }
 
 /* Для темной темы добавим затемнение */
-[data-theme="dark"] .mountain-hero {
-  background: 
-    linear-gradient(135deg, rgba(134, 84, 5, 0.9) 0%, rgba(44, 24, 16, 0.8) 100%),
-    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
-}
-
 
 [data-theme="dark"] .mountain-hero::before {
   content: '';
@@ -52,15 +46,15 @@
   font-weight: 500;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  color: #2C1810;
+  color: #FDF6E3;
 }
-
 .hero-subtitle {
   font-size: 1.1rem;
   margin-bottom: 4.5rem;
-  color: #5D4037;
+  color: var(--color-);
   font-weight: 400;
   line-height: 1.5;
+  color: #f5e9c9dc;
 }
 [data-theme="dark"] .hero-subtitle {
   color: #f5e9c9dc;

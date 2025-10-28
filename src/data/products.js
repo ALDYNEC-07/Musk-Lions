@@ -11,35 +11,40 @@ export const products = [
     name: "1.0",
     description: "Чистый и благородный, как горный воздух. С нотами альпийских трав и древесины.",
     price: "12 500 ₽",
-    placeholder: one
+    placeholder: one,
+    elementId: "product-1"
   },
   {
     id: 2,
     name: "2.0",
     description: "Теплый и солнечный, с нотами горных цветов и специй. Аромат родины.",
     price: "14 200 ₽",
-    placeholder: two
+    placeholder: two,
+    elementId: "product-2"
   },
   {
     id: 3,
     name: "3.0",
     description: "Сильный и независимый. Ноты кожи, дыма и горных трав.",
     price: "13 800 ₽",
-    placeholder: three
+    placeholder: three,
+    elementId: "product-3"
   },
   {
     id: 4,
     name: "4.0",
     description: "Глубокое дыхание осени: дымчатый янтарь, Сухие травы и бархатистая кожа.",
     price: "13 800 ₽",
-    placeholder: four
+    placeholder: four,
+    elementId: "product-4"
   },
   {
     id: 5,
     name: "5.0",
     description: "Тепло осеннего солнца на коже, И шлейф дыма от костра в прохладе.",
     price: "13 800 ₽",
-    placeholder: five
+    placeholder: five,
+    elementId: "product-5"
   }
 ];
 
