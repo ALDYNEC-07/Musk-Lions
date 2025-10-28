@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import './SearchBar.css';
 import { useSearch } from './useSearch';
 
-const SearchBar = ({onResultClick, setIsMenuOpen}) => {
+const SearchBar = ({onResultClick}) => {
   const {
     searchQuery,
     setSearchQuery,
@@ -39,25 +39,33 @@ const SearchBar = ({onResultClick, setIsMenuOpen}) => {
     }
   };
 
+
   const handleResultClick = (product) => {
+  // Закрываем меню (если в мобильной версии)
+  if (onResultClick) {
+    onResultClick(); // Это setIsMenuOpen(false)
+  }
+  
+  // Закрываем поиск
+  closeSearch();
+  
+  // Даем время на закрытие меню перед прокруткой
+  setTimeout(() => {
     const element = document.getElementById(`product-${product.id}`);
     if (element) {
-        element.scrollIntoView({ 
+      element.scrollIntoView({ 
         behavior: 'smooth',
         block: 'center'
-        });
-        
-        // Добавить подсветку на 2 секунды
-        element.classList.add('highlight-product');
-        setTimeout(() => {
+      });
+      
+      element.classList.add('highlight-product');
+      setTimeout(() => {
         element.classList.remove('highlight-product');
-        }, 2000);
+      }, 2000);
     }
-    if (onResultClick) {
-      setIsMenuOpen(false)
-    }
-    closeSearch();
-    };
+  }, 300); // Ждем закрытия меню
+};
+
 
   const clearSearch = () => {
     setSearchQuery('');
