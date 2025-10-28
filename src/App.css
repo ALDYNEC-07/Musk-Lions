@@ -1,3 +1,4 @@
+/* Базовые сбросы и глобальные стили */
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +14,7 @@ body {
   overflow-x: hidden;
   transition: all 0.3s ease;
 }
+
 .main-content {
   padding-bottom: 70px;
 }
@@ -22,9 +24,11 @@ body {
   padding: 4rem 6%;
   background: linear-gradient(180deg, #FDF6E3 0%, #F5E8C8 100%);
 }
+
 [data-theme="dark"] .mountain-collection {
-    background: linear-gradient(180deg, #2C1810 0%, #5D4037 100%);
+  background: linear-gradient(180deg, #2C1810 0%, #5D4037 100%);
 }
+
 .mountain-section-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -38,15 +42,18 @@ body {
   margin-bottom: 1rem;
   color: #2C1810;
 }
+
 [data-theme="dark"] .mountain-section-header h2 {
   color: #FDF6E3;
 }
+
 .mountain-section-header p {
   color: #5D4037;
   font-size: 1rem;
   max-width: 500px;
   margin: 0 auto;
 }
+
 [data-theme="dark"] .mountain-section-header p {
   color: #F5E8C8;
 }
@@ -57,22 +64,68 @@ body {
   gap: 2.5rem;
 }
 
-
+/* Паттерн для декора */
 .chechen-pattern {
   background-image: 
     radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 75% 75%, rgba(93, 64, 55, 0.1) 0%, transparent 50%);
 }
 
-/* Адаптация для очень маленьких экранов */
-@media (max-width: 360px) {
+/* Информация о фильтре */
+.filter-info {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.products-count {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .mountain-collection {
+    padding: 3rem 5%;
+  }
+  
+  .mountain-section-header {
+    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+  }
+  
   .mountain-section-header h2 {
     font-size: 1.6rem;
+  }
+  
+  .mountain-products {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mountain-collection {
+    padding: 2rem 4%;
+  }
+  
+  .mountain-section-header h2 {
+    font-size: 1.4rem;
   }
   
   .mountain-section-header p {
     font-size: 0.9rem;
     padding: 0 1rem;
   }
+  
+  .mountain-products {
+    gap: 1.5rem;
+  }
+  
+  .filter-info {
+    padding: 12px;
+    margin-bottom: 15px;
+  }
 }
-

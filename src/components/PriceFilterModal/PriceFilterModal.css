@@ -1,0 +1,230 @@
+/* 🎯 OVERLAY КАК У ПОИСКА */
+.price-filter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+  padding: 20px;
+}
+
+/* 🎯 МОДАЛЬНОЕ ОКНО КАК У ПОИСКА */
+.price-filter-modal {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 🎯 ЗАГОЛОВОК МОДАЛКИ */
+.filter-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 16px;
+}
+
+.filter-modal-header h3 {
+  color: var(--text-primary);
+  margin: 0;
+  font-family: 'Philosopher', serif;
+  font-size: 1.3rem;
+}
+
+.filter-close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.filter-close-btn:hover {
+  color: var(--accent-primary);
+  transform: rotate(90deg);
+}
+
+/* 🎯 СОДЕРЖИМОЕ МОДАЛКИ */
+.filter-modal-content {
+  margin-bottom: 24px;
+}
+
+.price-inputs-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.input-group-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group-modal label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.price-input-modal {
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.price-input-modal:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.currency {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* 🎯 ИНФОРМАЦИЯ О ДИАПАЗОНЕ */
+.price-range-info {
+  text-align: center;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.price-range-info span {
+  color: var(--text-secondary);
+}
+
+.price-range-info strong {
+  color: var(--accent-primary);
+}
+
+/* 🎯 КНОПКИ ДЕЙСТВИЙ */
+.filter-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.apply-filter-btn-modal {
+  background: var(--accent-primary);
+  border: none;
+  color: var(--text-primary);
+  padding: 14px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.apply-filter-btn-modal:hover:not(:disabled) {
+  background: #FFD700;
+  transform: translateY(-1px);
+}
+
+.apply-filter-btn-modal:disabled {
+  background: var(--border-color);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.reset-filter-btn-modal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.reset-filter-btn-modal:hover {
+  background: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+/* 🎯 АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+  .price-filter-modal {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .price-inputs-modal {
+    gap: 12px;
+  }
+}
+
+
+/* 🎯 ОБЕРТКА ДЛЯ INPUT С ВАЛЮТОЙ */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.price-input-modal {
+  padding: 12px 40px 12px 16px; /* 🔧 УВЕЛИЧИВАЕМ ПРАВЫЙ PADDING ДЛЯ ВАЛЮТЫ */
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.currency {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  font-weight: 500;
+  pointer-events: none; /* 🔧 НЕ МЕШАЕТ КЛИКАТЬ НА INPUT */
+}
+

@@ -98,6 +98,9 @@
 }
 
 @media (max-width: 360px) {
+.mountain-hero {
+  margin-top: 10px;
+}
   .hero-title {
     font-size: 1.9rem;
   }

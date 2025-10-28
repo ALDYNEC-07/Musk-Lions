@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import './SearchBar.css';
-import { useSearch } from './useSearch';
+import { useSearch } from '../../hooks/useSearch';
+
 
 const SearchBar = ({onResultClick}) => {
   const {

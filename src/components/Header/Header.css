@@ -30,11 +30,12 @@
 .mountain-actions {
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
 .mountain-btn {
   background: none;
-  border: 1px solid #D4AF37;
+  border: 1px solid var(--border-color);
   color: #D4AF37;
   font-size: 1.1rem;
   cursor: pointer;
@@ -51,6 +52,7 @@
 .mountain-btn:hover {
   background: #D4AF37;
   color: #2C1810;
+  transform: scale(1.1);
 }
 
 .mountain-nav {
@@ -80,12 +82,20 @@
 
 .mountain-nav ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .mountain-nav li {
   margin-bottom: 1rem;
   border-bottom: 1px solid #E8D5B7;
   padding-bottom: 1rem;
+}
+
+.mountain-nav li:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .mountain-nav a {
@@ -103,14 +113,60 @@
   padding-left: 0.5rem;
 }
 
+/* Стили для поиска и фильтра в меню */
+.search-in-menu,
+.filter-in-menu {
+  position: relative;
+}
 
+.search-icon-menu {
+  font-size: 1rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
 
+.search-in-menu:hover .search-icon-menu {
+  opacity: 1;
+}
 
-/* Стили для иконки корзины */
+.filter-badge {
+  color: #D4AF37;
+  font-size: 1.2rem;
+  margin-left: 8px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Стили для переключателя темы */
+.theme-toggle {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--accent-secondary);
+}
+
+/* Стили для корзины */
 .cart-icon-wrapper {
   position: relative;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .mountain-cart-icon {
@@ -123,18 +179,17 @@
   background: none;
   color: #D4AF37;
   transition: all 0.3s ease;
-  cursor: pointer;
   padding: 0.5rem;
   border-radius: 50%;
-  border: 1px solid #D4AF37;
+  border: 1px solid var(--border-color);
 }
+
 .mountain-cart-icon:hover {
   color: #2C1810;
   background: #D4AF37;
   transform: scale(1.1);
 }
 
-/* Счетчик корзины */
 .cart-count {
   position: absolute;
   top: -5px;
@@ -152,7 +207,6 @@
   border: 2px solid #2C1810;
 }
 
-/* Анимация пульсации при изменении */
 .cart-count.pulse {
   animation: countPulse 0.6s ease-in-out;
 }
@@ -169,9 +223,35 @@
   }
 }
 
-/* Для мобильных устройств */
+/* Адаптивность */
 @media (max-width: 768px) {
+  .mountain-header {
+    padding: 1rem 5%;
+  }
+  
+  .mountain-logo {
+    font-size: 1.2rem;
+  }
+  
+  .mountain-actions {
+    gap: 0.8rem;
+  }
+  
+  .mountain-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .theme-toggle {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
   .mountain-cart-icon {
+    width: 35px;
+    height: 35px;
     font-size: 1.2rem;
   }
   
@@ -181,5 +261,28 @@
     font-size: 0.6rem;
     top: -3px;
     right: -3px;
+  }
+  
+  .mountain-nav {
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+  
+  .mountain-nav a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mountain-header {
+    padding: 0.8rem 4%;
+  }
+  
+  .mountain-logo {
+    font-size: 1.1rem;
+  }
+  
+  .mountain-actions {
+    gap: 0.6rem;
   }
 }

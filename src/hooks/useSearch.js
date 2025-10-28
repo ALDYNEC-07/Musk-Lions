@@ -1,11 +1,18 @@
 import { useState, useMemo } from 'react';
 import { products } from '../data/products';
 
+// 🎯 ГЛОБАЛЬНАЯ ПЕРЕМЕННАЯ ДЛЯ УПРАВЛЕНИЯ ПОИСКОМ ИЗВНЕ
+let globalOpenSearch = null;
+
 export const useSearch = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  // Фильтрация товаров по запросу
+  // 🎯 РЕГИСТРИРУЕМ ФУНКЦИЮ ГЛОБАЛЬНО
+  globalOpenSearch = () => {
+    setIsSearchOpen(true);
+  };
+
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return [];
     
@@ -37,4 +44,11 @@ export const useSearch = () => {
     closeSearch,
     hasResults: searchResults.length > 0
   };
+};
+
+// 🎯 ЭКСПОРТИРУЕМ ГЛОБАЛЬНУЮ ФУНКЦИЮ
+export const openSearchGlobal = () => {
+  if (globalOpenSearch) {
+    globalOpenSearch();
+  }
 };
