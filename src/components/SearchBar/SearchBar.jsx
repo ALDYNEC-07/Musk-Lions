@@ -81,7 +81,6 @@ const SearchBar = ({onResultClick}) => {
         onClick={handleSearchClick}
         aria-label="Поиск товаров"
       >
-        <span className="search-icon">🔍</span>
       </button>
 
       {/* Поле поиска */}
@@ -115,7 +114,7 @@ const SearchBar = ({onResultClick}) => {
                 <div className="search-results-header">
                   <span className="results-count">Найдено ароматов: {searchResults.length}</span>
                   <div className="search-hint">
-                    🔍 Используйте ↑↓ для навигации, Enter для выбора
+                    🔍 Используйте ↑↓ для навигации
                   </div>
                 </div>
                 
@@ -129,7 +128,7 @@ const SearchBar = ({onResultClick}) => {
                       <div className="product-card">
                         <div className="product-image-container">
                           <img 
-                            src={product.placeholder} 
+                            src={product.image} 
                             alt={product.name}
                             className="product-image"
                           />

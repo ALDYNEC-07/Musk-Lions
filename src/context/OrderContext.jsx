@@ -16,7 +16,6 @@ export const OrderProvider = ({ children }) => {
     delivery: {
       method: 'courier',
       address: '',
-      city: '',
       postalCode: '',
       comment: '',
     },
@@ -41,10 +40,9 @@ export const OrderProvider = ({ children }) => {
         if (!phone.trim()) return 'Введите телефон';
         return null;
       case 2:
-        const { method, address, city } = orderData.delivery;
+        const { method, address } = orderData.delivery;
         if (method === 'courier') {
           if (!address.trim()) return 'Введите адрес доставки';
-          if (!city.trim()) return 'Введите город';
         }
         return null;
       default:

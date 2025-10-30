@@ -282,7 +282,7 @@
   font-size: 0.85rem;
   line-height: 1.4;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  /* -webkit-line-clamp: 2; */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -292,16 +292,6 @@
   justify-content: space-between;
   align-items: center;
 }
-
-/* .product-category {
-  color: var(--text-secondary);
-  font-size: 0.75rem;
-  padding: 4px 8px;
-  background: var(--bg-secondary);
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-} */
-
 .product-rating {
   display: flex;
   align-items: center;

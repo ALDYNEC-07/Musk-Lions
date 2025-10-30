@@ -17,6 +17,7 @@ body {
 
 .main-content {
   padding-bottom: 70px;
+  margin-top: -50px;
 }
 
 /* Секция коллекции */
@@ -89,7 +90,7 @@ body {
 /* Адаптивность */
 @media (max-width: 768px) {
   .mountain-collection {
-    padding: 3rem 5%;
+    padding: 3rem 7%;
   }
   
   .mountain-section-header {
@@ -108,7 +109,7 @@ body {
 
 @media (max-width: 480px) {
   .mountain-collection {
-    padding: 2rem 4%;
+    padding: 2rem 7%;
   }
   
   .mountain-section-header h2 {

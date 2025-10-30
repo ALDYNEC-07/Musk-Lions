@@ -1,18 +1,24 @@
+// Header.jsx - обновляем
 import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
-import { useFilter } from '../../context/FilterContext';
+import { useWishlist } from '../../context/WishlistContext'; // ✅ ДОБАВИЛИ
 import { openSearchGlobal } from '../../hooks/useSearch';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import CartModal from '../CartModal/CartModal';
 import PriceFilterModal from '../PriceFilterModal/PriceFilterModal';
-import SearchBar from '../SearchBar/SearchBar'; // 🎯 ПЕРЕНОСИМ СЮДА
+import SearchBar from '../SearchBar/SearchBar';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
+import { useFilter } from '../../context/FilterContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  
+  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   const { totalCount } = useCart();
+  const { wishlistCount } = useWishlist(); // ✅ ДОБАВИЛИ
   const { openFilter, isFilterActive } = useFilter();
 
   const toggleMenu = () => {
@@ -23,18 +29,16 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-  // 🎯 ОТКРЫТИЕ ПОИСКА ИЗ МЕНЮ
-  const handleSearchClick = () => {
-    openSearchGlobal();
-    closeMenu();
-  };
 
-  // 🎯 ОТКРЫТИЕ ФИЛЬТРА ИЗ МЕНЮ
-  const handleFilterClick = () => {
-    openFilter();
-    closeMenu();
-  };
-
+  const handleWishlistClick = () => {
+      if (location.pathname === '/wishlist') {
+        navigate(-1); // Назад
+      } else {
+        navigate('/wishlist'); // В избранное
+      }
+      closeMenu();
+    };
+ 
   return (
     <>
     <header className="mountain-header">
@@ -42,6 +46,19 @@ const Header = () => {
         <a href="#" className="mountain-logo">Musk<span>Lions</span></a>
         <div className="mountain-actions">
           <ThemeToggle />
+          {/* ✅ ДОБАВИЛИ ИКОНКУ ИЗБРАННОГО */}
+          <div 
+            className="wishlist-icon-wrapper" 
+            onClick={handleWishlistClick}
+          >
+            <div className="mountain-wishlist-icon">
+              {location.pathname === '/wishlist' ? '←' : '🤎'}
+            </div>
+            {wishlistCount > 0 && (
+              <span className="wishlist-count">{wishlistCount}</span>
+            )}
+          </div>
+          
           <div className="cart-icon-wrapper" onClick={() => setIsCartOpen(true)}>
             <div className="mountain-cart-icon">
               👜
@@ -52,6 +69,7 @@ const Header = () => {
               </span>
             )}
           </div>
+          
           <button 
             className="mountain-btn" 
             onClick={toggleMenu}
@@ -61,11 +79,17 @@ const Header = () => {
         </div>
       </div>
       
-      {/* 🎯 ПОИСК И ФИЛЬТР ТОЛЬКО В МЕНЮ */}
+      {/* 🎯 ДОБАВИЛИ ИЗБРАННОЕ В МЕНЮ */}
       <nav className={`mountain-nav ${isMenuOpen ? 'active' : ''}`}>
         <ul>
           <li><a href="#" onClick={closeMenu}>Главная</a></li>
           <li><a href="#" onClick={closeMenu}>Горная коллекция</a></li>
+          <li>
+        <Link to="/wishlist" onClick={closeMenu} className="wishlist-in-menu">
+          Избранное
+          {wishlistCount > 0 && <span className="wishlist-badge">{wishlistCount}</span>}
+        </Link>
+          </li>
           
           {/* 🎯 ПОИСК В МЕНЮ */}
           <li>
@@ -73,7 +97,8 @@ const Header = () => {
               href="#" 
               onClick={(e) => {
                 e.preventDefault();
-                handleSearchClick();
+                openSearchGlobal();
+                closeMenu();
               }}
               className="search-in-menu"
             >
@@ -87,7 +112,8 @@ const Header = () => {
               href="#" 
               onClick={(e) => {
                 e.preventDefault();
-                handleFilterClick();
+                openFilter();
+                closeMenu();
               }}
               className="filter-in-menu"
             >
@@ -101,19 +127,15 @@ const Header = () => {
         </ul>
       </nav>
     </header>
+    <SearchBar />
 
     {/* 🎯 МОДАЛКИ */}
     <CartModal 
       isOpen={isCartOpen} 
       onClose={() => setIsCartOpen(false)} 
     />
-    
-    <PriceFilterModal />
-    <SearchBar />
     </>
   );
 };
 
 export default Header;
-
-

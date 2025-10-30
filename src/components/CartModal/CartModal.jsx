@@ -23,9 +23,7 @@ const CartModal = ({ isOpen, onClose }) => {
   };
 
   const handleOrder = () => {
-    console.log('🛒 Нажата кнопка "Оформить заказ"'); // ДЛЯ ОТЛАДКИ
     handleClose();
-    // УБИРАЕМ setTimeout и вызываем сразу
     openOrderModal();
   };
 

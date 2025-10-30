@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import SmokeAnimation from '../SmokeAnimation/SmokeAnimation';
+import WishlistButton from '../WishlistButton/WishlistButton';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
@@ -35,8 +36,11 @@ const handleAddToCart = (event) => {
   return (
     <div className="mountain-product-card" id={`product-${product.id}`}>
       <div className="mountain-product-image">
-        <img src={product.placeholder } className='img' alt={product.name} />
+        <img src={product.image } className='img' alt={product.name} />
       </div>
+        <div className="wishlist-button-container">
+          <WishlistButton product={product} />
+        </div>
       <div className="mountain-product-info">
         <h3>{product.name}</h3>
         <p>{product.description}</p>

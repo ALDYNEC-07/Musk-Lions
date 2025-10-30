@@ -12,7 +12,7 @@ export const products = [
     description: "Чистый и благородный, как горный воздух. С нотами альпийских трав и древесины.",
     price: "12 500 ₽",
     numericPrice: 12500,
-    placeholder: one,
+    image: one,
     elementId: "product-1",
     inStock: true
   },
@@ -22,7 +22,7 @@ export const products = [
     description: "Теплый и солнечный, с нотами горных цветов и специй. Аромат родины.",
     price: "7 200 ₽",
     numericPrice: 7200,
-    placeholder: two,
+    image: two,
     elementId: "product-2",
     inStock: true
   },
@@ -32,7 +32,7 @@ export const products = [
     description: "Сильный и независимый. Ноты кожи, дыма и горных трав.",
     price: "13 800 ₽",
     numericPrice: 13800,
-    placeholder: three,
+    image: three,
     elementId: "product-3",
     inStock: true
   },
@@ -42,7 +42,7 @@ export const products = [
     description: "Глубокое дыхание осени: дымчатый янтарь, Сухие травы и бархатистая кожа.",
     price: "5 000 ₽",
     numericPrice: 5000,
-    placeholder: four,
+    image: four,
     elementId: "product-4",
     inStock: true
   },
@@ -52,7 +52,7 @@ export const products = [
     description: "Тепло осеннего солнца на коже, И шлейф дыма от костра в прохладе.",
     price: "10 000 ₽",
     numericPrice: 10000,
-    placeholder: five,
+    image: five,
     elementId: "product-5",
     inStock: true
   }

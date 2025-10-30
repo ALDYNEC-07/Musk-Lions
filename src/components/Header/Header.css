@@ -286,3 +286,107 @@
     gap: 0.6rem;
   }
 }
+
+/* Стили для иконки избранного в едином стиле */
+.wishlist-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.mountain-wishlist-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  background: none;
+  color: #D4AF37;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+}
+.mountain-wishlist-icon:hover {
+  transform: scale(1.1);
+  background: #D4AF37;
+}
+/* СЧЕТЧИК ИЗБРАННОГО - в стиле сайта */
+.wishlist-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #D4AF37;
+  color: #2C1810;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 2px solid #2C1810;
+}
+/* АНИМАЦИЯ ДОБАВЛЕНИЯ - как дым у корзины но проще */
+@keyframes wishlistAdd {
+  0% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.3); 
+  }
+  100% { 
+    transform: scale(1); 
+  }
+}
+
+.wishlist-count.pulse {
+  animation: countPulse 0.6s ease-in-out;
+}
+
+/* Бейдж избранного в меню - в стиле сайта */
+.wishlist-badge {
+  background: #8B4513; /* Теплый коричневый */
+  color: #F5F5DC; /* Светлый текст */
+  border-radius: 12px;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  margin-left: 8px;
+  border: 1px solid #D2B48C;
+}
+
+/* Активное состояние иконки */
+.wishlist-icon-wrapper.active .mountain-wishlist-icon {
+  filter: none;
+  text-shadow: 0 0 10px rgba(205, 133, 63, 0.5); /* Свечение */
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  
+  .mountain-wishlist-icon {
+        width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+  
+  .wishlist-count {
+    width: 18px;
+    height: 18px;
+    font-size: 0.6rem;
+    top: -3px;
+    right: -3px;
+  }
+}
+/* Header.css - добавляем */
+.wishlist-icon-wrapper .mountain-wishlist-icon {
+  transition: all 0.3s ease;
+}
+
+/* Когда показываем стрелку назад */
+.wishlist-icon-wrapper .mountain-wishlist-icon:contains('←') {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

@@ -105,15 +105,6 @@ const OrderModal = () => {
             {orderData.delivery.method === 'courier' && (
               <div className="address-form">
                 <div className="input-group">
-                  <label>Город</label>
-                  <input
-                    type="text"
-                    value={orderData.delivery.city}
-                    onChange={(e) => updateOrderData('delivery', 'city', e.target.value)}
-                    className="modern-input"
-                  />
-                </div>
-                <div className="input-group">
                   <label>Адрес доставки</label>
                   <input
                     type="text"
