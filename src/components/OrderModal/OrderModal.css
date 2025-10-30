@@ -30,7 +30,6 @@
 .modal-header {
   display: flex;
   justify-content: flex-end;
-  padding: 20px 20px 0;
   flex-shrink: 0;
 }
 
@@ -60,7 +59,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .modal-title {
@@ -513,7 +512,7 @@
   }
   
   .modal-content {
-    padding: 0 20px 30px;
+    padding: 30px 30px;
   }
   
   .modal-title h2 {

@@ -4,16 +4,21 @@ import { useWishlist } from '../../context/WishlistContext';
 import { useCart } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 import SmokeAnimation from '../SmokeAnimation/SmokeAnimation';
-import './WishlistPage.css';
 import WishlistButton from '../WishlistButton/WishlistButton';
+import './WishlistPage.css';
 
 const WishlistPage = () => {
   const { wishlist, clearWishlist } = useWishlist();
   const { addItem } = useCart();
   const [showSmoke, setShowSmoke] = useState(false);
   const [smokePosition, setSmokePosition] = useState({ x: 0, y: 0 });
-    const handleAddToCart = (product, event) => {
-    // Находим позицию для анимации дыма
+
+  // Прокрутка в начало при загрузке
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  const handleAddToCart = (product, event) => {
     const card = event.target.closest('.wishlist-product-card');
     const image = card.querySelector('.wishlist-product-image');
     const rect = image.getBoundingClientRect();
@@ -28,13 +33,7 @@ const WishlistPage = () => {
     setTimeout(() => setShowSmoke(false), 1000);
   };
 
-  useEffect(() => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-}, []);
-
+  // Пустое состояние
   if (wishlist.length === 0) {
     return (
       <div className="wishlist-page empty">
@@ -69,10 +68,11 @@ const WishlistPage = () => {
           <div key={product.id} className="wishlist-product-card">
             <div className="wishlist-product-image">
               <img src={product.image} alt={product.name} />
-            <div className="wishlist-button-container">
+              <div className="wishlist-button-container">
                 <WishlistButton product={product} />
+              </div>
             </div>
-            </div>
+            
             <div className="wishlist-product-info">
               <h3>{product.name}</h3>
               <p>{product.description}</p>

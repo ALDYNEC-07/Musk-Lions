@@ -157,17 +157,17 @@ const OrderModal = () => {
 
               <div className="review-details">
                 <div className="detail-row">
-                  <span>Контактные данные:</span>
+                  <strong>Контактные данные:</strong>
                   <div className="detail-content">
-                    <strong>{orderData.contact.fullName}</strong>
+                    <span>{orderData.contact.fullName}</span>
                     <span>{orderData.contact.phone}</span>
                   </div>
                 </div>
                 
                 <div className="detail-row">
-                  <span>Доставка:</span>
+                  <strong>Доставка:</strong>
                   <div className="detail-content">
-                    <strong>{orderData.delivery.method === 'courier' ? 'Курьером' : 'Самовывоз'}</strong>
+                    <span>{orderData.delivery.method === 'courier' ? 'Курьером' : 'Самовывоз'}</span>
                     {orderData.delivery.method === 'courier' && (
                       <>
                         <span>{orderData.delivery.city}</span>
