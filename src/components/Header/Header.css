@@ -64,6 +64,11 @@
   border: 1px solid #D4AF37;
 }
 
+[data-theme="dark"]  .mountain-nav {
+  background: #2C1810;
+}
+
+
 .mountain-nav.active {
   display: block;
   animation: slideDown 0.3s ease;
@@ -107,7 +112,9 @@
   padding: 0.5rem 0;
   transition: all 0.3s ease;
 }
-
+[data-theme="dark"]  .mountain-nav a {
+  color: #F5F5DC;
+}
 .mountain-nav a:hover {
   color: #5D4037;
   padding-left: 0.5rem;

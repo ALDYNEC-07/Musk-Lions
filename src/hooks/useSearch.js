@@ -1,5 +1,6 @@
+// hooks/useSearch.js - ИСПРАВЛЕННАЯ ВЕРСИЯ
 import { useState, useMemo } from 'react';
-import { products } from '../data/products';
+import { allProducts } from '../data/allProducts'; // ✅ ЗАМЕНИЛ НА allProducts
 
 // 🎯 ГЛОБАЛЬНАЯ ПЕРЕМЕННАЯ ДЛЯ УПРАВЛЕНИЯ ПОИСКОМ ИЗВНЕ
 let globalOpenSearch = null;
@@ -18,7 +19,7 @@ export const useSearch = () => {
     
     const query = searchQuery.toLowerCase().trim();
     
-    return products.filter(product => {
+    return allProducts.filter(product => { // ✅ ИСПОЛЬЗУЕМ allProducts
       const searchString = `
         ${product.name.toLowerCase()}
         ${product.description.toLowerCase()}

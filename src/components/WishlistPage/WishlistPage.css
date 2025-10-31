@@ -23,6 +23,7 @@
   padding: 0.5rem 1rem;
   border: 1px solid var(--border-color);
   border-radius: 6px;
+  font-family: 'Philosopher', serif;
 }
 
 .back-button:hover {
@@ -52,7 +53,6 @@
   gap: 1.5rem;
 }
 
-
 .clear-wishlist-btn {
   background: transparent;
   border: 1px solid var(--accent-secondary);
@@ -69,92 +69,118 @@
   color: var(--text-primary);
 }
 
-/* ✅ ИСПРАВЛЕННЫЕ СТИЛИ КАРТОЧЕК - ТАКИЕ ЖЕ КАК НА ГЛАВНОЙ */
+/* ОБНОВЛЕННЫЙ ДИЗАЙН СЕТКИ */
 .wishlist-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
-/* КАРТОЧКА ТОВАРА - ИДЕНТИЧНА ГОРНОЙ КОЛЛЕКЦИИ */
+/* ОБНОВЛЕННАЯ КАРТОЧКА ТОВАРА */
 .wishlist-product-card {
   background: var(--card-bg);
-  border-radius: 12px;
-  padding: 0;
+  border-radius: 16px;
+  padding: 1rem;
   transition: all 0.3s ease;
   position: relative;
-  overflow: visible;
-  box-shadow: 0 5px 20px rgba(44, 24, 16, 0.1);
+  box-shadow: 0 4px 15px rgba(44, 24, 16, 0.1);
   border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .wishlist-product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
 }
 
-/* ИЗОБРАЖЕНИЕ - ТАКОЕ ЖЕ КАК НА ГЛАВНОЙ */
+/* ШАПКА КАРТОЧКИ - изображение и кнопка избранного */
+.wishlist-card-header {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
 .wishlist-product-image {
   width: 100%;
-  height: 220px;
+  height: 120px;
   background: linear-gradient(135deg, #F5E8C8, #E8D5B7);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  position: relative;
-  overflow: visible;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .wishlist-product-image img {
-  width: 300px;
-  height: 180px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 5px;
 }
 
-/* ИНФОРМАЦИЯ О ТОВАРЕ - ИДЕНТИЧНА */
+.wishlist-button-container {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+}
+
+/* ОСНОВНАЯ ИНФОРМАЦИЯ */
 .wishlist-product-info {
-  padding: 1.8rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .wishlist-product-info h3 {
   font-family: 'Philosopher', serif;
-  font-size: 1.3rem;
-  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
   color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
 }
 
 .wishlist-product-info p {
   color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-bottom: 1.2rem;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
   line-height: 1.4;
-  font-weight: 300;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ФУТЕР КАРТОЧКИ - цена и кнопка */
+.wishlist-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto;
 }
 
 .wishlist-product-price {
   font-family: 'Philosopher', serif;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: var(--text-primary);
-  margin-bottom: 1.2rem;
-  text-align: center;
-  font-weight: 500;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-/* КНОПКА - ТАКАЯ ЖЕ КАК НА ГЛАВНОЙ */
 .wishlist-add-to-cart {
-  background: #2C1810;
+  background: var(--text-primary);
   color: #FDF6E3;
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 25px;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
   font-family: 'Philosopher', serif;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 100%;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 [data-theme="dark"] .wishlist-add-to-cart {
@@ -163,31 +189,7 @@
 
 .wishlist-add-to-cart:hover {
   border: 0.1px solid rgba(212, 175, 55);
-  transform: translateY(-2px);
-}
-
-/* АДАПТИВНОСТЬ - ТАКАЯ ЖЕ */
-@media (max-width: 425px) {
-  .wishlist-product-image {
-    height: 200px;
-    padding: 0;
-  }
-  
-  .wishlist-product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px 12px 0 0;
-  }
-}
-
-@media (max-width: 360px) {
-  .wishlist-product-image img {
-    width: 100%;
-    height: 170px;
-    object-fit: cover;
-    border-radius: 5px;
-  }
+  transform: translateY(-1px);
 }
 
 /* СТИЛИ ДЛЯ ПУСТОГО ИЗБРАННОГО */
@@ -242,12 +244,11 @@
   transform: translateY(-2px);
 }
 
-/* АДАПТИВНОСТЬ СТРАНИЦЫ */
+/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
 @media (max-width: 768px) {
   .wishlist-page {
     padding: 0 7%;
     padding-top: 5rem;
-
   }
   
   .wishlist-header {
@@ -265,8 +266,91 @@
     gap: 1rem;
   }
   
+  /* ✅ 3 КАРТОЧКИ В РЯД НА МОБИЛЬНЫХ */
   .wishlist-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+  }
+  
+  .wishlist-product-card {
+    padding: 0.8rem;
+    border-radius: 12px;
+  }
+  
+  .wishlist-product-image {
+    height: 80px;
+    border-radius: 8px;
+  }
+  
+  .wishlist-product-info h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    margin-top: 0.3rem;
+  }
+  
+  .wishlist-product-info p {
+    font-size: 0.75rem;
+    margin-bottom: 0.8rem;
+    -webkit-line-clamp: 2;
+  }
+  
+  .wishlist-card-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  
+  .wishlist-product-price {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .wishlist-add-to-cart {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 15px;
+  }
+  
+  .wishlist-button-container {
+    top: 5px;
+    right: 5px;
   }
 }
+
+/* ✅ ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ */
+@media (max-width: 480px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  
+  .wishlist-product-card {
+    padding: 0.6rem;
+  }
+  
+  .wishlist-product-image {
+    height: 70px;
+  }
+  
+  .wishlist-product-info h3 {
+    font-size: 0.8rem;
+  }
+  
+  .wishlist-product-info p {
+    font-size: 0.7rem;
+    -webkit-line-clamp: 2;
+  }
+  
+  .wishlist-product-price {
+    font-size: 0.9rem;
+  }
+}
+
+/* ✅ ДЛЯ СРЕДНИХ ЭКРАНОВ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+}
+

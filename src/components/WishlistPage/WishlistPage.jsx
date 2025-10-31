@@ -12,6 +12,7 @@ const WishlistPage = () => {
   const { addItem } = useCart();
   const [showSmoke, setShowSmoke] = useState(false);
   const [smokePosition, setSmokePosition] = useState({ x: 0, y: 0 });
+  const [addedProducts, setAddedProducts] = useState([]); // ✅ ДОБАВИЛИ СОСТОЯНИЕ
 
   // Прокрутка в начало при загрузке
   useEffect(() => {
@@ -28,9 +29,19 @@ const WishlistPage = () => {
       y: rect.top + rect.height / 6
     });
 
+    // Добавляем товар в корзину
     addItem(product);
+    
+    // ✅ ДОБАВЛЯЕМ ID ТОВАРА В МАССИВ ДОБАВЛЕННЫХ
+    setAddedProducts(prev => [...prev, product.id]);
+    
     setShowSmoke(true);
-    setTimeout(() => setShowSmoke(false), 1000);
+    
+    // ✅ ЧЕРЕЗ 2 СЕКУНДЫ УБИРАЕМ НАДПИСЬ "ДОБАВЛЕНО"
+    setTimeout(() => {
+      setShowSmoke(false);
+      setAddedProducts(prev => prev.filter(id => id !== product.id));
+    }, 2000);
   };
 
   // Пустое состояние
@@ -42,7 +53,7 @@ const WishlistPage = () => {
           <h2>Ваше избранное пусто</h2>
           <p>Добавляйте понравившиеся парфюмы, нажимая на сердечки</p>
           <Link to="/" className="back-to-products">
-            ← Вернуться к коллекции
+            ← Вернуться
           </Link>
         </div>
       </div>
@@ -64,28 +75,33 @@ const WishlistPage = () => {
       </div>
       
       <div className="wishlist-grid">
-        {wishlist.map(product => (
-          <div key={product.id} className="wishlist-product-card">
-            <div className="wishlist-product-image">
-              <img src={product.image} alt={product.name} />
-              <div className="wishlist-button-container">
-                <WishlistButton product={product} />
+        {wishlist.map(product => {
+          const isAdded = addedProducts.includes(product.id); // ✅ ПРОВЕРЯЕМ ДОБАВЛЕН ЛИ ТОВАР
+          
+          return (
+            <div key={product.id} className="wishlist-product-card">
+              <div className="wishlist-product-image">
+                <img src={product.image} alt={product.name} />
+                <div className="wishlist-button-container">
+                  <WishlistButton product={product} />
+                </div>
+              </div>
+              
+              <div className="wishlist-product-info">
+                <h3>{product.name}</h3>
+                <p>{product.description}</p>
+                <div className="wishlist-product-price">{product.price}</div>
+                <button 
+                  className={`wishlist-add-to-cart ${isAdded ? 'added' : ''}`}
+                  onClick={(e) => handleAddToCart(product, e)}
+                  disabled={isAdded} // ✅ БЛОКИРУЕМ КНОПКУ НА ВРЕМЯ АНИМАЦИИ
+                >
+                  {isAdded ? 'Добавлено ✓' : 'В корзину'}
+                </button>
               </div>
             </div>
-            
-            <div className="wishlist-product-info">
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-              <div className="wishlist-product-price">{product.price}</div>
-              <button 
-                className="wishlist-add-to-cart"
-                onClick={(e) => handleAddToCart(product, e)}
-              >
-                В корзину
-              </button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {showSmoke && (

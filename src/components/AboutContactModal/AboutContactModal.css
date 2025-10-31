@@ -121,14 +121,8 @@
   border-radius: 8px;
   background: var(--bg-secondary);
   transition: all 0.3s ease;
+  border: 0.1px solid rgba(212, 175, 55);
 }
-
-.feature-item:hover {
-  transform: translateY(-2px);
-  background: var(--accent-primary);
-  color: var(--text-primary);
-}
-
 .feature-icon {
   font-size: 1.2rem;
 }
@@ -169,6 +163,7 @@
   border-radius: 12px;
   background: var(--bg-secondary);
   transition: all 0.3s ease;
+  border: 0.1px solid rgba(212, 175, 55, 0.3);
 }
 
 .contact-item:hover {

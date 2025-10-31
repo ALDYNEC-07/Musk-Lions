@@ -33,7 +33,7 @@
   border-radius: 5px;
 }
 .mountain-product-info {
-  padding: 1.8rem;
+  padding: 1.3rem;
 }
 
 .mountain-product-info h3 {
@@ -82,7 +82,7 @@
 
 @media (max-width: 425px) {
     .mountain-product-image {
-    height: 200px;
+    height: 180px;
     padding: 0;
   }
   .mountain-product-image > img {

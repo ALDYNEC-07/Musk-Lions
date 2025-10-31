@@ -11,8 +11,8 @@ import WishlistPage from './components/WishlistPage/WishlistPage'; // ✅ ДОБ
 import { useFilter } from './context/FilterContext';
 import './App.css';
 import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
-import SearchBar from './components/SearchBar/SearchBar';
 import PriceFilterModal from './components/PriceFilterModal/PriceFilterModal';
+import CollectionPage from './components/CollectionPage/CollectionPage';
 
 function HomePage() {
   const { filteredProducts, totalProducts, isFilterActive } = useFilter();
@@ -29,7 +29,7 @@ function HomePage() {
         {isFilterActive && (
           <div className="filter-info">
             <span className="products-count">
-              Показано {filteredProducts.length} из {totalProducts} товаров
+              Показано {filteredProducts.length} из {totalProducts} ароматов
             </span>
           </div>
         )}
@@ -57,6 +57,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/wishlist" element={<WishlistPage />} />
+          <Route path="/collection" element={<CollectionPage />} />
         </Routes>
       </main>
       <Footer />

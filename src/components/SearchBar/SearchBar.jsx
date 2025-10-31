@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // ✅ ДОБАВИЛИ
 import './SearchBar.css';
 import { useSearch } from '../../hooks/useSearch';
 
-
 const SearchBar = ({onResultClick}) => {
+  const navigate = useNavigate(); // ✅ ДОБАВИЛИ
   const {
     searchQuery,
     setSearchQuery,
@@ -40,33 +41,50 @@ const SearchBar = ({onResultClick}) => {
     }
   };
 
-
   const handleResultClick = (product) => {
-  // Закрываем меню (если в мобильной версии)
-  if (onResultClick) {
-    onResultClick(); // Это setIsMenuOpen(false)
-  }
-  
-  // Закрываем поиск
-  closeSearch();
-  
-  // Даем время на закрытие меню перед прокруткой
-  setTimeout(() => {
-    const element = document.getElementById(`product-${product.id}`);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'center'
-      });
-      
-      element.classList.add('highlight-product');
-      setTimeout(() => {
-        element.classList.remove('highlight-product');
-      }, 2000);
+    // Закрываем меню (если в мобильной версии)
+    if (onResultClick) {
+      onResultClick();
     }
-  }, 300); // Ждем закрытия меню
-};
-
+    
+    // Закрываем поиск
+    closeSearch();
+    
+    // Даем время на закрытие меню перед прокруткой
+    setTimeout(() => {
+      const element = document.getElementById(`product-${product.id}`);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
+        
+        element.classList.add('highlight-product');
+        setTimeout(() => {
+          element.classList.remove('highlight-product');
+        }, 2000);
+      } else {
+        // ✅ ИСПОЛЬЗУЕМ REACT ROUTER ВМЕСТО window.location
+        navigate('/collection');
+        
+        // ✅ ЖДЕМ ЗАГРУЗКИ СТРАНИЦЫ И ПРОКРУЧИВАЕМ
+        setTimeout(() => {
+          const elementOnCollection = document.getElementById(`product-${product.id}`);
+          if (elementOnCollection) {
+            elementOnCollection.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'center'
+            });
+            
+            elementOnCollection.classList.add('highlight-product');
+            setTimeout(() => {
+              elementOnCollection.classList.remove('highlight-product');
+            }, 2000);
+          }
+        }, 100); // Меньшая задержка для SPA
+      }
+    }, 300);
+  };
 
   const clearSearch = () => {
     setSearchQuery('');
@@ -167,7 +185,13 @@ const SearchBar = ({onResultClick}) => {
                 </div>
                 <h4>Аромат не найден</h4>
                 <p>Попробуйте изменить запрос или посмотрите всю коллекцию</p>
-                <button className="browse-collection-btn" onClick={closeSearch}>
+                <button 
+                  className="browse-collection-btn" 
+                  onClick={() => {
+                    closeSearch();
+                    navigate('/collection'); // ✅ ТОЖЕ ИСПОЛЬЗУЕМ navigate
+                  }}
+                >
                   Смотреть коллекцию
                 </button>
               </div>

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useMemo } from 'react';
-import { products } from '../data/products';
+import { allProducts } from '../data/allProducts'; // ✅ ЗАМЕНИЛ НА allProducts
 
 const FilterContext = createContext();
 
@@ -12,10 +12,10 @@ export const FilterProvider = ({ children }) => {
   // 🎯 ФИЛЬТРАЦИЯ ТОВАРОВ
   const filteredProducts = useMemo(() => {
     if (!isFilterApplied) {
-      return products;
+      return allProducts; // ✅ ИСПОЛЬЗУЕМ allProducts
     }
 
-    return products.filter(product => {
+    return allProducts.filter(product => { // ✅ ИСПОЛЬЗУЕМ allProducts
       const price = product.numericPrice;
       const min = minPrice === '' ? 0 : Number(minPrice);
       const max = maxPrice === '' ? Infinity : Number(maxPrice);
@@ -65,16 +65,16 @@ export const FilterProvider = ({ children }) => {
     setMinPrice,
     maxPrice, 
     setMaxPrice,
-    filteredProducts, // 🎯 ОДИН РАЗ!
+    filteredProducts,
     applyFilter,
     resetFilter,
     isFilterActive,
-    totalProducts: products.length,
+    totalProducts: allProducts.length, // ✅ ИСПОЛЬЗУЕМ allProducts
     isFilterApplied,
     isFilterOpen,
     openFilter,
     closeFilter,
-    products, // 🎯 ДОБАВЛЯЕМ products ДЛЯ PriceFilterModal
+    products: allProducts, // ✅ ИСПОЛЬЗУЕМ allProducts
   };
 
   return (

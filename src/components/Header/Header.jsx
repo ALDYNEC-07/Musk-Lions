@@ -50,8 +50,20 @@ const Header = () => {
   };
 
   const menuItems = [
-    { label: 'Главная', onClick: closeMenu },
-    { label: 'Горная коллекция', onClick: closeMenu },
+    { label: 'Главная',
+      component: (
+          <Link to="/" className="mountain-logo" onClick={closeMenu} >
+            Musk<span>Lions</span>
+          </Link>
+      )
+     },
+    { label: 'Открыть коллекцию', 
+      component: (
+                <Link to="/collection" onClick={closeMenu} >
+                  Открыть коллекцию
+                </Link>
+      )
+    },
     { 
       label: 'Избранное', 
       component: (

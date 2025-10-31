@@ -1,5 +1,6 @@
 import React from 'react';
 import mountainImage from '../../assets/Гора3.jpg';
+import { Link } from 'react-router-dom';
 import './Hero.css';
 
 const Hero = () => {
@@ -15,7 +16,9 @@ const Hero = () => {
         <p className="hero-subtitle">
           Найдите аромат, который создаст вашу историю
         </p>
-        <a href="#" className="mountain-cta">Открыть коллекцию</a>
+        <Link to="/collection" className="mountain-cta primary">
+          Открыть коллекцию
+        </Link>
       </div>
     </section>
   );

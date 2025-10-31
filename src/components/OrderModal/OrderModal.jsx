@@ -16,7 +16,6 @@ const OrderModal = () => {
     orderSuccess,
     orderError,
     items,
-    totalCount
   } = useOrder();
 
   const modalRef = useRef();
@@ -170,7 +169,6 @@ const OrderModal = () => {
                     <span>{orderData.delivery.method === 'courier' ? 'Курьером' : 'Самовывоз'}</span>
                     {orderData.delivery.method === 'courier' && (
                       <>
-                        <span>{orderData.delivery.city}</span>
                         <span>{orderData.delivery.address}</span>
                       </>
                     )}
