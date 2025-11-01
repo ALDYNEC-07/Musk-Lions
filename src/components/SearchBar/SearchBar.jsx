@@ -1,10 +1,14 @@
+// components/SearchBar/SearchBar.jsx
 import React, { useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // ✅ ДОБАВИЛИ
+import { useNavigate, useLocation } from 'react-router-dom';
 import './SearchBar.css';
 import { useSearch } from '../../hooks/useSearch';
+import { products } from '../../data/products'; // ✅ ДЛЯ ПРОВЕРКИ НА ГЛАВНОЙ
 
 const SearchBar = ({onResultClick}) => {
-  const navigate = useNavigate(); // ✅ ДОБАВИЛИ
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   const {
     searchQuery,
     setSearchQuery,
@@ -42,32 +46,71 @@ const SearchBar = ({onResultClick}) => {
   };
 
   const handleResultClick = (product) => {
-    // Закрываем меню (если в мобильной версии)
     if (onResultClick) {
       onResultClick();
     }
     
-    // Закрываем поиск
     closeSearch();
     
-    // Даем время на закрытие меню перед прокруткой
     setTimeout(() => {
-      const element = document.getElementById(`product-${product.id}`);
-      if (element) {
-        element.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'center'
-        });
+      const currentPath = location.pathname;
+      
+      // 🎯 УМНАЯ ПРОКРУТКА В ЗАВИСИМОСТИ ОТ СТРАНИЦЫ
+      if (currentPath === '/') {
+        // НА ГЛАВНОЙ - ПРОВЕРЯЕМ ЕСТЬ ЛИ ТОВАР В 5 ОСНОВНЫХ
+        const isOnHomePage = products.some(p => p.id === product.id);
         
-        element.classList.add('highlight-product');
-        setTimeout(() => {
-          element.classList.remove('highlight-product');
-        }, 2000);
+        if (isOnHomePage) {
+          // ТОВАР ЕСТЬ НА ГЛАВНОЙ - ПРОКРУЧИВАЕМ К НЕМУ
+          const element = document.getElementById(`product-${product.id}`);
+          if (element) {
+            element.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'center'
+            });
+            
+            element.classList.add('highlight-product');
+            setTimeout(() => {
+              element.classList.remove('highlight-product');
+            }, 2000);
+          }
+        } else {
+          // ТОВАРА НЕТ НА ГЛАВНОЙ - ПЕРЕХОДИМ В КОЛЛЕКЦИЮ
+          navigate('/collection');
+          
+          setTimeout(() => {
+            const elementOnCollection = document.getElementById(`product-${product.id}`);
+            if (elementOnCollection) {
+              elementOnCollection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+              });
+              
+              elementOnCollection.classList.add('highlight-product');
+              setTimeout(() => {
+                elementOnCollection.classList.remove('highlight-product');
+              }, 2000);
+            }
+          }, 100);
+        }
+      } else if (currentPath === '/collection') {
+        // НА СТРАНИЦЕ КОЛЛЕКЦИИ - ПРОКРУЧИВАЕМ К ТОВАРУ
+        const element = document.getElementById(`product-${product.id}`);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'center'
+          });
+          
+          element.classList.add('highlight-product');
+          setTimeout(() => {
+            element.classList.remove('highlight-product');
+          }, 2000);
+        }
       } else {
-        // ✅ ИСПОЛЬЗУЕМ REACT ROUTER ВМЕСТО window.location
+        // НА ДРУГИХ СТРАНИЦАХ (WISHLIST) - ПЕРЕХОДИМ В КОЛЛЕКЦИЮ
         navigate('/collection');
         
-        // ✅ ЖДЕМ ЗАГРУЗКИ СТРАНИЦЫ И ПРОКРУЧИВАЕМ
         setTimeout(() => {
           const elementOnCollection = document.getElementById(`product-${product.id}`);
           if (elementOnCollection) {
@@ -81,7 +124,7 @@ const SearchBar = ({onResultClick}) => {
               elementOnCollection.classList.remove('highlight-product');
             }, 2000);
           }
-        }, 100); // Меньшая задержка для SPA
+        }, 100);
       }
     }, 300);
   };
@@ -93,7 +136,6 @@ const SearchBar = ({onResultClick}) => {
 
   return (
     <div className="search-container" ref={searchRef}>
-      {/* Кнопка поиска */}
       <button 
         className="search-toggle"
         onClick={handleSearchClick}
@@ -101,7 +143,6 @@ const SearchBar = ({onResultClick}) => {
       >
       </button>
 
-      {/* Поле поиска */}
       <div className={`search-field ${isSearchOpen ? 'active' : ''}`}>
         <div className="search-input-wrapper">
           <input
@@ -124,7 +165,6 @@ const SearchBar = ({onResultClick}) => {
           )}
         </div>
 
-        {/* Результаты поиска */}
         {isSearchOpen && searchQuery && (
           <div className="search-results">
             {hasResults ? (
@@ -189,7 +229,7 @@ const SearchBar = ({onResultClick}) => {
                   className="browse-collection-btn" 
                   onClick={() => {
                     closeSearch();
-                    navigate('/collection'); // ✅ ТОЖЕ ИСПОЛЬЗУЕМ navigate
+                    navigate('/collection');
                   }}
                 >
                   Смотреть коллекцию
@@ -200,7 +240,6 @@ const SearchBar = ({onResultClick}) => {
         )}
       </div>
 
-      {/* Overlay для мобильных */}
       {isSearchOpen && <div className="search-overlay" onClick={closeSearch} />}
     </div>
   );

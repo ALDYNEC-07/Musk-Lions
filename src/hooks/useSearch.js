@@ -4,6 +4,7 @@ import { allProducts } from '../data/allProducts'; // ✅ ЗАМЕНИЛ НА al
 
 // 🎯 ГЛОБАЛЬНАЯ ПЕРЕМЕННАЯ ДЛЯ УПРАВЛЕНИЯ ПОИСКОМ ИЗВНЕ
 let globalOpenSearch = null;
+let globalCloseMenu = null;
 
 export const useSearch = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -12,6 +13,11 @@ export const useSearch = () => {
   // 🎯 РЕГИСТРИРУЕМ ФУНКЦИЮ ГЛОБАЛЬНО
   globalOpenSearch = () => {
     setIsSearchOpen(true);
+  };
+
+  // РЕГИСТРИРУЕМ ФУНКЦИЮ ДЛЯ ЗАКРЫТИЯ МЕНЮ
+    globalCloseMenu = () => {
+    // Будет установлено извне
   };
 
   const searchResults = useMemo(() => {
@@ -30,7 +36,13 @@ export const useSearch = () => {
     });
   }, [searchQuery]);
 
-  const openSearch = () => setIsSearchOpen(true);
+    const openSearch = () => {
+      setIsSearchOpen(true);
+      if (globalCloseMenu) {
+        globalCloseMenu(); // Закрываем меню при открытии поиска
+      }
+    };
+
   const closeSearch = () => {
     setIsSearchOpen(false);
     setSearchQuery('');
@@ -52,4 +64,9 @@ export const openSearchGlobal = () => {
   if (globalOpenSearch) {
     globalOpenSearch();
   }
+};
+
+// 🎯 ЭКСПОРТИРУЕМ ФУНКЦИЮ ДЛЯ РЕГИСТРАЦИИ CLOSE_MENU
+export const setGlobalCloseMenu = (closeMenuFunc) => {
+  globalCloseMenu = closeMenuFunc;
 };

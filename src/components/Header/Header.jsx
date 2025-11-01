@@ -1,4 +1,4 @@
-// Header.jsx - ОЧИЩЕННАЯ И УЛУЧШЕННАЯ ВЕРСИЯ
+// Header.jsx - С ДОПОЛНИТЕЛЬНОЙ ОТЛАДКОЙ
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
@@ -15,8 +15,6 @@ import ContactModal from '../AboutContactModal/ContactModal';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-
-  // About us and contact
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
 
@@ -26,6 +24,7 @@ const Header = () => {
   const { totalCount } = useCart();
   const { wishlistCount } = useWishlist();
   const { openFilter, isFilterActive } = useFilter();
+
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
@@ -49,19 +48,31 @@ const Header = () => {
     closeMenu();
   };
 
+  const handleAboutClick = () => {
+    setIsAboutOpen(true);
+    closeMenu();
+  };
+
+  const handleContactClick = () => {
+    setIsContactOpen(true);
+    closeMenu();
+  };
+
   const menuItems = [
-    { label: 'Главная',
+    { 
+      label: 'Главная',
       component: (
-          <Link to="/" className="mountain-logo" onClick={closeMenu} >
-            Musk<span>Lions</span>
-          </Link>
+        <Link to="/" className="mountain-logo" onClick={closeMenu}>
+          Musk<span>Lions</span>
+        </Link>
       )
-     },
-    { label: 'Открыть коллекцию', 
+    },
+    { 
+      label: 'Открыть коллекцию', 
       component: (
-                <Link to="/collection" onClick={closeMenu} >
-                  Открыть коллекцию
-                </Link>
+        <Link to="/collection" onClick={closeMenu}>
+          Открыть коллекцию
+        </Link>
       )
     },
     { 
@@ -86,17 +97,11 @@ const Header = () => {
     },
     { 
       label: 'О нас', 
-      onClick: () => {
-        setIsAboutOpen(true);
-        closeMenu();
-      }
+      onClick: handleAboutClick
     },
     { 
       label: 'Связь с нами', 
-      onClick: () => {
-        setIsContactOpen(true);
-        closeMenu();
-      }
+      onClick: handleContactClick
     }
   ];
 
@@ -111,7 +116,6 @@ const Header = () => {
           <div className="mountain-actions">
             <ThemeToggle />
             
-            {/* Иконка избранного */}
             <div className="wishlist-icon-wrapper" onClick={handleWishlistClick}>
               <div className="mountain-wishlist-icon">
                 {location.pathname === '/wishlist' ? '←' : '🤎'}
@@ -121,7 +125,6 @@ const Header = () => {
               )}
             </div>
             
-            {/* Иконка корзины */}
             <div className="cart-icon-wrapper" onClick={() => setIsCartOpen(true)}>
               <div className="mountain-cart-icon">👜</div>
               {totalCount > 0 && (
@@ -133,15 +136,17 @@ const Header = () => {
           </div>
         </div>
         
-        {/* Навигационное меню */}
         <nav className={`mountain-nav ${isMenuOpen ? 'active' : ''}`}>
           <ul>
             {menuItems.map((item, index) => (
               <li key={index}>
                 {item.component || (
                   <a 
-                    href="#" 
-                    onClick={item.onClick}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (item.onClick) item.onClick();
+                    }}
                     className={item.className}
                   >
                     {item.label}
@@ -154,11 +159,16 @@ const Header = () => {
         </nav>
       </header>
 
-      {/* Глобальные компоненты */}
-      <SearchBar />
+      <SearchBar onResultClick={closeMenu} />
       <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-      <AboutModal isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
-      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <AboutModal 
+        isOpen={isAboutOpen} 
+        onClose={() => setIsAboutOpen(false)} 
+      />
+      <ContactModal 
+        isOpen={isContactOpen} 
+        onClose={() => setIsContactOpen(false)} 
+      />
     </>
   );
 };

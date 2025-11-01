@@ -1,13 +1,13 @@
 // App.js
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; // ✅ ДОБАВИЛИ
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import ProductCard from './components/ProductCard/ProductCard';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
 import OrderModal from './components/OrderModal/OrderModal';
-import WishlistPage from './components/WishlistPage/WishlistPage'; // ✅ ДОБАВИЛИ
+import WishlistPage from './components/WishlistPage/WishlistPage';
 import { useFilter } from './context/FilterContext';
 import './App.css';
 import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
@@ -15,7 +15,11 @@ import PriceFilterModal from './components/PriceFilterModal/PriceFilterModal';
 import CollectionPage from './components/CollectionPage/CollectionPage';
 
 function HomePage() {
-  const { filteredProducts, totalProducts, isFilterActive } = useFilter();
+  const { filteredProductsHome, totalProductsHome, isFilterActive } = useFilter();
+  
+  // 🎯 ИСПОЛЬЗУЕМ ФИЛЬТРОВАННЫЕ ТОВАРЫ ДЛЯ ГЛАВНОЙ
+  const productsToShow = filteredProductsHome;
+  const totalProducts = totalProductsHome;
 
   return (
     <>
@@ -29,13 +33,14 @@ function HomePage() {
         {isFilterActive && (
           <div className="filter-info">
             <span className="products-count">
-              Показано {filteredProducts.length} из {totalProducts} ароматов
+              {/* 🎯 ПОКАЗЫВАЕМ СКОЛЬКО НАЙДЕНО ИЗ СКОЛЬКИ */}
+              Показано {productsToShow.length} из {totalProducts} ароматов
             </span>
           </div>
         )}
         
         <div className="mountain-products">
-          {filteredProducts.map(product => (
+          {productsToShow.map(product => (
             <ProductCard 
               key={product.id}
               product={product}
@@ -53,7 +58,6 @@ function App() {
     <div className="App">
       <Header />
       <main className="main-content">
-        {/* ✅ МАРШРУТИЗАЦИЯ */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/wishlist" element={<WishlistPage />} />

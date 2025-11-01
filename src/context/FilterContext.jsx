@@ -1,5 +1,7 @@
+// context/FilterContext.js
 import React, { createContext, useContext, useState, useMemo } from 'react';
-import { allProducts } from '../data/allProducts'; // ✅ ЗАМЕНИЛ НА allProducts
+import { allProducts } from '../data/allProducts';
+import { products } from '../data/products';
 
 const FilterContext = createContext();
 
@@ -9,27 +11,40 @@ export const FilterProvider = ({ children }) => {
   const [isFilterApplied, setIsFilterApplied] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  // 🎯 ФИЛЬТРАЦИЯ ТОВАРОВ
-  const filteredProducts = useMemo(() => {
+
+  // 🎯 ПРОСТАЯ ФУНКЦИЯ ФИЛЬТРАЦИИ
+  const filterProducts = (productsArray) => {
     if (!isFilterApplied) {
-      return allProducts; // ✅ ИСПОЛЬЗУЕМ allProducts
+      return productsArray;
     }
 
-    return allProducts.filter(product => { // ✅ ИСПОЛЬЗУЕМ allProducts
+    return productsArray.filter(product => {
       const price = product.numericPrice;
       const min = minPrice === '' ? 0 : Number(minPrice);
       const max = maxPrice === '' ? Infinity : Number(maxPrice);
       
-      return price >= min && price <= max;
+      if (minPrice && price < min) return false;
+      if (maxPrice && price > max) return false;
+      return true;
     });
-  }, [minPrice, maxPrice, isFilterApplied]);
+  };
 
-  // 🎯 ПРИМЕНЕНИЕ ФИЛЬТРА + ПРОКРУТКА
+  // 🎯 ФИЛЬТРОВАННЫЕ ТОВАРЫ ДЛЯ КАЖДОЙ СТРАНИЦЫ
+  const filteredProductsHome = useMemo(() => 
+    filterProducts(products), [minPrice, maxPrice, isFilterApplied, products]
+  );
+
+  const filteredProductsCollection = useMemo(() => 
+    filterProducts(allProducts), [minPrice, maxPrice, isFilterApplied, allProducts]
+  );
+
+  // 🎯 ПРИМЕНЕНИЕ ФИЛЬТРА
   const applyFilter = () => {
     setIsFilterApplied(true);
+    setIsFilterOpen(false);
     
     setTimeout(() => {
-      const productsSection = document.querySelector('.mountain-collection');
+      const productsSection = document.querySelector('.mountain-collection, .collection-page');
       if (productsSection) {
         productsSection.scrollIntoView({ 
           behavior: 'smooth',
@@ -46,35 +61,42 @@ export const FilterProvider = ({ children }) => {
     setIsFilterApplied(false);
   };
 
-  // 🎯 УПРАВЛЕНИЕ МОДАЛКОЙ
+  // 🎯 ОТКРЫТИЕ ФИЛЬТРА
   const openFilter = () => {
     setIsFilterOpen(true);
-    if (document.activeElement) {
-      document.activeElement.blur();
-    }
   };
 
   const closeFilter = () => {
     setIsFilterOpen(false);
   };
 
-  const isFilterActive = isFilterApplied;
+  const isFilterActive = isFilterApplied && (minPrice || maxPrice);
 
   const value = {
+    // Цены
     minPrice,
+    maxPrice,
     setMinPrice,
-    maxPrice, 
     setMaxPrice,
-    filteredProducts,
+    
+    // Фильтрованные товары
+    filteredProductsHome,
+    filteredProductsCollection,
+    
+    // Действия
     applyFilter,
     resetFilter,
     isFilterActive,
-    totalProducts: allProducts.length, // ✅ ИСПОЛЬЗУЕМ allProducts
+    
+    // Информация
+    totalProductsHome: products.length,
+    totalProductsCollection: allProducts.length,
     isFilterApplied,
+    
+    // Модальное окно
     isFilterOpen,
     openFilter,
     closeFilter,
-    products: allProducts, // ✅ ИСПОЛЬЗУЕМ allProducts
   };
 
   return (

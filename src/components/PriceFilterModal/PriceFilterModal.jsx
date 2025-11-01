@@ -1,130 +1,105 @@
-import React, { useRef, useEffect, useState, useMemo } from 'react';
+// components/PriceFilterModal/PriceFilterModal.jsx
+import React, { useMemo } from 'react';
 import { useFilter } from '../../context/FilterContext';
+import { allProducts } from '../../data/allProducts';
+import { products } from '../../data/products';
 import './PriceFilterModal.css';
 
 const PriceFilterModal = () => {
   const {
     minPrice,
-    setMinPrice,
     maxPrice,
+    setMinPrice,
     setMaxPrice,
     applyFilter,
     resetFilter,
-    isFilterActive,
+    isFilterApplied,
     isFilterOpen,
     closeFilter,
-    products
+    totalProductsHome,
+    totalProductsCollection
   } = useFilter();
 
-  const modalRef = useRef(null);
-  const minInputRef = useRef(null);
-  const maxInputRef = useRef(null);
-  
-  const [activeInput, setActiveInput] = useState('min');
-
-  // 🎯 РЕАЛЬНЫЙ ПОДСЧЕТ ТОВАРОВ ПРИ ИЗМЕНЕНИИ ЦЕН
-  const currentProductCount = useMemo(() => {
-    if (minPrice === '' && maxPrice === '') {
-      return products.length; // Если поля пустые - все товары
+  // 🎯 ФУНКЦИЯ ДЛЯ ПРЕДВАРИТЕЛЬНОЙ ФИЛЬТРАЦИИ В РЕАЛЬНОМ ВРЕМЕНИ
+  const filterProductsInRealTime = (productsArray) => {
+    if (!minPrice && !maxPrice) {
+      return productsArray;
     }
-    
-    const currentMin = minPrice === '' ? 0 : Number(minPrice);
-    const currentMax = maxPrice === '' ? Infinity : Number(maxPrice);
-    
-    return products.filter(product => 
-      product.numericPrice >= currentMin && 
-      product.numericPrice <= currentMax
-    ).length;
-  }, [minPrice, maxPrice, products]); // 🎯 СЧЕТЧИК ОБНОВЛЯЕТСЯ ПРИ ИЗМЕНЕНИИ ЦЕН
 
-  // 🎯 ЗАКРЫТИЕ ПРИ КЛИКЕ ВНЕ КОМПОНЕНТА
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        closeFilter();
-      }
-    };
-
-    if (isFilterOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+    return productsArray.filter(product => {
+      const price = product.numericPrice;
+      const min = minPrice === '' ? 0 : Number(minPrice);
+      const max = maxPrice === '' ? Infinity : Number(maxPrice);
       
-      setTimeout(() => {
-        if (activeInput === 'min' && minInputRef.current) {
-          minInputRef.current.focus();
-        } else if (activeInput === 'max' && maxInputRef.current) {
-          maxInputRef.current.focus();
-        }
-      }, 100);
-    }
+      if (minPrice && price < min) return false;
+      if (maxPrice && price > max) return false;
+      return true;
+    });
+  };
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+  // 🎯 РЕАЛЬНОЕ ВРЕМЯ - ВЫЧИСЛЯЕМ РЕЗУЛЬТАТЫ СЕЙЧАС (ВСЕГДА ВЫЗЫВАЕТСЯ)
+  const currentProductsInfo = useMemo(() => {
+    const path = window.location.pathname;
+    const productsArray = path === '/' ? products : allProducts;
+    const totalProducts = path === '/' ? totalProductsHome : totalProductsCollection;
+    
+    const filteredProducts = filterProductsInRealTime(productsArray);
+    const hasActiveFilter = !!(minPrice || maxPrice);
+    
+    return {
+      total: totalProducts,
+      filtered: filteredProducts.length,
+      hasActiveFilter: hasActiveFilter,
+      willShowResults: hasActiveFilter ? filteredProducts.length : totalProducts
     };
-  }, [isFilterOpen, closeFilter, activeInput]);
-
-  const handleMinPriceChange = (e) => {
-    setMinPrice(e.target.value);
-  };
-
-  const handleMaxPriceChange = (e) => {
-    setMaxPrice(e.target.value);
-  };
-
-  const handleMinFocus = () => {
-    setActiveInput('min');
-  };
-
-  const handleMaxFocus = () => {
-    setActiveInput('max');
-  };
-
-  const handleApplyFilter = () => {
-    applyFilter();
-    closeFilter();
-  };
-
-  const canApplyFilter = minPrice !== '' || maxPrice !== '';
+  }, [minPrice, maxPrice, totalProductsHome, totalProductsCollection]);
 
   if (!isFilterOpen) return null;
 
+  const handleApply = () => {
+    applyFilter();
+  };
+
+  const handleReset = () => {
+    resetFilter();
+  };
+
+  const isApplyDisabled = minPrice && maxPrice && Number(minPrice) > Number(maxPrice);
+
   return (
-    <div className="price-filter-overlay">
-      <div className="price-filter-modal" ref={modalRef}>
+    <div className="price-filter-modal-overlay" onClick={closeFilter}>
+      <div className="price-filter-modal" onClick={(e) => e.stopPropagation()}>
         <div className="filter-modal-header">
           <h3>Фильтр по цене</h3>
-          <button className="filter-close-btn" onClick={closeFilter}>
-            ×
-          </button>
+          <button className="filter-close-btn" onClick={closeFilter}>×</button>
         </div>
 
-        <div className="filter-modal-content">
-          <div className="price-inputs-modal">
-            <div className="input-group-modal">
+        <div className="filter-content">
+          <div className="price-inputs">
+            <div className="price-input-group">
               <label>Минимальная цена</label>
               <div className="input-wrapper">
                 <input
-                  ref={minInputRef}
                   type="number"
-                  value={minPrice}
-                  onChange={handleMinPriceChange}
-                  onFocus={handleMinFocus}
                   placeholder="0"
+                  value={minPrice}
+                  onChange={(e) => setMinPrice(e.target.value)}
+                  min="0"
                   className="price-input-modal"
                 />
                 <span className="currency">₽</span>
               </div>
             </div>
             
-            <div className="input-group-modal">
+            <div className="price-input-group">
               <label>Максимальная цена</label>
               <div className="input-wrapper">
                 <input
-                  ref={maxInputRef}
                   type="number"
-                  value={maxPrice}
-                  onChange={handleMaxPriceChange}
-                  onFocus={handleMaxFocus}
                   placeholder="20000"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                  min="0"
                   className="price-input-modal"
                 />
                 <span className="currency">₽</span>
@@ -132,29 +107,41 @@ const PriceFilterModal = () => {
             </div>
           </div>
 
-          {/* 🎯 ИНФОРМАЦИЯ О НАЙДЕННЫХ ТОВАРАХ В РЕАЛЬНОМ ВРЕМЕНИ */}
-          <div className="price-range-info">
-            <span>Найдено: </span>
-            <strong>
-              {currentProductCount} из {products.length} товаров
-            </strong>
+          <div className="filter-info">
+            {/* 🎯 ПОКАЗЫВАЕМ РЕЗУЛЬТАТ В РЕАЛЬНОМ ВРЕМЕНИ */}
+            {currentProductsInfo.hasActiveFilter ? (
+              <p>
+                Найдено: <strong>{currentProductsInfo.filtered} из {currentProductsInfo.total}</strong> ароматов
+              </p>
+            ) : (
+              <p>
+                Всего ароматов: <strong>{currentProductsInfo.total}</strong>
+              </p>
+            )}
+
+            {/* 🎯 ПОДСКАЗКА О ТОМ ЧТО ЭТО ПРЕДПРОСМОТР */}
+            {currentProductsInfo.hasActiveFilter && (
+              <p style={{fontSize: '0.8rem', color: '#666', marginTop: '8px'}}>
+                🔍 Предварительный просмотр
+              </p>
+            )}
           </div>
         </div>
 
-        <div className="filter-modal-actions">
+        <div className="filter-actions">
           <button 
-            className="apply-filter-btn-modal" 
-            onClick={handleApplyFilter}
-            disabled={!canApplyFilter}
+            className="filter-apply-btn"
+            onClick={handleApply}
+            disabled={isApplyDisabled}
           >
             Применить фильтр
           </button>
-
-          {isFilterActive && (
-            <button className="reset-filter-btn-modal" onClick={resetFilter}>
-              Сбросить фильтр
-            </button>
-          )}
+          <button 
+            className="filter-reset-btn"
+            onClick={handleReset}
+          >
+            Сбросить фильтр
+          </button>
         </div>
       </div>
     </div>
