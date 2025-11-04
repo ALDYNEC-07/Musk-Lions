@@ -1,5 +1,5 @@
 import React from 'react';
-import mountainImage from '../../assets/Hero-3.png';
+import mountainImage from '../../assets/h.png';
 import { Link } from 'react-router-dom';
 import './Hero.css';
 
