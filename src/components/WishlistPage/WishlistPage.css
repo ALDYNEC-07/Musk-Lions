@@ -11,26 +11,6 @@
 .wishlist-navigation {
   margin-bottom: 2rem;
 }
-
-.back-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color:  #F8F8F8;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border: 1px solid  #5D4037;
-  border-radius: 6px;
-  font-family: 'Philosopher', serif;
-}
-
-.back-button:hover {
-  color:  #FDF6E3;
-  background: #2C1810;
-}
-
 .wishlist-header {
   display: flex;
   justify-content: space-between;

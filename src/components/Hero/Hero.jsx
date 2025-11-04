@@ -9,7 +9,7 @@ const Hero = () => {
     <section className="mountain-hero chechen-pattern"
         style={{
         background: `linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(65, 57, 54, 0.8) 100%), url(${mountainImage})`,
-        backgroundSize: 'cover', backgroundPosition: 'center bottom 80%', backgroundRepeat: 'no-repeat'
+        backgroundSize: 'cover', backgroundPosition: 'center bottom 80%', backgroundRepeat: 'no-repeat', backgroundColor: '#fff'
         }}
       >
       <div className="hero-content">
