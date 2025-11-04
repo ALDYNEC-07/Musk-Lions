@@ -1,6 +1,6 @@
 .mountain-features {
   padding: 4rem 6%;
-  background: linear-gradient(135deg, #2C1810 0%, #5D4037 100%);
+  background: linear-gradient(135deg, #2C1810 0%, #1A120B 100%);
   color: #FDF6E3;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .mountain-feature-card {
-  background: rgba(253, 246, 227, 0.1);
+  background: rgba(44, 24, 16, 0.8);
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
@@ -45,11 +45,3 @@
   font-weight: 300;
 }
 
-
-[data-theme="dark"] .mountain-features {
-  background: linear-gradient(135deg, #2C1810 0%, #1A120B 100%);
-}
-
-[data-theme="dark"] .mountain-feature-card {
-  background: rgba(44, 24, 16, 0.8);
-}

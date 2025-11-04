@@ -1,7 +1,7 @@
 .mountain-footer {
-  background: #2C1810;
   color: #FDF6E3;
   padding: 3rem 6% 2rem;
+  background: #1A120B;
   border-top: 3px solid #D4AF37;
 }
 
@@ -58,12 +58,3 @@
 }
 
 
-
-[data-theme="dark"] .mountain-footer {
-  background: #1A120B;
-  border-top: 3px solid #D4AF37;
-}
-
-[data-theme="dark"] .mountain-footer-column ul li {
-  border-bottom: 1px solid #5D4037;
-}
