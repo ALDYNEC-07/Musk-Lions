@@ -34,19 +34,15 @@ const AboutModal = ({ isOpen, onClose }) => {
 
           <div className="about-features">
             <div className="feature-item">
-              <span className="feature-icon">🎯</span>
               <span className="feature-text">Эксклюзивные композиции</span>
             </div>
             <div className="feature-item">
-              <span className="feature-icon">🌿</span>
               <span className="feature-text">Натуральные ингредиенты</span>
             </div>
             <div className="feature-item">
-              <span className="feature-icon">✨</span>
               <span className="feature-text">Ручная сборка</span>
             </div>
             <div className="feature-item">
-              <span className="feature-icon">📦</span>
               <span className="feature-text">Ограниченный тираж</span>
             </div>
           </div>

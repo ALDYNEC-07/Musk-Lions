@@ -117,17 +117,16 @@
 .clear-btn {
   flex: 1;
   background:  #F8F8F8;
-  color: white;
+  color: #2C1810;
   border: none;
   padding: 12px;
   border-radius: 6px;
   cursor: pointer;
 }
-
 .order-btn {
   flex: 2;
   background:  #FDF6E3;
-  color:  #FDF6E3;
+  color:  #2C1810;
   border: none;
   padding: 12px;
   border-radius: 6px;
