@@ -12,12 +12,12 @@ const Hero = () => {
         }}
       >
       <div className="hero-content">
-        <h1 className="hero-title">Ароматы, создающие истории</h1>
+        <h1 className="hero-title">Ароматы, которые не стираются за час</h1>
         <p className="hero-subtitle">
-          Найдите аромат, который создаст вашу историю
+          Наслаждайтесь стойкостью парфюма как минимум 24 часа — ваша история будет длиться весь день и больше
         </p>
         <Link to="/collection" className="mountain-cta primary">
-          Открыть коллекцию
+          Найти свой стойкий аромат
         </Link>
       </div>
     </section>

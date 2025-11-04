@@ -1,8 +1,8 @@
-import one from "../assets/parfum-1.0.jpg"
-import two from "../assets/parfum-2.0.jpg"
-import three from "../assets/parfum-3.0.jpg"
-import four from "../assets/parfum-4.0.jpg"
-import five from "../assets/parfum-5.0.jpg"
+import one from "../assets/Lucid-1.jpg"
+import two from "../assets/Lucid-2.jpg"
+import three from "../assets/Lucid-3.jpg"
+import four from "../assets/Lucid-3.jpg"
+import five from "../assets/Lucid-4.jpg"
 
 
 export const products = [

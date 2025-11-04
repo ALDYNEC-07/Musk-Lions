@@ -103,7 +103,6 @@ const WishlistPage = () => {
           );
         })}
       </div>
-
       {showSmoke && (
         <SmokeAnimation
           startPosition={smokePosition}

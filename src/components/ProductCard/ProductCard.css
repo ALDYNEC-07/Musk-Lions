@@ -85,10 +85,11 @@
     height: 180px;
     padding: 0;
   }
-  .mountain-product-image > img {
+.mountain-product-image > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 65%;
   border-radius: 12px 12px 0 0;
 }
 }
