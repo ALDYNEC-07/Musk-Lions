@@ -1,13 +1,12 @@
 .mountain-hero {
   min-height: 100vh;
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 2rem 5%;
   position: relative;
+  margin-top: 11px;
 }
 
 .mountain-hero::before {
@@ -17,24 +16,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 187, 0, 0.1);
-}
-
-/* Для темной темы добавим затемнение */
-[data-theme="dark"] .mountain-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background: rgba(51, 29, 9, 0.6);
 }
-
-[data-theme="dark"] .hero-title {
-  color: #FDF6E3;
-}
-
 .hero-content {
   max-width: 800px;
   width: 100%;
@@ -61,11 +44,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-
-[data-theme="dark"] .hero-subtitle {
-  color: #f5e9c9dc;
-}
-
 .mountain-cta {
   background: #5D4037;
   color: #FDF6E3;
@@ -185,3 +163,15 @@
     font-size: 0.85rem;
   }
 }
+
+/* [data-theme="dark"] {
+  --bg-primary: #1A120B;
+  --bg-secondary: #2C1810;
+  --text-primary: #FDF6E3;
+  --text-secondary: #F8F8F8;
+  --accent-primary: #D4AF37;
+  --accent-secondary: #8B6B3C;
+  --card-bg: #2C1810;
+  --border-color: #5D4037;
+  --header-bg: linear-gradient(135deg, #1A120B 0%, #2C1810 100%);
+} */

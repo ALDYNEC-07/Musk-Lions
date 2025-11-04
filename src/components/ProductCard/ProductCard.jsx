@@ -38,11 +38,8 @@ const handleAddToCart = (event) => {
       <div className="mountain-product-image">
         <img src={product.image } className='img' alt={product.name} />
       </div>
-        <div className="wishlist-button-container">
-          <WishlistButton product={product} />
-        </div>
       <div className="mountain-product-info">
-        <h3>{product.name}</h3>
+        <h2>{product.name}</h2>
         <p>{product.description}</p>
         <div className="mountain-product-price">{product.price}</div>
 

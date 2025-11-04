@@ -1,4 +1,6 @@
 .mountain-product-card {
+  width: 500px;
+  margin: 0 auto;
   background: var(--card-bg);
   border-radius: 12px;
   padding: 0;
@@ -15,20 +17,14 @@
 }
 
 .mountain-product-image {
-  width: 100%;
-  height: 220px;
-  background: linear-gradient(135deg, #F5E8C8, #E8D5B7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  position: relative;
+  height: 300px;
+  margin: 0 auto;
   overflow: visible;
   border-radius: 12px 12px 0 0;
 }
 .img {
-  width: 300px;
-  height: 180px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -36,15 +32,14 @@
   padding: 1.3rem;
 }
 
-.mountain-product-info h3 {
+.mountain-product-info h2 {
   font-family: 'Philosopher', serif;
-  font-size: 1.3rem;
   margin-bottom: 0.8rem;
-  color: var(--text-primary);
+  color: #FDF6E3;
 }
 
 .mountain-product-info p {
-  color: var(--text-secondary);
+  color: #E8DCD1;
   font-size: 0.9rem;
   margin-bottom: 1.2rem;
   line-height: 1.4;
@@ -54,7 +49,7 @@
 .mountain-product-price {
   font-family: 'Philosopher', serif;
   font-size: 1.4rem;
-  color: var(--text-primary);
+  color: #fffaec;
   margin-bottom: 1.2rem;
   text-align: center;
   font-weight: 500;
@@ -62,7 +57,7 @@
 
 .mountain-add-to-cart {
   background: #2C1810;
-  color: #FDF6E3;
+  color: #fffaec;
   border: none;
   padding: 1rem 2rem;
   border-radius: 25px;
@@ -81,6 +76,9 @@
 }
 
 @media (max-width: 425px) {
+.mountain-product-card {
+  width: 300px;
+}
     .mountain-product-image {
     height: 180px;
     padding: 0;

@@ -5,7 +5,6 @@ import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useFilter } from '../../context/FilterContext';
 import { openSearchGlobal } from '../../hooks/useSearch';
-import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import CartModal from '../CartModal/CartModal';
 import SearchBar from '../SearchBar/SearchBar';
 import './Header.css';
@@ -114,17 +113,6 @@ const Header = () => {
           </Link>
           
           <div className="mountain-actions">
-            <ThemeToggle />
-            
-            <div className="wishlist-icon-wrapper" onClick={handleWishlistClick}>
-              <div className="mountain-wishlist-icon">
-                {location.pathname === '/wishlist' ? '←' : '🤎'}
-              </div>
-              {wishlistCount > 0 && location.pathname !== '/wishlist' && (
-                <span className="wishlist-count">{wishlistCount}</span>
-              )}
-            </div>
-            
             <div className="cart-icon-wrapper" onClick={() => setIsCartOpen(true)}>
               <div className="mountain-cart-icon">👜</div>
               {totalCount > 0 && (
