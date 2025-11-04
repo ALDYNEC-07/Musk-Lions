@@ -71,8 +71,10 @@ const CollectionPage = () => {
             <div className="collection-card-header">
               <div className="collection-product-image">
                 <img src={product.image} alt={product.name} />
-                <WishlistButton product={product} />
               </div>
+            <div className="wishlist-button">
+                <WishlistButton product={product} />
+            </div>
             </div>
             
             <div className="collection-product-info">
