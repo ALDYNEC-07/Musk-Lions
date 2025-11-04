@@ -7,8 +7,7 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  color:  #FDF6E3;
   line-height: 1.6;
   max-width: 100vw;
   overflow-x: hidden;
@@ -23,10 +22,6 @@ body {
 /* Секция коллекции */
 .mountain-collection {
   padding: 4rem 6%;
-  background: linear-gradient(180deg, #FDF6E3 0%, #F5E8C8 100%);
-}
-
-[data-theme="dark"] .mountain-collection {
   background: linear-gradient(180deg, #2C1810 0%, #5D4037 100%);
 }
 
@@ -41,22 +36,14 @@ body {
   font-size: 1.8rem;
   font-weight: 500;
   margin-bottom: 1rem;
-  color: #2C1810;
-}
-
-[data-theme="dark"] .mountain-section-header h2 {
   color: #FDF6E3;
 }
 
 .mountain-section-header p {
-  color: #5D4037;
+  color: #F5E8C8;
   font-size: 1rem;
   max-width: 500px;
   margin: 0 auto;
-}
-
-[data-theme="dark"] .mountain-section-header p {
-  color: #F5E8C8;
 }
 
 .mountain-products {
@@ -77,13 +64,13 @@ body {
   text-align: center;
   margin-bottom: 20px;
   padding: 15px;
-  background: var(--bg-secondary);
+  background:  #2C1810;
   border-radius: 10px;
-  border: 1px solid var(--border-color);
+  border: 1px solid  #5D4037;
 }
 
 .products-count {
-  color: var(--text-primary);
+  color:  #FDF6E3;
   font-weight: 500;
 }
 

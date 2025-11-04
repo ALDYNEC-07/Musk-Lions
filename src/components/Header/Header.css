@@ -57,10 +57,10 @@
 .mountain-nav {
   margin-top: 1.5rem;
   display: none;
-  background: rgba(253, 246, 227, 0.95);
+  background: #2C1810;
   padding: 1.5rem;
   border-radius: 8px;
-  border: 1px solid  #2C1810;
+  border: 1px solid  #5D4037;
 }
 .mountain-nav.active {
   display: block;

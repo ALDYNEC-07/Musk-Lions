@@ -18,14 +18,14 @@
 }
 
 .about-modal, .contact-modal {
-  background: var(--card-bg);
+  background:  #2C1810;
   border-radius: 16px;
   padding: 2rem;
   max-width: 500px;
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
-  border: 2px solid var(--accent-primary);
+  border: 2px solid  #D4AF37;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   animation: slideUp 0.3s ease;
   position: relative;
@@ -39,7 +39,7 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--text-secondary);
+  color:  #F8F8F8;
   transition: all 0.3s ease;
   width: 40px;
   height: 40px;
@@ -50,8 +50,8 @@
 }
 
 .modal-close-btn:hover {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
+  background:  #2C1810;
+  color:  #FDF6E3;
   transform: rotate(90deg);
 }
 
@@ -71,7 +71,6 @@
     transform: translateY(0) scale(1);
   }
 }
-
 /* СТИЛИ ДЛЯ ABOUT MODAL */
 .about-header {
   text-align: center;
@@ -81,7 +80,7 @@
 .about-header h2 {
   font-family: 'Philosopher', serif;
   font-size: 2rem;
-  color: var(--text-primary);
+  color: #FDF6E3;
   margin-bottom: 0.5rem;
 }
 
@@ -96,13 +95,13 @@
 
 .about-section h3 {
   font-family: 'Philosopher', serif;
-  color: var(--accent-primary);
+  color:  #D4AF37;
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
 
 .about-section p {
-  color: var(--text-secondary);
+  color:  #F8F8F8;
   line-height: 1.6;
 }
 
@@ -119,7 +118,7 @@
   gap: 0.5rem;
   padding: 0.5rem;
   border-radius: 8px;
-  background: var(--bg-secondary);
+  background: #2C1810;
   transition: all 0.3s ease;
   border: 0.1px solid rgba(212, 175, 55);
 }
@@ -141,7 +140,7 @@
 .contact-header h2 {
   font-family: 'Philosopher', serif;
   font-size: 2rem;
-  color: var(--text-primary);
+  color: #FDF6E3;
   margin-bottom: 0.5rem;
 }
 
@@ -161,31 +160,30 @@
   margin-bottom: 1.5rem;
   padding: 1rem;
   border-radius: 12px;
-  background: var(--bg-secondary);
+  background: #2C1810;
   transition: all 0.3s ease;
   border: 0.1px solid rgba(212, 175, 55, 0.3);
 }
 
 .contact-item:hover {
   transform: translateX(5px);
-  background: var(--accent-primary);
-  color: var(--text-primary);
+  background:  #D4AF37;
+  color: #FDF6E3;
 }
 
 .contact-icon {
   font-size: 1.5rem;
   margin-top: 0.2rem;
 }
-
 .contact-details h4 {
   font-family: 'Philosopher', serif;
-  color: var(--text-primary);
+  color:  #FDF6E3;
   margin-bottom: 0.3rem;
   font-size: 1.1rem;
 }
 
 .contact-details p {
-  color: var(--text-secondary);
+  color:  #F8F8F8;
   margin: 0;
   line-height: 1.4;
 }
@@ -212,14 +210,14 @@
 }
 
 .contact-btn.primary {
-  background: var(--accent-primary);
-  color: var(--text-primary);
+  background:  #D4AF37;
+  color: #FDF6E3;
 }
 
 .contact-btn.secondary {
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  border: 2px solid var(--accent-primary);
+  background: #2C1810;
+  color: #F8F8F8;
+  border: 2px solid  #D4AF37;
 }
 
 .contact-btn:hover {
@@ -254,18 +252,18 @@
 }
 
 .modal-content::-webkit-scrollbar-track {
-  background: linear-gradient(180deg, var(--bg-secondary), var(--card-bg));
+  background: linear-gradient(180deg, #2C1810,  #2C1810);
   border-radius: 4px;
   margin: 10px 0;
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--accent-primary), #E5C158);
+  background: linear-gradient(180deg,  #D4AF37, #E5C158);
   border-radius: 4px;
-  border: 2px solid var(--card-bg);
+  border: 2px solid  #2C1810;
 }
 
 .modal-content::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #E5C158, var(--accent-primary));
+  background: linear-gradient(180deg, #E5C158,  #D4AF37);
   transform: scale(1.1);
 }

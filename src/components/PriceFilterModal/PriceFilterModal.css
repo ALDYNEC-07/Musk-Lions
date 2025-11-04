@@ -16,12 +16,12 @@
 
 /* 🎯 МОДАЛЬНОЕ ОКНО КАК У ПОИСКА */
 .price-filter-modal {
-  background: var(--card-bg);
+  background: #2C1810;
   border-radius: 16px;
   padding: 24px;
   width: 90%;
   max-width: 400px;
-  border: 1px solid var(--border-color);
+  border: 1px solid  #5D4037;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   animation: modalSlideIn 0.3s ease;
 }
@@ -43,12 +43,12 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid  #5D4037;
   padding-bottom: 16px;
 }
 
 .filter-modal-header h3 {
-  color: var(--text-primary);
+  color:  #FDF6E3;
   margin: 0;
   font-family: 'Philosopher', serif;
   font-size: 1.3rem;
@@ -59,7 +59,7 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: var(--text-secondary);
+  color:  #F8F8F8;
   padding: 0;
   width: 30px;
   height: 30px;
@@ -70,7 +70,7 @@
 }
 
 .filter-close-btn:hover {
-  color: var(--accent-primary);
+  color:  #D4AF37;
   transform: rotate(90deg);
 }
 
@@ -93,7 +93,7 @@
 }
 
 .price-input-group label {
-  color: var(--text-secondary);
+  color:  #F8F8F8;
   font-size: 0.9rem;
   font-weight: 500;
 }
@@ -107,10 +107,10 @@
 
 .price-input-modal {
   padding: 12px 40px 12px 16px;
-  border: 2px solid var(--border-color);
+  border: 2px solid  #5D4037;
   border-radius: 8px;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background:  #1A120B;
+  color:  #FDF6E3;
   font-size: 1rem;
   transition: all 0.3s ease;
   width: 100%;
@@ -118,7 +118,7 @@
 
 .price-input-modal:focus {
   outline: none;
-  border-color: var(--accent-primary);
+  border-color:  #D4AF37;
   box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
@@ -127,7 +127,7 @@
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-secondary);
+  color:  #F8F8F8;
   font-weight: 500;
   pointer-events: none;
 }
@@ -136,20 +136,20 @@
 .filter-info {
   text-align: center;
   padding: 12px;
-  background: var(--bg-secondary);
+  background:  #2C1810;
   border-radius: 8px;
-  border: 1px solid var(--border-color);
+  border: 1px solid  #5D4037;
   margin-bottom: 16px;
 }
 
 .filter-info p {
-  color: var(--text-secondary);
+  color:  #F8F8F8;
   margin: 5px 0;
   font-size: 0.9rem;
 }
 
 .active-filter-info {
-  color: var(--accent-primary) !important;
+  color: va #D4AF37 !important;
   font-weight: 600;
 }
 
@@ -161,9 +161,9 @@
 }
 
 .filter-apply-btn {
-  background: var(--accent-primary);
+  background:  #D4AF37;
   border: none;
-  color: var(--text-primary);
+  color:  #FDF6E3;
   padding: 14px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -178,16 +178,16 @@
 }
 
 .filter-apply-btn:disabled {
-  background: var(--border-color);
-  color: var(--text-secondary);
+  background:  #5D4037;
+  color:  #F8F8F8;
   cursor: not-allowed;
   transform: none;
 }
 
 .filter-reset-btn {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
+  background:  #2C1810;
+  border: 1px solid  #5D4037;
+  color:  #F8F8F8;
   padding: 12px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -196,8 +196,8 @@
 }
 
 .filter-reset-btn:hover {
-  background: var(--accent-primary);
-  color: var(--text-primary);
+  background:  #D4AF37;
+  color:  #FDF6E3;
 }
 
 /* 🎯 АДАПТИВНОСТЬ */
@@ -215,3 +215,4 @@
     gap: 12px;
   }
 }
+
