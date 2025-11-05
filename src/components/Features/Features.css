@@ -215,10 +215,7 @@
     transition: all 0.35s ease;
   }
 
-  .feature-horizontal-card.active {
-    min-height: 160px;
-    transform: translateY(-1px);
-  }
+
 
   .feature-content {
     gap: 0.8rem;
