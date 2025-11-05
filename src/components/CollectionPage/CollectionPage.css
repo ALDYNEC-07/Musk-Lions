@@ -121,14 +121,13 @@
 
 .collection-product-info h3 {
   font-family: 'Philosopher', serif;
-  font-size: 1rem;
   color:  #FDF6E3;
   margin-bottom: 0.5rem;
   line-height: 1.3;
 }
 
 .collection-product-info p {
-  color: #F8F8F8;
+  color: #E8DCD1;
   font-size: 0.8rem;
   margin-bottom: 0.8rem;
   line-height: 1.4;
@@ -143,7 +142,7 @@
   font-family: 'Philosopher', serif;
   font-size: 1.1rem;
   color:  #FDF6E3;
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 0.8rem;
   text-align: center;
 }

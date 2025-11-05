@@ -100,7 +100,6 @@
   border-top: 1px solid  #5D4037;
   padding-top: 20px;
 }
-
 .total-price {
   font-size: 18px;
   font-weight: bold;
@@ -116,7 +115,7 @@
 
 .clear-btn {
   flex: 1;
-  background:  #F8F8F8;
+  background:  #8B6B3C;
   color: #2C1810;
   border: none;
   padding: 12px;
@@ -125,7 +124,7 @@
 }
 .order-btn {
   flex: 2;
-  background:  #FDF6E3;
+  background:  #D4AF37;
   color:  #2C1810;
   border: none;
   padding: 12px;
@@ -149,7 +148,7 @@
 }
 
 .quantity-btn {
-  background:  #FDF6E3;
+  background:  #8B6B3C;
   color: black;
   border: none;
   width: 30px;
