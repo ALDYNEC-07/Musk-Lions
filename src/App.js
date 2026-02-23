@@ -6,7 +6,6 @@ import Hero from './components/Hero/Hero';
 import ProductCard from './components/ProductCard/ProductCard';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
-import OrderModal from './components/OrderModal/OrderModal';
 import WishlistPage from './components/WishlistPage/WishlistPage';
 import { useFilter } from './context/FilterContext';
 import './App.css';
@@ -65,7 +64,6 @@ function App() {
       </main>
       <Footer />
       <ScrollIndicator />
-      <OrderModal />
       <PriceFilterModal />
     </div>
   );

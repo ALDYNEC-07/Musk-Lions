@@ -1,13 +1,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { useCart } from '../../context/CartContext';
-import { useOrder } from '../../context/OrderContext';
 import { getItemUnitPrice } from '../../utils/price';
 import './CartModal.css';
 
+const WHATSAPP_PHONE = process.env.REACT_APP_WHATSAPP_PHONE || '79292523737';
+
 const CartModal = ({ isOpen, onClose }) => {
     const { items, totalCount, removeItem, clearCart, updateQuantity } = useCart();
-    const { openOrderModal } = useOrder();
     const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -23,19 +23,46 @@ const CartModal = ({ isOpen, onClose }) => {
     }, 300);
   };
 
-  const handleOrder = () => {
-    handleClose();
-    openOrderModal();
-  };
-
   if (!isOpen && !isVisible) return null;
 
-    const totalPrice = items && items.length > 0 
-        ? items.reduce((sum, item) => {
-        const price = getItemUnitPrice(item);
-        return sum + (price * (item.quantity || 1));
-        }, 0)
+    const totalPrice = items && items.length > 0
+    ? items.reduce((sum, item) => {
+      const price = getItemUnitPrice(item);
+      return sum + (price * (item.quantity || 1));
+    }, 0)
     : 0;
+
+  const formatPrice = (price) => `${price.toLocaleString('ru-RU')} ₽`;
+
+  const getWhatsAppMessage = () => {
+    const orderLines = items.map((item, itemIndex) => {
+      const unitPrice = getItemUnitPrice(item);
+      const quantity = item.quantity || 1;
+      const itemTotal = unitPrice * quantity;
+      return `${itemIndex + 1}. ${item.name} - ${quantity} шт. x ${formatPrice(unitPrice)} = ${formatPrice(itemTotal)}`;
+    });
+
+    return [
+      'Здравствуйте! Хочу оформить заказ:',
+      '',
+      ...orderLines,
+      '',
+      `Итого: ${formatPrice(totalPrice)}`,
+      '',
+      'MuskLions'
+    ].join('\n');
+  };
+
+  const handleOrder = () => {
+    const message = getWhatsAppMessage();
+    const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+
+    const openedWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    if (!openedWindow) {
+      window.location.href = whatsappUrl;
+    }
+    handleClose();
+  };
 
   return (
     <div className={`cart-modal-overlay ${isVisible ? 'show' : ''}`}>
@@ -49,7 +76,7 @@ const CartModal = ({ isOpen, onClose }) => {
           {items.length === 0 ? (
             <p className="empty-cart">Корзина пуста</p>
           ) : (
-            items.map((item, index) => (
+            items.map((item) => (
         <div key={item.id} className="cart-item">
         <div className="item-info">
                     <h4>{item.name}</h4>
@@ -94,7 +121,7 @@ const CartModal = ({ isOpen, onClose }) => {
                 Очистить корзину
               </button>
               <button className="order-btn" onClick={handleOrder}>
-                Оформить заказ
+                Заказать в WhatsApp
               </button>
             </div>
           </div>
