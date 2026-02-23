@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import { useOrder } from '../../context/OrderContext';
+import { getItemUnitPrice } from '../../utils/price';
 import './CartModal.css';
 
 const CartModal = ({ isOpen, onClose }) => {
@@ -31,7 +32,7 @@ const CartModal = ({ isOpen, onClose }) => {
 
     const totalPrice = items && items.length > 0 
         ? items.reduce((sum, item) => {
-        const price = parseInt(item.price.replace(/\s/g, '')) || 0;
+        const price = getItemUnitPrice(item);
         return sum + (price * (item.quantity || 1));
         }, 0)
     : 0;

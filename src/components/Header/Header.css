@@ -96,7 +96,8 @@
   padding-bottom: 0;
 }
 
-.mountain-nav a {
+.mountain-nav a,
+.mountain-nav button {
   color: #F5F5DC;
   text-decoration: none;
   font-family: 'Philosopher', serif;
@@ -104,8 +105,14 @@
   display: block;
   padding: 0.5rem 0;
   transition: all 0.3s ease;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
 }
-.mountain-nav a:hover {
+.mountain-nav a:hover,
+.mountain-nav button:hover {
   color: #5D4037;
   padding-left: 0.5rem;
 }
@@ -243,7 +250,8 @@
     padding: 1rem;
   }
   
-  .mountain-nav a {
+  .mountain-nav a,
+  .mountain-nav button {
     font-size: 0.9rem;
   }
 }

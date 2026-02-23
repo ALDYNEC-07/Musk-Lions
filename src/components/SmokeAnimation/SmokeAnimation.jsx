@@ -29,14 +29,17 @@ const SmokeAnimation = ({
       { phase: 'complete', delay: 3500 }
     ];
 
-    phases.forEach(({ phase, delay }) => {
-      setTimeout(() => {
+    const timers = phases.map(({ phase, delay }) => setTimeout(() => {
         setPhase(phase);
         if (phase === 'complete' && onComplete) {
           onComplete();
         }
-      }, delay);
-    });
+      }, delay)
+    );
+
+    return () => {
+      timers.forEach((timerId) => clearTimeout(timerId));
+    };
   }, [onComplete]);
 
   const getAnimationClass = () => {

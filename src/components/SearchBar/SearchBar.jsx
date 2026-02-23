@@ -45,88 +45,51 @@ const SearchBar = ({onResultClick}) => {
     }
   };
 
+  const focusProductCard = (productId) => {
+    const element = document.getElementById(`product-${productId}`);
+    if (!element) {
+      return false;
+    }
+
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+
+    element.classList.add('highlight-product');
+    setTimeout(() => {
+      element.classList.remove('highlight-product');
+    }, 2000);
+
+    return true;
+  };
+
   const handleResultClick = (product) => {
     if (onResultClick) {
       onResultClick();
     }
     
     closeSearch();
-    
-    setTimeout(() => {
-      const currentPath = location.pathname;
-      
-      // 🎯 УМНАЯ ПРОКРУТКА В ЗАВИСИМОСТИ ОТ СТРАНИЦЫ
-      if (currentPath === '/') {
-        // НА ГЛАВНОЙ - ПРОВЕРЯЕМ ЕСТЬ ЛИ ТОВАР В 5 ОСНОВНЫХ
-        const isOnHomePage = products.some(p => p.id === product.id);
-        
-        if (isOnHomePage) {
-          // ТОВАР ЕСТЬ НА ГЛАВНОЙ - ПРОКРУЧИВАЕМ К НЕМУ
-          const element = document.getElementById(`product-${product.id}`);
-          if (element) {
-            element.scrollIntoView({ 
-              behavior: 'smooth',
-              block: 'center'
-            });
-            
-            element.classList.add('highlight-product');
-            setTimeout(() => {
-              element.classList.remove('highlight-product');
-            }, 2000);
-          }
-        } else {
-          // ТОВАРА НЕТ НА ГЛАВНОЙ - ПЕРЕХОДИМ В КОЛЛЕКЦИЮ
-          navigate('/collection');
-          
-          setTimeout(() => {
-            const elementOnCollection = document.getElementById(`product-${product.id}`);
-            if (elementOnCollection) {
-              elementOnCollection.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'center'
-              });
-              
-              elementOnCollection.classList.add('highlight-product');
-              setTimeout(() => {
-                elementOnCollection.classList.remove('highlight-product');
-              }, 2000);
-            }
-          }, 100);
-        }
-      } else if (currentPath === '/collection') {
-        // НА СТРАНИЦЕ КОЛЛЕКЦИИ - ПРОКРУЧИВАЕМ К ТОВАРУ
-        const element = document.getElementById(`product-${product.id}`);
-        if (element) {
-          element.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'center'
-          });
-          
-          element.classList.add('highlight-product');
-          setTimeout(() => {
-            element.classList.remove('highlight-product');
-          }, 2000);
-        }
-      } else {
-        // НА ДРУГИХ СТРАНИЦАХ (WISHLIST) - ПЕРЕХОДИМ В КОЛЛЕКЦИЮ
-        navigate('/collection');
-        
-        setTimeout(() => {
-          const elementOnCollection = document.getElementById(`product-${product.id}`);
-          if (elementOnCollection) {
-            elementOnCollection.scrollIntoView({ 
-              behavior: 'smooth',
-              block: 'center'
-            });
-            
-            elementOnCollection.classList.add('highlight-product');
-            setTimeout(() => {
-              elementOnCollection.classList.remove('highlight-product');
-            }, 2000);
-          }
-        }, 100);
+
+    const currentPath = location.pathname;
+    const isOnHomePage = products.some((p) => p.id === product.id);
+
+    if (currentPath === '/' && isOnHomePage) {
+      requestAnimationFrame(() => {
+        focusProductCard(product.id);
+      });
+      return;
+    }
+
+    if (currentPath === '/collection' && focusProductCard(product.id)) {
+      return;
+    }
+
+    navigate('/collection', {
+      state: {
+        scrollToProductId: product.id
       }
-    }, 300);
+    });
   };
 
   const clearSearch = () => {
@@ -171,13 +134,10 @@ const SearchBar = ({onResultClick}) => {
               <>
                 <div className="search-results-header">
                   <span className="results-count">Найдено ароматов: {searchResults.length}</span>
-                  <div className="search-hint">
-                    🔍 Используйте ↑↓ для навигации
-                  </div>
                 </div>
                 
                 <div className="search-results-list">
-                  {searchResults.map((product, index) => (
+                  {searchResults.map((product) => (
                     <div
                       key={product.id}
                       className="search-result-item"

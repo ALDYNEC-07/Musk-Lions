@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useOrder } from '../../context/OrderContext';
+import { getItemUnitPrice } from '../../utils/price';
 import './OrderModal.css';
 
 const OrderModal = () => {
@@ -31,7 +32,7 @@ const OrderModal = () => {
 
   const calculateTotalPrice = () => {
     return items.reduce((sum, item) => {
-      const price = parseInt(item.price.replace(/\s/g, '')) || 0;
+      const price = getItemUnitPrice(item);
       return sum + (price * (item.quantity || 1));
     }, 0);
   };
@@ -140,7 +141,7 @@ const OrderModal = () => {
                 <h4>Состав заказа</h4>
                 <div className="products-minimal">
                   {items.map((item) => {
-                    const itemTotal = parseInt(item.price.replace(/\s/g, '')) * item.quantity;
+                    const itemTotal = getItemUnitPrice(item) * item.quantity;
                     return (
                       <div key={item.id} className="product-minimal">
                         <div className="product-info">

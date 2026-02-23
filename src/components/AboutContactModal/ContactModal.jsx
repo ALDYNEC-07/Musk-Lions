@@ -29,7 +29,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               <span className="contact-icon">📱</span>
               <div className="contact-details">
                 <h4>Телефон</h4>
-                <p>+7 (999) 123-45-67</p>
+                <p>+7 (929) 252-37-37</p>
               </div>
             </div>
 

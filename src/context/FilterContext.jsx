@@ -1,5 +1,5 @@
 // context/FilterContext.js
-import React, { createContext, useContext, useState, useMemo } from 'react';
+import React, { createContext, useContext, useState, useMemo, useCallback } from 'react';
 import { allProducts } from '../data/allProducts';
 import { products } from '../data/products';
 
@@ -12,8 +12,7 @@ export const FilterProvider = ({ children }) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
 
-  // 🎯 ПРОСТАЯ ФУНКЦИЯ ФИЛЬТРАЦИИ
-  const filterProducts = (productsArray) => {
+  const filterProducts = useCallback((productsArray) => {
     if (!isFilterApplied) {
       return productsArray;
     }
@@ -27,16 +26,12 @@ export const FilterProvider = ({ children }) => {
       if (maxPrice && price > max) return false;
       return true;
     });
-  };
+  }, [isFilterApplied, minPrice, maxPrice]);
 
   // 🎯 ФИЛЬТРОВАННЫЕ ТОВАРЫ ДЛЯ КАЖДОЙ СТРАНИЦЫ
-  const filteredProductsHome = useMemo(() => 
-    filterProducts(products), [minPrice, maxPrice, isFilterApplied, products]
-  );
+  const filteredProductsHome = useMemo(() => filterProducts(products), [filterProducts]);
 
-  const filteredProductsCollection = useMemo(() => 
-    filterProducts(allProducts), [minPrice, maxPrice, isFilterApplied, allProducts]
-  );
+  const filteredProductsCollection = useMemo(() => filterProducts(allProducts), [filterProducts]);
 
   // 🎯 ПРИМЕНЕНИЕ ФИЛЬТРА
   const applyFilter = () => {
@@ -113,4 +108,3 @@ export const useFilter = () => {
   }
   return context;
 };
-

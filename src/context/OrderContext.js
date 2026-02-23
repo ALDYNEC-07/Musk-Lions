@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import { useCart } from './CartContext';
+import { getItemUnitPrice } from '../utils/price';
 
 const OrderContext = createContext();
 
 export const OrderProvider = ({ children }) => {
-  const { items, clearCart, totalCount } = useCart();
+  const { items, clearCart } = useCart();
   
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
@@ -16,14 +17,7 @@ export const OrderProvider = ({ children }) => {
     delivery: {
       method: 'courier',
       address: '',
-      postalCode: '',
       comment: '',
-    },
-    payment: {
-      method: 'card',
-      cardNumber: '',
-      expiryDate: '',
-      cvv: '',
     }
   });
 
@@ -123,7 +117,6 @@ export const OrderProvider = ({ children }) => {
   }, []);
 
   const openOrderModal = useCallback(() => {
-    console.log('🎯 openOrderModal вызван!', items.length);
     if (items.length === 0) {
       setOrderError('Корзина пуста');
       return;
@@ -131,7 +124,6 @@ export const OrderProvider = ({ children }) => {
     setIsOrderModalOpen(true);
     setCurrentStep(1);
     setOrderError('');
-    console.log('✅ OrderModal открыт!');
   }, [items]);
 
   const closeOrderModal = useCallback(() => {
@@ -160,35 +152,35 @@ export const OrderProvider = ({ children }) => {
     setOrderError('');
 
     try {
-      // Формируем сообщение для WhatsApp
       const totalPrice = items.reduce((sum, item) => {
-        const price = parseInt(item.price.replace(/\s/g, '')) || 0;
+        const price = getItemUnitPrice(item);
         return sum + (price * (item.quantity || 1));
       }, 0);
 
-      // Текст сообщения
-      const message = `🦁 *Новый заказ MuskLions!*%0A%0A` +
-        `🧾 *Состав заказа:*%0A` +
+      const message = `🦁 *Новый заказ MuskLions!*\n\n` +
+        `🧾 *Состав заказа:*\n` +
         items.map(item => {
-          const itemPrice = parseInt(item.price.replace(/\s/g, '')) || 0;
+          const itemPrice = getItemUnitPrice(item);
           const itemTotal = itemPrice * item.quantity;
           return `• ${item.name} × ${item.quantity} - ${itemTotal.toLocaleString()} ₽`;
-        }).join('%0A') +
-        `%0A%0A💰 *Итого:* ${totalPrice.toLocaleString()} ₽%0A%0A` +
-        `👤 *Контактные данные:*%0A` +
-        `Имя: ${orderData.contact.fullName}%0A` +
-        `Телефон: ${orderData.contact.phone}%0A%0A` +
-        `🚚 *Доставка:*%0A` +
-        `Способ: ${orderData.delivery.method === 'courier' ? 'Курьер' : 'Самовывоз'}%0A` +
-        (orderData.delivery.method === 'courier' ? `Адрес: ${orderData.delivery.address}%0A` : '') +
-        (orderData.delivery.comment ? `Комментарий: ${orderData.delivery.comment}%0A` : '') +
-        `%0A🕒 *Время заказа:* ${new Date().toLocaleString('ru-RU')}`;
+        }).join('\n') +
+        `\n\n💰 *Итого:* ${totalPrice.toLocaleString()} ₽\n\n` +
+        `👤 *Контактные данные:*\n` +
+        `Имя: ${orderData.contact.fullName}\n` +
+        `Телефон: ${orderData.contact.phone}\n\n` +
+        `🚚 *Доставка:*\n` +
+        `Способ: ${orderData.delivery.method === 'courier' ? 'Курьер' : 'Самовывоз'}\n` +
+        (orderData.delivery.method === 'courier' ? `Адрес: ${orderData.delivery.address}\n` : '') +
+        (orderData.delivery.comment ? `Комментарий: ${orderData.delivery.comment}\n` : '') +
+        `\n🕒 *Время заказа:* ${new Date().toLocaleString('ru-RU')}`;
 
-      // 🔧 ЗАМЕНИТЕ ЭТОТ НОМЕР НА НОМЕР ПРОДАВЦА
       const phoneNumber = '79292523737';
-      
-      // Открываем WhatsApp
-      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+
+      window.open(
+        `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
+        '_blank',
+        'noopener,noreferrer'
+      );
       
       // Показываем успех
       setOrderSuccess(true);
@@ -214,7 +206,6 @@ export const OrderProvider = ({ children }) => {
     orderSuccess,
     orderError,
     items,
-    totalCount,
     openOrderModal,
     closeOrderModal,
     nextStep,

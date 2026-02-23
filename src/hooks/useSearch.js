@@ -1,23 +1,14 @@
-// hooks/useSearch.js - ИСПРАВЛЕННАЯ ВЕРСИЯ
 import { useState, useMemo } from 'react';
-import { allProducts } from '../data/allProducts'; // ✅ ЗАМЕНИЛ НА allProducts
+import { allProducts } from '../data/allProducts';
 
-// 🎯 ГЛОБАЛЬНАЯ ПЕРЕМЕННАЯ ДЛЯ УПРАВЛЕНИЯ ПОИСКОМ ИЗВНЕ
 let globalOpenSearch = null;
-let globalCloseMenu = null;
 
 export const useSearch = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  // 🎯 РЕГИСТРИРУЕМ ФУНКЦИЮ ГЛОБАЛЬНО
   globalOpenSearch = () => {
     setIsSearchOpen(true);
-  };
-
-  // РЕГИСТРИРУЕМ ФУНКЦИЮ ДЛЯ ЗАКРЫТИЯ МЕНЮ
-    globalCloseMenu = () => {
-    // Будет установлено извне
   };
 
   const searchResults = useMemo(() => {
@@ -25,7 +16,7 @@ export const useSearch = () => {
     
     const query = searchQuery.toLowerCase().trim();
     
-    return allProducts.filter(product => { // ✅ ИСПОЛЬЗУЕМ allProducts
+    return allProducts.filter((product) => {
       const searchString = `
         ${product.name.toLowerCase()}
         ${product.description.toLowerCase()}
@@ -36,12 +27,9 @@ export const useSearch = () => {
     });
   }, [searchQuery]);
 
-    const openSearch = () => {
-      setIsSearchOpen(true);
-      if (globalCloseMenu) {
-        globalCloseMenu(); // Закрываем меню при открытии поиска
-      }
-    };
+  const openSearch = () => {
+    setIsSearchOpen(true);
+  };
 
   const closeSearch = () => {
     setIsSearchOpen(false);
@@ -59,14 +47,8 @@ export const useSearch = () => {
   };
 };
 
-// 🎯 ЭКСПОРТИРУЕМ ГЛОБАЛЬНУЮ ФУНКЦИЮ
 export const openSearchGlobal = () => {
   if (globalOpenSearch) {
     globalOpenSearch();
   }
-};
-
-// 🎯 ЭКСПОРТИРУЕМ ФУНКЦИЮ ДЛЯ РЕГИСТРАЦИИ CLOSE_MENU
-export const setGlobalCloseMenu = (closeMenuFunc) => {
-  globalCloseMenu = closeMenuFunc;
 };

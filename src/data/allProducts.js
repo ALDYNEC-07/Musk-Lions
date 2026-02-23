@@ -1,6 +1,11 @@
 // data/allProducts.js
 import { products } from './products'; // существующие 5 товаров
-import img from '../assets/parfum-1.0.jpg'
+import parfumOne from '../assets/parfum-1.0.jpg';
+import parfumTwo from '../assets/parfum-2.0.jpg';
+import parfumThree from '../assets/parfum-3.0.jpg';
+import parfumFour from '../assets/parfum-4.0.jpg';
+import parfumFive from '../assets/parfum-5.0.jpg';
+
 export const allProducts = [
   ...products, // существующие 5 товаров
   
@@ -11,9 +16,8 @@ export const allProducts = [
     description: "Свежий и бодрящий аромат утренних гор с нотами хвои и цитрусов.",
     price: "8 900 ₽",
     numericPrice: 8900,
-    image: img, // добавишь потом изображения
+    image: parfumOne,
     inStock: true,
-    elementId: "product-6"
   },
   {
     id: 7,
@@ -21,9 +25,8 @@ export const allProducts = [
     description: "Прохладный и чистый, с аккордами мяты и горных трав.",
     price: "9 200 ₽",
     numericPrice: 9200,
-    image: img,
+    image: parfumTwo,
     inStock: true,
-    elementId: "product-7"
   },
   {
     id: 8,
@@ -31,9 +34,8 @@ export const allProducts = [
     description: "Мужской и дерзкий аромат с нотами кожи, дыма и дуба.",
     price: "11 000 ₽",
     numericPrice: 11000,
-    image: img,
+    image: parfumThree,
     inStock: true,
-    elementId: "product-8"
   },
   {
     id: 9,
@@ -41,9 +43,8 @@ export const allProducts = [
     description: "Зеленый и натуральный, с нотами мха, папоротника и бергамота.",
     price: "8 500 ₽",
     numericPrice: 8500,
-    image: img,
+    image: parfumFour,
     inStock: true,
-    elementId: "product-9"
   },
   {
     id: 10,
@@ -51,9 +52,7 @@ export const allProducts = [
     description: "Таинственный и мягкий, с аккордами лаванды, амбры и мускуса.",
     price: "10 500 ₽",
     numericPrice: 10500,
-    image: img,
+    image: parfumFive,
     inStock: true,
-    elementId: "product-10"
   }
-  // Можно добавить еще больше ароматов...
 ];

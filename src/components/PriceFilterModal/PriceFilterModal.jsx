@@ -1,5 +1,5 @@
 // components/PriceFilterModal/PriceFilterModal.jsx
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { useFilter } from '../../context/FilterContext';
 import { allProducts } from '../../data/allProducts';
 import { products } from '../../data/products';
@@ -13,15 +13,13 @@ const PriceFilterModal = () => {
     setMaxPrice,
     applyFilter,
     resetFilter,
-    isFilterApplied,
     isFilterOpen,
     closeFilter,
     totalProductsHome,
     totalProductsCollection
   } = useFilter();
 
-  // 🎯 ФУНКЦИЯ ДЛЯ ПРЕДВАРИТЕЛЬНОЙ ФИЛЬТРАЦИИ В РЕАЛЬНОМ ВРЕМЕНИ
-  const filterProductsInRealTime = (productsArray) => {
+  const filterProductsInRealTime = useCallback((productsArray) => {
     if (!minPrice && !maxPrice) {
       return productsArray;
     }
@@ -35,7 +33,7 @@ const PriceFilterModal = () => {
       if (maxPrice && price > max) return false;
       return true;
     });
-  };
+  }, [minPrice, maxPrice]);
 
   // 🎯 РЕАЛЬНОЕ ВРЕМЯ - ВЫЧИСЛЯЕМ РЕЗУЛЬТАТЫ СЕЙЧАС (ВСЕГДА ВЫЗЫВАЕТСЯ)
   const currentProductsInfo = useMemo(() => {
@@ -50,9 +48,8 @@ const PriceFilterModal = () => {
       total: totalProducts,
       filtered: filteredProducts.length,
       hasActiveFilter: hasActiveFilter,
-      willShowResults: hasActiveFilter ? filteredProducts.length : totalProducts
     };
-  }, [minPrice, maxPrice, totalProductsHome, totalProductsCollection]);
+  }, [filterProductsInRealTime, minPrice, maxPrice, totalProductsHome, totalProductsCollection]);
 
   if (!isFilterOpen) return null;
 

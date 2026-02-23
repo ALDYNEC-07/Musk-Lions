@@ -154,12 +154,6 @@
   font-size: 0.9rem;
 }
 
-.search-hint {
-  color:  #F8F8F8;
-  font-size: 0.75rem;
-  opacity: 0.7;
-}
-
 .search-results-list {
   padding: 8px 0;
 }
@@ -500,13 +494,8 @@
     text-align: center;
   }
 
-  .search-hint {
-    font-size: 0.7rem;
-  }
-
   .no-results-illustration {
     transform: scale(0.9);
   }
 }
-
 

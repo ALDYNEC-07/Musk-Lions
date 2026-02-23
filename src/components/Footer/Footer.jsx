@@ -21,11 +21,10 @@ const Footer = () => {
       </div>
       
       <div className="mountain-copyright">
-        &copy; 2015-2025 Musk Lions. Все права защищены.
+        &copy; 2015-2026 Musk Lions. Все права защищены.
       </div>
     </footer>
   );
 };
 
 export default Footer;
-

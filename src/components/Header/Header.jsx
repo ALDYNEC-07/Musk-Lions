@@ -1,6 +1,6 @@
 // Header.jsx - С ДОПОЛНИТЕЛЬНОЙ ОТЛАДКОЙ
 import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useFilter } from '../../context/FilterContext';
@@ -17,9 +17,6 @@ const Header = () => {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
 
-  const location = useLocation();
-  const navigate = useNavigate();
-  
   const { totalCount } = useCart();
   const { wishlistCount } = useWishlist();
   const { openFilter, isFilterActive } = useFilter();
@@ -27,15 +24,6 @@ const Header = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
-
-  const handleWishlistClick = () => {
-    if (location.pathname === '/wishlist') {
-      navigate(-1);
-    } else {
-      navigate('/wishlist');
-    }
-    closeMenu();
-  };
 
   const handleSearchClick = () => {
     openSearchGlobal();
@@ -126,20 +114,19 @@ const Header = () => {
         
         <nav className={`mountain-nav ${isMenuOpen ? 'active' : ''}`}>
           <ul>
-            {menuItems.map((item, index) => (
-              <li key={index}>
+            {menuItems.map((item) => (
+              <li key={item.label}>
                 {item.component || (
-                  <a 
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
+                  <button
+                    type="button"
+                    onClick={() => {
                       if (item.onClick) item.onClick();
                     }}
                     className={item.className}
                   >
                     {item.label}
                     {item.badge}
-                  </a>
+                  </button>
                 )}
               </li>
             ))}

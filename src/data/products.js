@@ -1,8 +1,8 @@
 import one from "../assets/Lucid-1.jpg"
 import two from "../assets/Lucid-2.jpg"
 import three from "../assets/Lucid-3.jpg"
-import four from "../assets/Lucid-3.jpg"
-import five from "../assets/Lucid-4.jpg"
+import four from "../assets/Lucid-4.jpg"
+import five from "../assets/parfum-5.0.jpg"
 
 
 export const products = [
@@ -13,7 +13,6 @@ export const products = [
     price: "12 500 ₽",
     numericPrice: 12500,
     image: one,
-    elementId: "product-1",
     inStock: true
   },
   {
@@ -23,7 +22,6 @@ export const products = [
     price: "7 200 ₽",
     numericPrice: 7200,
     image: two,
-    elementId: "product-2",
     inStock: true
   },
   {
@@ -33,7 +31,6 @@ export const products = [
     price: "13 800 ₽",
     numericPrice: 13800,
     image: three,
-    elementId: "product-3",
     inStock: true
   },
   {
@@ -43,7 +40,6 @@ export const products = [
     price: "5 000 ₽",
     numericPrice: 5000,
     image: four,
-    elementId: "product-4",
     inStock: true
   },
   {
@@ -53,7 +49,6 @@ export const products = [
     price: "10 000 ₽",
     numericPrice: 10000,
     image: five,
-    elementId: "product-5",
     inStock: true
   }
 ];

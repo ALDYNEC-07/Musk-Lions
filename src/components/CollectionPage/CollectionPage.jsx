@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useFilter } from '../../context/FilterContext';
 import { useCart } from '../../context/CartContext';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SmokeAnimation from '../SmokeAnimation/SmokeAnimation';
 import './CollectionPage.css';
 import WishlistButton from '../WishlistButton/WishlistButton';
@@ -10,6 +10,8 @@ import WishlistButton from '../WishlistButton/WishlistButton';
 const CollectionPage = () => {
   const { filteredProductsCollection, totalProductsCollection, isFilterActive } = useFilter();
   const { addItem } = useCart();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [showSmoke, setShowSmoke] = useState(false);
   const [smokePosition, setSmokePosition] = useState({ x: 0, y: 0 });
   const [activeProductId, setActiveProductId] = useState(null);
@@ -20,6 +22,26 @@ const CollectionPage = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
+
+  useEffect(() => {
+    const targetProductId = location.state?.scrollToProductId;
+    if (!targetProductId) return;
+
+    const element = document.getElementById(`product-${targetProductId}`);
+    if (!element) return;
+
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+
+    element.classList.add('highlight-product');
+    setTimeout(() => {
+      element.classList.remove('highlight-product');
+    }, 2000);
+
+    navigate(location.pathname, { replace: true, state: null });
+  }, [location.pathname, location.state, navigate, productsToShow.length]);
 
   const handleAddToCart = (product, event) => {
     const card = event.target.closest('.collection-product-card');

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import SmokeAnimation from '../SmokeAnimation/SmokeAnimation';
-import WishlistButton from '../WishlistButton/WishlistButton';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
@@ -63,4 +62,3 @@ const handleAddToCart = (event) => {
 };
 
 export default ProductCard;
-
