@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useFilter } from '../../context/FilterContext';
 import { useCart } from '../../context/CartContext';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SmokeAnimation from '../SmokeAnimation/SmokeAnimation';
 import './CollectionPage.css';
 import WishlistButton from '../WishlistButton/WishlistButton';
@@ -68,19 +68,12 @@ const CollectionPage = () => {
 
   return (
     <div className="collection-page">
-      <div className="collection-navigation">
-        <Link to="/" className="back-button">
-          ← Назад на главную
-        </Link>
-      </div>
-
       <div className="collection-header">
-        <h1>Полная коллекция Musk Lions</h1>
-        <p>Все {totalProductsCollection} эксклюзивных ароматов для истинных ценителей</p>
+        <h1>ПОЛНАЯ КОЛЛЕКЦИЯ</h1>
         
         {isFilterActive && (
-          <div className="filter-info">
-            <span className="products-count">
+          <div className="collection-filter-info">
+            <span className="collection-products-count">
               Показано {productsToShow.length} из {totalProductsCollection} ароматов
             </span>
           </div>

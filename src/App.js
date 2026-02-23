@@ -6,13 +6,13 @@ import Hero from './components/Hero/Hero';
 import ProductCard from './components/ProductCard/ProductCard';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
-import OrderModal from './components/OrderModal/OrderModal';
 import WishlistPage from './components/WishlistPage/WishlistPage';
 import { useFilter } from './context/FilterContext';
 import './App.css';
 import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
 import PriceFilterModal from './components/PriceFilterModal/PriceFilterModal';
 import CollectionPage from './components/CollectionPage/CollectionPage';
+import AboutContactPage from './components/AboutContactPage/AboutContactPage';
 
 function HomePage() {
   const { filteredProductsHome, totalProductsHome, isFilterActive } = useFilter();
@@ -30,8 +30,8 @@ function HomePage() {
         </div>
 
         {isFilterActive && (
-          <div className="filter-info">
-            <span className="products-count">
+          <div className="home-filter-info">
+            <span className="home-products-count">
               {/* 🎯 ПОКАЗЫВАЕМ СКОЛЬКО НАЙДЕНО ИЗ СКОЛЬКИ */}
               Показано {productsToShow.length} из {totalProducts} ароматов
             </span>
@@ -61,11 +61,11 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/collection" element={<CollectionPage />} />
+          <Route path="/about-contact" element={<AboutContactPage />} />
         </Routes>
       </main>
       <Footer />
       <ScrollIndicator />
-      <OrderModal />
       <PriceFilterModal />
     </div>
   );

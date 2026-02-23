@@ -1,12 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="mountain-footer">
       <div className="mountain-footer-content">
         <div className="mountain-footer-column">
-          <h4>Musk Lions</h4>
+          <Link to="/" className="footer-home-link" onClick={handleLogoClick}>
+            <h4>Musk Lions</h4>
+          </Link>
           <p>Каждый аромат - это история, которая только начинается.</p>
         </div>
         

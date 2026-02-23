@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { FilterProvider } from './context/FilterContext'; // ПЕРЕМЕЩАЕМ ВВЕРХ
 import { CartProvider } from './context/CartContext';
-import { OrderProvider } from './context/OrderContext';
 import { WishlistProvider } from './context/WishlistContext';
 import './index.css';
 import App from './App';
@@ -16,9 +15,7 @@ root.render(
       <FilterProvider> {/* ✅ ПЕРВЫЙ ПРОВАЙДЕР */}
         <WishlistProvider>
           <CartProvider>
-            <OrderProvider>
-              <App />
-            </OrderProvider>
+            <App />
           </CartProvider>
         </WishlistProvider>
       </FilterProvider>

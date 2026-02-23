@@ -52,8 +52,8 @@ const WishlistPage = () => {
           <div className="empty-heart">🤍</div>
           <h2>Ваше избранное пусто</h2>
           <p>Добавляйте понравившиеся парфюмы, нажимая на сердечки</p>
-          <Link to="/" className="back-to-products">
-            ← Вернуться
+          <Link to="/collection" className="back-to-products">
+            В коллекцию
           </Link>
         </div>
       </div>
@@ -64,14 +64,6 @@ const WishlistPage = () => {
     <div className="wishlist-page">
       <div className="wishlist-header">
         <h1>Избранное</h1>
-        <div className="wishlist-stats">
-          <button 
-            onClick={clearWishlist} 
-            className="clear-wishlist-btn"
-          >
-            Очистить все
-          </button>
-        </div>
       </div>
       
       <div className="wishlist-grid">
@@ -90,18 +82,28 @@ const WishlistPage = () => {
               <div className="wishlist-product-info">
                 <h3>{product.name}</h3>
                 <p>{product.description}</p>
-                <div className="wishlist-product-price">{product.price}</div>
-                <button 
-                  className={`wishlist-add-to-cart ${isAdded ? 'added' : ''}`}
-                  onClick={(e) => handleAddToCart(product, e)}
-                  disabled={isAdded} // ✅ БЛОКИРУЕМ КНОПКУ НА ВРЕМЯ АНИМАЦИИ
-                >
-                  {isAdded ? 'Добавлено ✓' : 'В корзину'}
-                </button>
+                <div className="wishlist-card-footer">
+                  <div className="wishlist-product-price">{product.price}</div>
+                  <button 
+                    className={`wishlist-add-to-cart ${isAdded ? 'added' : ''}`}
+                    onClick={(e) => handleAddToCart(product, e)}
+                    disabled={isAdded} // ✅ БЛОКИРУЕМ КНОПКУ НА ВРЕМЯ АНИМАЦИИ
+                  >
+                    {isAdded ? 'Добавлено ✓' : 'В корзину'}
+                  </button>
+                </div>
               </div>
             </div>
           );
         })}
+      </div>
+      <div className="wishlist-bottom-actions">
+        <button 
+          onClick={clearWishlist} 
+          className="clear-wishlist-btn"
+        >
+          Очистить все
+        </button>
       </div>
       {showSmoke && (
         <SmokeAnimation
