@@ -5,6 +5,9 @@
   padding: 100px 20px 40px;
   min-height: 80vh;
   background: #2C1810;
+  color: #FDF6E3;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .collection-header {
@@ -14,7 +17,11 @@
 }
 .collection-header h1 {
   font-family: 'Philosopher', serif;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.05;
   color: #FDF6E3;
   margin: 0;
   padding: 1rem 0;
@@ -28,8 +35,10 @@
   color: #FDF6E3;
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(0.84rem, 0.95vw, 0.92rem);
   font-weight: 500;
+  line-height: 1.35;
 }
 
 /* ✅ КОМПАКТНЫЕ КАРТОЧКИ ДЛЯ КОЛЛЕКЦИИ */
@@ -89,16 +98,21 @@
 
 .collection-product-info h3 {
   font-family: 'Philosopher', serif;
-  color:  #FDF6E3;
+  font-size: clamp(1rem, 1.4vw, 1.16rem);
+  font-weight: 600;
+  color: #FDF6E3;
   margin-bottom: 0.5rem;
-  line-height: 1.3;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
 }
 
 .collection-product-info p {
   color: #E8DCD1;
-  font-size: 0.8rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(0.8rem, 0.95vw, 0.9rem);
+  font-weight: 400;
   margin-bottom: 0.8rem;
-  line-height: 1.4;
+  line-height: 1.52;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -118,14 +132,14 @@
 
 .collection-product-price {
   font-family: 'Philosopher', serif;
-  font-size: 1.05rem;
+  font-size: clamp(1.02rem, 1.65vw, 1.22rem);
   color: #F5E8C8;
   font-weight: 600;
   margin-bottom: 0;
   text-align: left;
   white-space: nowrap;
   letter-spacing: 0.02em;
-  line-height: 1;
+  line-height: 1.1;
   padding: 0.28rem 0.62rem;
   border-radius: 999px;
   background: rgba(212, 175, 55, 0.1);
@@ -141,8 +155,10 @@
   border-radius: 20px;
   font-family: 'Philosopher', serif;
   font-size: 0.74rem;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  line-height: 1;
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
@@ -163,7 +179,8 @@
   }
   
   .collection-header h1 {
-    font-size: 2rem;
+    font-size: clamp(1.7rem, 5.4vw, 2.1rem);
+    letter-spacing: 0.06em;
   }
   
   /* 2.5 карточки в ряд - компактно */
@@ -177,20 +194,23 @@
   }
   
   .collection-product-info h3 {
-    font-size: 0.9rem;
+    font-size: 0.93rem;
+    line-height: 1.3;
   }
   
   .collection-product-info p {
-    font-size: 0.75rem;
+    font-size: 0.76rem;
+    line-height: 1.45;
   }
   
   .collection-product-price {
-    font-size: 1rem;
+    font-size: 1.02rem;
   }
   
   .collection-add-to-cart {
     padding: 0.5rem 1.35rem;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
   }
 }
 
@@ -198,6 +218,19 @@
   .collection-grid {
     grid-template-columns: 1fr; /* 1 карточка на очень маленьких */
     gap: 0.8rem;
+  }
+
+  .collection-product-info h3 {
+    font-size: 0.84rem;
+  }
+
+  .collection-product-info p {
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+
+  .collection-product-price {
+    font-size: 0.95rem;
   }
 }
 
