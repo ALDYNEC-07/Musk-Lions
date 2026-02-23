@@ -1,11 +1,47 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Hero.css';
 
 const Hero = () => {
+  const heroRef = useRef(null);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const section = heroRef.current;
+    const video = videoRef.current;
+
+    if (!section || !video) {
+      return undefined;
+    }
+
+    // Codex: останавливаем видео вне видимости и запускаем при возврате в viewport.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => {});
+          }
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      // Codex: cleanup при размонтировании.
+      observer.disconnect();
+      video.pause();
+    };
+  }, []);
+
   return (
-    <section className="mountain-hero">
-      <video className="hero-video" autoPlay muted loop playsInline>
+    <section className="mountain-hero" ref={heroRef}>
+      {/* Codex: preload metadata, чтобы не грузить весь ролик заранее. */}
+      <video className="hero-video" ref={videoRef} autoPlay muted loop playsInline preload="metadata">
         <source src={`${process.env.PUBLIC_URL}/hero-videoo.mp4`} type="video/mp4" />
       </video>
       <div className="hero-overlay" />
