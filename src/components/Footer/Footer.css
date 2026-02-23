@@ -1,40 +1,75 @@
 .mountain-footer {
-  background: #2C1810;
   color: #FDF6E3;
   padding: 3rem 6% 2rem;
-  border-top: 3px solid #D4AF37;
+  background: #1A120B;
+  border-top: 0.5px solid #D4AF37;
+  text-align: center;
 }
 
 .mountain-footer-content {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2.5rem;
   margin-bottom: 2rem;
 }
 
 .mountain-footer-column h4 {
   font-family: 'Philosopher', serif;
-  font-size: 1.2rem;
-  margin-bottom: 1.2rem;
+  font-size: 1.35rem;
+  margin-bottom: 1.3rem;
+  letter-spacing: 0.03em;
   color: #D4AF37;
 }
 
 .mountain-footer-column ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .mountain-footer-column ul li {
   margin-bottom: 0.8rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid #5D4037;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.contact-phone {
+  white-space: nowrap;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.62rem;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 0.5px solid rgba(212, 175, 55, 0.28);
+  white-space: nowrap;
+}
+
+.social-links a i {
+  margin-right: 0.4rem;
+}
+
+.social-links a:not(:last-child) {
+  margin-right: 0.6rem;
 }
 
 .mountain-footer-column a {
   color: #E8D5B7;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
-  font-weight: 300;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 .mountain-footer-column a:hover {
@@ -43,16 +78,36 @@
 
 .mountain-footer-column p {
   color: #E8D5B7;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 .mountain-copyright {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid #5D4037;
+  border-top: 0.5px solid #D4AF37;
   color: #E8D5B7;
-  font-size: 0.8rem;
-  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .mountain-footer-column h4 {
+    font-size: 1.2rem;
+  }
+
+  .mountain-footer-column ul li,
+  .mountain-footer-column a,
+  .mountain-footer-column p {
+    font-size: 0.92rem;
+  }
+
+  .mountain-copyright {
+    font-size: 0.82rem;
+  }
 }

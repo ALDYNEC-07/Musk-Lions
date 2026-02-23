@@ -1,0 +1,245 @@
+/* components/CollectionPage/CollectionPage.css */
+.collection-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+  min-height: 80vh;
+  background: linear-gradient(180deg, #2C1810 0%, #5D4037 100%);
+}
+
+.collection-navigation {
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color:  #F8F8F8;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border: 1px solid  #5D4037;
+  border-radius: 6px;
+  font-family: 'Philosopher', serif;
+}
+
+.back-button:hover {
+  color:  #FDF6E3;
+  background:  #2C1810;
+}
+
+.collection-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid  #5D4037;
+}
+.collection-header h1 {
+  font-family: 'Philosopher', serif;
+  font-size: 2.5rem;
+  color: #FDF6E3;
+  margin-bottom: 1rem;
+}
+
+.collection-header p {
+  color:  #F8F8F8;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-info {
+  margin-top: 1rem;
+}
+
+.products-count {
+  color: #FDF6E3;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ✅ КОМПАКТНЫЕ КАРТОЧКИ ДЛЯ КОЛЛЕКЦИИ */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.collection-product-card {
+  background: #2C1810;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.collection-product-card:hover {
+  transform: translateY(-2px);
+}
+
+.collection-card-header {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  position: relative;
+}
+
+.collection-product-image {
+  width: 100%;
+  height: 230px;
+  background: linear-gradient(135deg, #F5E8C8, #E8D5B7);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.wishlist-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10; /* Чтобы была поверх изображения */
+}
+.collection-product-image img {
+  width: 100%;
+  height: 100%;
+  object-position: center 65%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.collection-product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.3rem;
+}
+
+.collection-product-info h3 {
+  font-family: 'Philosopher', serif;
+  color:  #FDF6E3;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.collection-product-info p {
+  color: #E8DCD1;
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.collection-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.15rem;
+}
+
+
+.collection-product-price {
+  font-family: 'Philosopher', serif;
+  font-size: 1.05rem;
+  color: #F5E8C8;
+  font-weight: 600;
+  margin-bottom: 0;
+  text-align: left;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding: 0.28rem 0.62rem;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 0.5px solid rgba(212, 175, 55, 0.28);
+}
+
+
+.collection-add-to-cart {
+  background: linear-gradient(135deg, #6D4E43 0%, #5D4037 55%, #4A332C 100%);
+  color: #FFF7E3;
+  border: 0.5px solid rgba(212, 175, 55, 0.35);
+  padding: 0.62rem 1.9rem;
+  border-radius: 20px;
+  font-family: 'Philosopher', serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.collection-add-to-cart:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #7B5A4C 0%, #6A493E 55%, #553A32 100%);
+  border-color: rgba(212, 175, 55, 0.6);
+}
+
+
+/* ✅ АДАПТИВНОСТЬ - 2.5 КАРТОЧКИ В РЯД */
+@media (max-width: 768px) {
+  .collection-page {
+    padding: 80px 15px 30px;
+  }
+  
+  .collection-header h1 {
+    font-size: 2rem;
+  }
+  
+  /* 2.5 карточки в ряд - компактно */
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .collection-product-image {
+    height: 150px;
+  }
+  
+  .collection-product-info h3 {
+    font-size: 0.9rem;
+  }
+  
+  .collection-product-info p {
+    font-size: 0.75rem;
+  }
+  
+  .collection-product-price {
+    font-size: 1rem;
+  }
+  
+  .collection-add-to-cart {
+    padding: 0.5rem 1.35rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collection-grid {
+    grid-template-columns: 1fr; /* 1 карточка на очень маленьких */
+    gap: 0.8rem;
+  }
+}
+
+/* ✅ ДЛЯ БОЛЬШИХ ЭКРАНОВ - 4 КАРТОЧКИ В РЯД */
+@media (min-width: 1200px) {
+  .collection-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* АНИМАЦИЯ ДОБАВЛЕНИЯ В КОРЗИНУ */
+.collection-add-to-cart.adding {
+  color:  #FDF6E3 !important;
+  border: 0.1px solid rgba(212, 175, 55);
+  transform: scale(0.95);
+  animation: cartPulse 0.6s ease;
+}

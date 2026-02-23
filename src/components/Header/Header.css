@@ -1,13 +1,12 @@
 .mountain-header {
-  background: linear-gradient(135deg, #2C1810 0%, #5D4037 100%);
+  background: transparent;
   padding: 1.2rem 6%;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  border-bottom: 3px solid #D4AF37;
+  border-bottom: none;
 }
-
 .header-top {
   display: flex;
   justify-content: space-between;
@@ -23,18 +22,40 @@
   letter-spacing: 1px;
 }
 
+.header-top > .mountain-logo {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  box-sizing: border-box;
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  background: rgba(26, 18, 11, 0.35);
+  border: 0.5px solid rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
 .mountain-logo span {
   color: #D4AF37;
 }
 
 .mountain-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0;
+  align-items: center;
+  height: 48px;
+  box-sizing: border-box;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: rgba(26, 18, 11, 0.35);
+  border: 0.5px solid rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .mountain-btn {
   background: none;
-  border: 1px solid #D4AF37;
+  border: none;
   color: #D4AF37;
   font-size: 1.1rem;
   cursor: pointer;
@@ -48,20 +69,37 @@
   justify-content: center;
 }
 
+.menu-btn .burger-icon {
+  width: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.menu-btn .burger-line {
+  width: 100%;
+  height: 2.1px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
 .mountain-btn:hover {
-  background: #D4AF37;
+  background: rgba(212, 175, 55, 0.38);
   color: #2C1810;
+  transform: scale(1.1);
 }
 
 .mountain-nav {
   margin-top: 1.5rem;
   display: none;
-  background: rgba(253, 246, 227, 0.95);
+  background: rgba(26, 18, 11, 0.35);
   padding: 1.5rem;
   border-radius: 8px;
-  border: 1px solid #D4AF37;
+  border: 0.5px solid rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-
 .mountain-nav.active {
   display: block;
   animation: slideDown 0.3s ease;
@@ -80,25 +118,239 @@
 
 .mountain-nav ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
 .mountain-nav li {
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #E8D5B7;
-  padding-bottom: 1rem;
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
-.mountain-nav a {
-  color: #2C1810;
+.mountain-nav li:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.mountain-nav a,
+.mountain-nav button {
+  color: #F5F5DC;
   text-decoration: none;
   font-family: 'Philosopher', serif;
   font-size: 1rem;
   display: block;
-  padding: 0.5rem 0;
+  padding: 0.6rem 0;
   transition: all 0.3s ease;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
 }
-
-.mountain-nav a:hover {
+.mountain-nav a:hover,
+.mountain-nav button:hover {
   color: #5D4037;
   padding-left: 0.5rem;
+}
+/* Стили для поиска и фильтра в меню */
+.search-in-menu,
+.filter-in-menu {
+  position: relative;
+}
+
+.search-icon-menu {
+  font-size: 1rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.search-in-menu:hover .search-icon-menu {
+  opacity: 1;
+}
+
+.filter-badge {
+  color: #D4AF37;
+  font-size: 1.2rem;
+  margin-left: 8px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+/* Стили для корзины */
+.cart-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mountain-cart-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  background: none;
+  color: #D4AF37;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none;
+}
+
+.mountain-cart-icon-img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  background-color: currentColor;
+  -webkit-mask-image: var(--cart-icon-url);
+  mask-image: var(--cart-icon-url);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.mountain-cart-icon:hover {
+  color: #2C1810;
+  background: rgba(212, 175, 55, 0.38);
+  transform: scale(1.1);
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #D4AF37;
+  color: #2C1810;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #2C1810;
+}
+
+.cart-count.pulse {
+  animation: countPulse 0.6s ease-in-out;
+}
+
+@keyframes countPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .mountain-header {
+    padding: 1rem 5%;
+  }
+  
+  .mountain-logo {
+    font-size: 1.2rem;
+  }
+  
+  .mountain-actions {
+    gap: 0;
+  }
+  
+  .mountain-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .menu-btn .burger-icon {
+    width: 22px;
+    gap: 6px;
+  }
+
+  .menu-btn .burger-line {
+    height: 1.9px;
+  }
+  
+  .theme-toggle {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .mountain-cart-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+  
+  .cart-count {
+    width: 18px;
+    height: 18px;
+    font-size: 0.6rem;
+    top: -3px;
+    right: -3px;
+  }
+  
+  .mountain-nav {
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+  
+  .mountain-nav a,
+  .mountain-nav button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mountain-header {
+    padding: 0.8rem 4%;
+  }
+  
+  .mountain-logo {
+    font-size: 1.1rem;
+  }
+  
+  .mountain-actions {
+    gap: 0;
+  }
+
+  .menu-btn .burger-icon {
+    width: 20px;
+    gap: 7px;
+  }
+
+  .menu-btn .burger-line {
+    height: 1px;
+  }
+}
+
+/* Бейдж избранного в меню - в стиле сайта */
+.wishlist-badge {
+  background: #8B4513; /* Теплый коричневый */
+  color: #F5F5DC; /* Светлый текст */
+  border-radius: 12px;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  margin-left: 8px;
+  border: 0.5px solid #D2B48C;
 }

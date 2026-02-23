@@ -1,0 +1,218 @@
+/* components/PriceFilterModal/PriceFilterModal.css */
+/* 🎯 OVERLAY КАК У ПОИСКА */
+.price-filter-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+  padding: 20px;
+}
+
+/* 🎯 МОДАЛЬНОЕ ОКНО КАК У ПОИСКА */
+.price-filter-modal {
+  background: #2C1810;
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  border: 1px solid  #5D4037;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 🎯 ЗАГОЛОВОК МОДАЛКИ */
+.filter-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid  #5D4037;
+  padding-bottom: 16px;
+}
+
+.filter-modal-header h3 {
+  color:  #FDF6E3;
+  margin: 0;
+  font-family: 'Philosopher', serif;
+  font-size: 1.3rem;
+}
+
+.filter-close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color:  #F8F8F8;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.filter-close-btn:hover {
+  color:  #D4AF37;
+  transform: rotate(90deg);
+}
+
+/* 🎯 СОДЕРЖИМОЕ МОДАЛКИ */
+.filter-content {
+  margin-bottom: 24px;
+}
+
+.price-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.price-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price-input-group label {
+  color:  #F8F8F8;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* 🎯 ОБЕРТКА ДЛЯ INPUT С ВАЛЮТОЙ */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.price-input-modal {
+  padding: 12px 40px 12px 16px;
+  border: 2px solid  #5D4037;
+  border-radius: 8px;
+  background:  #1A120B;
+  color:  #FDF6E3;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.price-input-modal:focus {
+  outline: none;
+  border-color:  #D4AF37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.currency {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color:  #F8F8F8;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+/* 🎯 ИНФОРМАЦИЯ О ФИЛЬТРЕ */
+.filter-info {
+  text-align: center;
+  padding: 12px;
+  background:  #2C1810;
+  border-radius: 8px;
+  border: 1px solid  #5D4037;
+  margin-bottom: 16px;
+}
+
+.filter-info p {
+  color:  #F8F8F8;
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.active-filter-info {
+  color: va #D4AF37 !important;
+  font-weight: 600;
+}
+
+/* 🎯 КНОПКИ ДЕЙСТВИЙ */
+.filter-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filter-apply-btn {
+  background:  #D4AF37;
+  border: none;
+  color:  #FDF6E3;
+  padding: 14px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filter-apply-btn:hover:not(:disabled) {
+  background: #FFD700;
+  transform: translateY(-1px);
+}
+
+.filter-apply-btn:disabled {
+  background:  #5D4037;
+  color:  #F8F8F8;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.filter-reset-btn {
+  background:  #2C1810;
+  border: 1px solid  #5D4037;
+  color:  #F8F8F8;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.filter-reset-btn:hover {
+  background:  #D4AF37;
+  color:  #FDF6E3;
+}
+
+/* 🎯 АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+  .price-filter-modal-overlay {
+    padding: 10px;
+  }
+  
+  .price-filter-modal {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .price-inputs {
+    gap: 12px;
+  }
+}
+
