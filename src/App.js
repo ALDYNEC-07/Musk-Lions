@@ -12,6 +12,7 @@ import './App.css';
 import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
 import PriceFilterModal from './components/PriceFilterModal/PriceFilterModal';
 import CollectionPage from './components/CollectionPage/CollectionPage';
+import AboutContactPage from './components/AboutContactPage/AboutContactPage';
 
 function HomePage() {
   const { filteredProductsHome, totalProductsHome, isFilterActive } = useFilter();
@@ -60,6 +61,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/collection" element={<CollectionPage />} />
+          <Route path="/about-contact" element={<AboutContactPage />} />
         </Routes>
       </main>
       <Footer />

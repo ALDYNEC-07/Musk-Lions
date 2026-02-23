@@ -7,14 +7,10 @@ import { openSearchGlobal } from '../../hooks/useSearch';
 import CartModal from '../CartModal/CartModal';
 import SearchBar from '../SearchBar/SearchBar';
 import './Header.css';
-import AboutModal from '../AboutContactModal/AboutModal';
-import ContactModal from '../AboutContactModal/ContactModal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
-  const [isContactOpen, setIsContactOpen] = useState(false);
 
   const { totalCount } = useCart();
   const { wishlistCount } = useWishlist();
@@ -31,16 +27,6 @@ const Header = () => {
 
   const handleFilterClick = () => {
     openFilter();
-    closeMenu();
-  };
-
-  const handleAboutClick = () => {
-    setIsAboutOpen(true);
-    closeMenu();
-  };
-
-  const handleContactClick = () => {
-    setIsContactOpen(true);
     closeMenu();
   };
 
@@ -88,11 +74,19 @@ const Header = () => {
     },
     { 
       label: 'О нас', 
-      onClick: handleAboutClick
+      component: (
+        <Link to="/about-contact#about" onClick={closeMenu}>
+          О нас
+        </Link>
+      )
     },
     { 
       label: 'Связь с нами', 
-      onClick: handleContactClick
+      component: (
+        <Link to="/about-contact#contact" onClick={closeMenu}>
+          Связь с нами
+        </Link>
+      )
     }
   ];
 
@@ -157,14 +151,6 @@ const Header = () => {
 
       <SearchBar onResultClick={closeMenu} />
       <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-      <AboutModal 
-        isOpen={isAboutOpen} 
-        onClose={() => setIsAboutOpen(false)} 
-      />
-      <ContactModal 
-        isOpen={isContactOpen} 
-        onClose={() => setIsContactOpen(false)} 
-      />
     </>
   );
 };
