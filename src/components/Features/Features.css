@@ -15,10 +15,12 @@
 /* Десктопная версия */
 .feature-horizontal-card {
   flex: 1;
-  background: rgba(26, 18, 11, 0.6);
+  background: rgba(26, 18, 11, 0.35);
   padding: 2rem;
   border-radius: 16px;
-  border: 1px solid #5D4037;
+  border: 0.5px solid rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
   overflow: hidden;
@@ -26,9 +28,9 @@
 }
 
 .feature-horizontal-card.active {
-  flex: 3;
-  background: rgba(44, 24, 16, 0.9);
-  border-color: #D4AF37;
+  flex: 2;
+  background: rgba(26, 18, 11, 0.5);
+  border-color: rgba(212, 175, 55, 0.35);
 }
 
 .feature-content {
@@ -122,16 +124,14 @@
   .feature-horizontal-card {
     flex: none;
     height: auto;
-    min-height: 80px;
+    min-height: auto;
     padding: 1.5rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Добавляем плавные переходы для высоты */
-    transition-property: min-height, background-color, border-color, transform;
+    transition-property: background-color, border-color, transform, padding;
   }
 
   .feature-horizontal-card.active {
     flex: none;
-    min-height: 180px;
     transform: translateY(-2px); /* Легкий подъем для активной карточки */
   }
 
@@ -160,20 +160,18 @@
   .feature-text p {
     font-size: 0.85rem;
     line-height: 1.4;
-    display: none;
     opacity: 0;
     transform: translateY(8px);
     max-height: 0;
-    margin: 0;
-    transition: all 0.4s ease 0.1s;
-    transition-property: opacity, transform, max-height;
+    margin-top: 0;
+    overflow: hidden;
+    transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.4s ease, margin-top 0.3s ease;
   }
 
   .feature-horizontal-card.active .feature-text p {
-    display: block;
     opacity: 1;
     transform: translateY(0);
-    max-height: 200px; /* Достаточно для текста */
+    max-height: 220px;
     margin-top: 0.5rem;
   }
 
@@ -211,7 +209,6 @@
 
   .feature-horizontal-card {
     padding: 1.2rem;
-    min-height: 70px;
     transition: all 0.35s ease;
   }
 
@@ -254,13 +251,5 @@
   .feature-text {
     flex: 1;
     min-width: 0; /* Позволяет тексту сжиматься */
-  }
-  
-  /* Гарантируем, что контент не выходит за границы */
-  .feature-horizontal-card.active .feature-text p {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 4; /* Ограничиваем количество строк */
-    -webkit-box-orient: vertical;
   }
 }

@@ -2,7 +2,6 @@ import one from "../assets/Lucid-1.jpg"
 import two from "../assets/Lucid-2.jpg"
 import three from "../assets/Lucid-3.jpg"
 import four from "../assets/Lucid-4.jpg"
-import five from "../assets/parfum-5.0.jpg"
 
 
 export const products = [
@@ -48,7 +47,7 @@ export const products = [
     description: "Тепло осеннего солнца на коже, И шлейф дыма от костра в прохладе.",
     price: "10 000 ₽",
     numericPrice: 10000,
-    image: five,
+    image: four,
     inStock: true
   }
 ];
