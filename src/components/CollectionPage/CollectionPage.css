@@ -7,46 +7,17 @@
   background: linear-gradient(180deg, #2C1810 0%, #5D4037 100%);
 }
 
-.collection-navigation {
-  margin-bottom: 2rem;
-}
-
-.back-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color:  #F8F8F8;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border: 1px solid  #5D4037;
-  border-radius: 6px;
-  font-family: 'Philosopher', serif;
-}
-
-.back-button:hover {
-  color:  #FDF6E3;
-  background:  #2C1810;
-}
-
 .collection-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
   padding-bottom: 2rem;
-  border-bottom: 2px solid  #5D4037;
 }
 .collection-header h1 {
   font-family: 'Philosopher', serif;
   font-size: 2.5rem;
   color: #FDF6E3;
-  margin-bottom: 1rem;
-}
-
-.collection-header p {
-  color:  #F8F8F8;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+  margin: 0;
+  padding: 1rem 0;
 }
 
 .filter-info {

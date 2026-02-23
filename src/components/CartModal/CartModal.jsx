@@ -68,7 +68,7 @@ const CartModal = ({ isOpen, onClose }) => {
     <div className={`cart-modal-overlay ${isVisible ? 'show' : ''}`}>
         <div className="cart-modal">
         <div className="cart-header">
-            <h3>Корзина - {totalCount}</h3>
+            <h3>Корзина: {totalCount}</h3>
             <button className="close-btn" onClick={handleClose}>×</button>
         </div>
 
@@ -118,7 +118,7 @@ const CartModal = ({ isOpen, onClose }) => {
             </div>
             <div className="cart-actions">
               <button className="clear-btn" onClick={clearCart}>
-                Очистить корзину
+                Очистить
               </button>
               <button className="order-btn" onClick={handleOrder}>
                 Заказать в WhatsApp

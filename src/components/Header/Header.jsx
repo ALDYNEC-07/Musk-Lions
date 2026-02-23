@@ -44,11 +44,16 @@ const Header = () => {
     closeMenu();
   };
 
+  const handleLogoClick = () => {
+    closeMenu();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const menuItems = [
     { 
       label: 'Главная',
       component: (
-        <Link to="/" className="mountain-logo" onClick={closeMenu}>
+        <Link to="/" className="mountain-logo" onClick={handleLogoClick}>
           Musk<span>Lions</span>
         </Link>
       )
@@ -95,7 +100,7 @@ const Header = () => {
     <>
       <header className="mountain-header">
         <div className="header-top">
-          <Link to="/" className="mountain-logo">
+          <Link to="/" className="mountain-logo" onClick={handleLogoClick}>
             Musk<span>Lions</span>
           </Link>
           
