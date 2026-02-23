@@ -62,7 +62,7 @@ body {
 }
 
 /* Информация о фильтре */
-.filter-info {
+.home-filter-info {
   text-align: center;
   margin-bottom: 20px;
   padding: 15px;
@@ -71,7 +71,7 @@ body {
   border: 1px solid  #5D4037;
 }
 
-.products-count {
+.home-products-count {
   color:  #FDF6E3;
   font-weight: 500;
 }
@@ -118,7 +118,7 @@ body {
     gap: 0.8rem;
   }
   
-  .filter-info {
+  .home-filter-info {
     padding: 12px;
     margin-bottom: 15px;
   }

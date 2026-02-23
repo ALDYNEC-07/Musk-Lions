@@ -163,16 +163,6 @@
   position: relative;
 }
 
-.search-icon-menu {
-  font-size: 1rem;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-}
-
-.search-in-menu:hover .search-icon-menu {
-  opacity: 1;
-}
-
 .filter-badge {
   color: #D4AF37;
   font-size: 1.2rem;
@@ -288,12 +278,6 @@
 
   .menu-btn .burger-line {
     height: 1.9px;
-  }
-  
-  .theme-toggle {
-    width: 35px;
-    height: 35px;
-    font-size: 1rem;
   }
   
   .mountain-cart-icon {

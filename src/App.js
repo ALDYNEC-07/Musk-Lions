@@ -30,8 +30,8 @@ function HomePage() {
         </div>
 
         {isFilterActive && (
-          <div className="filter-info">
-            <span className="products-count">
+          <div className="home-filter-info">
+            <span className="home-products-count">
               {/* 🎯 ПОКАЗЫВАЕМ СКОЛЬКО НАЙДЕНО ИЗ СКОЛЬКИ */}
               Показано {productsToShow.length} из {totalProducts} ароматов
             </span>

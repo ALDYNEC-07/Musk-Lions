@@ -72,8 +72,8 @@ const CollectionPage = () => {
         <h1>ПОЛНАЯ КОЛЛЕКЦИЯ</h1>
         
         {isFilterActive && (
-          <div className="filter-info">
-            <span className="products-count">
+          <div className="collection-filter-info">
+            <span className="collection-products-count">
               Показано {productsToShow.length} из {totalProductsCollection} ароматов
             </span>
           </div>

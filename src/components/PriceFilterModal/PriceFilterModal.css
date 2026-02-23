@@ -138,7 +138,7 @@
 }
 
 /* 🎯 ИНФОРМАЦИЯ О ФИЛЬТРЕ */
-.filter-info {
+.price-filter-info {
   text-align: center;
   padding: 12px;
   background: rgba(26, 18, 11, 0.35);
@@ -147,15 +147,10 @@
   margin-bottom: 16px;
 }
 
-.filter-info p {
+.price-filter-info p {
   color: #FDF6E3;
   margin: 5px 0;
   font-size: 0.9rem;
-}
-
-.active-filter-info {
-  color: #D4AF37 !important;
-  font-weight: 600;
 }
 
 .filter-preview-note {

@@ -12,9 +12,6 @@
   text-rendering: optimizeLegibility;
 }
 
-.wishlist-navigation {
-  margin-bottom: 2rem;
-}
 .wishlist-header {
   text-align: center;
   margin-bottom: 0;
@@ -80,12 +77,6 @@
 
 .wishlist-product-card:hover {
   transform: translateY(-3px);
-}
-
-/* ШАПКА КАРТОЧКИ - изображение и кнопка избранного */
-.wishlist-card-header {
-  position: relative;
-  margin-bottom: 1rem;
 }
 
 .wishlist-product-image {
@@ -316,10 +307,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
-  
-  .wishlist-product-card {
-  }
-  
+
   .wishlist-product-image {
     height: 100px;
   }

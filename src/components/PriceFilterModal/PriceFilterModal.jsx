@@ -104,7 +104,7 @@ const PriceFilterModal = () => {
             </div>
           </div>
 
-          <div className="filter-info">
+          <div className="price-filter-info">
             {/* 🎯 ПОКАЗЫВАЕМ РЕЗУЛЬТАТ В РЕАЛЬНОМ ВРЕМЕНИ */}
             {currentProductsInfo.hasActiveFilter ? (
               <p>
