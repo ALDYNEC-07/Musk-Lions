@@ -1,17 +1,14 @@
 import React from 'react';
-import mountainImage from '../../assets/h.png';
 import { Link } from 'react-router-dom';
 import './Hero.css';
 
 const Hero = () => {
-
   return (
-    <section className="mountain-hero chechen-pattern"
-        style={{
-        background: `linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(65, 57, 54, 0.8) 100%), url(${mountainImage})`,
-        backgroundSize: 'cover', backgroundPosition: 'center bottom 80%', backgroundRepeat: 'no-repeat', backgroundColor: '#fff'
-        }}
-      >
+    <section className="mountain-hero">
+      <video className="hero-video" autoPlay muted loop playsInline>
+        <source src={`${process.env.PUBLIC_URL}/hero-videoo.mp4`} type="video/mp4" />
+      </video>
+      <div className="hero-overlay" />
       <div className="hero-content">
         <h1 className="hero-title">Ароматы, которые не стираются за час</h1>
         <p className="hero-subtitle">
@@ -26,4 +23,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
