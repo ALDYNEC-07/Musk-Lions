@@ -51,9 +51,11 @@
   position: absolute;
   width: 480px;
   margin-top: 15rem;
-  background:  #2C1810;
-  border: 1px solid #5D4037;
+  background: rgba(26, 18, 11, 0.35);
+  border: 0.5px solid rgba(212, 175, 55, 0.35);
   border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow: 
     0 20px 60px rgba(0, 0, 0, 0.3),
     0 0 0 1px rgba(212, 175, 55, 0.1);
@@ -75,16 +77,16 @@
 .search-input-wrapper {
   position: relative;
   padding: 20px;
-  border-bottom: 1px solid #5D4037;
-  background: linear-gradient(135deg,  #1A120B 0%,  #2C1810 100%);
+  border-bottom: 0.5px solid rgba(212, 175, 55, 0.28);
+  background: rgba(26, 18, 11, 0.35);
 }
 
 .search-input {
   width: 100%;
   padding: 16px 50px 16px 20px;
-  border: 2px solid #5D4037;
+  border: 0.5px solid rgba(212, 175, 55, 0.35);
   border-radius: 12px;
-  background:  #2C1810;
+  background: rgba(26, 18, 11, 0.35);
   color:  #FDF6E3;
   font-size: 1.1rem;
   font-family: 'Philosopher', serif;
@@ -97,7 +99,7 @@
   border-color:  #D4AF37;
   box-shadow: 
     inset 0 2px 10px rgba(0, 0, 0, 0.1),
-    0 0 0 4px rgba(212, 175, 55, 0.15);
+    0 0 0 3px rgba(212, 175, 55, 0.2);
   transform: translateY(-1px);
 }
 
@@ -112,8 +114,8 @@
   right: 28px;
   top: 50%;
   transform: translateY(-50%);
-  background:  #2C1810;
-  border: none;
+  background: rgba(26, 18, 11, 0.35);
+  border: 0.5px solid rgba(212, 175, 55, 0.28);
   border-radius: 50%;
   font-size: 1.3rem;
   color:  #F8F8F8;
@@ -141,8 +143,11 @@
 
 .search-results-header {
   padding: 16px 24px;
-  background: linear-gradient(135deg,  #2C1810 0%,  #2C1810 100%);
-  border-bottom: 1px solid #5D4037;
+  background: rgba(26, 18, 11, 0.35);
+  border-bottom: 0.5px solid rgba(212, 175, 55, 0.28);
+  border-top: 0.5px solid rgba(212, 175, 55, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -173,12 +178,12 @@
   display: flex;
   gap: 16px;
   padding: 20px 0;
-  border-bottom: 1px solid v#5D4037;
+  border-bottom: 0.5px solid rgba(212, 175, 55, 0.28);
   transition: all 0.3s ease;
 }
 
 .search-result-item:hover .product-card {
-  border-bottom-color:  #D4AF37;
+  border-bottom-color: rgba(212, 175, 55, 0.55);
 }
 
 .search-result-item:last-child .product-card {
@@ -498,4 +503,3 @@
     transform: scale(0.9);
   }
 }
-
