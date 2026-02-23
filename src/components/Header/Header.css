@@ -1,12 +1,10 @@
 .mountain-header {
-  /* По запросу: очищаем фон шапки */
   background: transparent;
   padding: 1.2rem 6%;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  /* По запросу: убираем нижнюю рамку */
   border-bottom: none;
 }
 .header-top {
@@ -24,17 +22,14 @@
   letter-spacing: 1px;
 }
 
-/* По запросу: отдельная заблюренная плашка только для логотипа в верхней строке */
 .header-top > .mountain-logo {
   display: inline-flex;
   align-items: center;
-  /* По запросу: фиксируем ту же высоту, что и у блока кнопок */
   height: 48px;
   box-sizing: border-box;
   padding: 0 0.9rem;
   border-radius: 999px;
   background: rgba(26, 18, 11, 0.35);
-  /* По запросу: делаем бордер тоньше */
   border: 0.5px solid rgba(212, 175, 55, 0.35);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -46,16 +41,13 @@
 
 .mountain-actions {
   display: flex;
-  gap: 0.4rem;
+  gap: 0;
   align-items: center;
-  /* По запросу: один общий заблюренный фон для двух кнопок справа */
-  /* По запросу: делаем одинаковую высоту с плашкой логотипа */
   height: 48px;
   box-sizing: border-box;
   padding: 0 0.35rem;
   border-radius: 999px;
   background: rgba(26, 18, 11, 0.35);
-  /* По запросу: делаем бордер тоньше */
   border: 0.5px solid rgba(212, 175, 55, 0.35);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -63,7 +55,6 @@
 
 .mountain-btn {
   background: none;
-  /* По запросу: убираем личную рамку, чтобы остался один общий фон */
   border: none;
   color: #D4AF37;
   font-size: 1.1rem;
@@ -78,6 +69,21 @@
   justify-content: center;
 }
 
+.menu-btn .burger-icon {
+  width: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.menu-btn .burger-line {
+  width: 100%;
+  height: 2.1px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
 .mountain-btn:hover {
   background: #D4AF37;
   color: #2C1810;
@@ -90,7 +96,6 @@
   background: #2C1810;
   padding: 1.5rem;
   border-radius: 8px;
-  /* По запросу: делаем бордер тоньше */
   border: 0.5px solid #5D4037;
 }
 .mountain-nav.active {
@@ -117,7 +122,6 @@
 
 .mountain-nav li {
   margin-bottom: 1rem;
-  /* По запросу: делаем разделитель тоньше */
   border-bottom: 0.5px solid #E8D5B7;
   padding-bottom: 1rem;
 }
@@ -195,8 +199,22 @@
   transition: all 0.3s ease;
   padding: 0.5rem;
   border-radius: 50%;
-  /* По запросу: убираем личную рамку, общий фон уже на .mountain-actions */
   border: none;
+}
+
+.mountain-cart-icon-img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  background-color: currentColor;
+  -webkit-mask-image: var(--cart-icon-url);
+  mask-image: var(--cart-icon-url);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 .mountain-cart-icon:hover {
@@ -219,7 +237,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* По запросу: делаем бордер тоньше */
   border: 1px solid #2C1810;
 }
 
@@ -250,13 +267,22 @@
   }
   
   .mountain-actions {
-    gap: 0.8rem;
+    gap: 0;
   }
   
   .mountain-btn {
     width: 35px;
     height: 35px;
     font-size: 1rem;
+  }
+
+  .menu-btn .burger-icon {
+    width: 22px;
+    gap: 6px;
+  }
+
+  .menu-btn .burger-line {
+    height: 1.9px;
   }
   
   .theme-toggle {
@@ -300,7 +326,16 @@
   }
   
   .mountain-actions {
-    gap: 0.6rem;
+    gap: 0;
+  }
+
+  .menu-btn .burger-icon {
+    width: 20px;
+    gap: 7px;
+  }
+
+  .menu-btn .burger-line {
+    height: 1px;
   }
 }
 
@@ -312,6 +347,5 @@
   padding: 3px 8px;
   font-size: 0.75rem;
   margin-left: 8px;
-  /* По запросу: делаем бордер тоньше */
   border: 0.5px solid #D2B48C;
 }

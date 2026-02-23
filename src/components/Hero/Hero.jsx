@@ -14,7 +14,6 @@ const Hero = () => {
       return undefined;
     }
 
-    // Codex: останавливаем видео вне видимости и запускаем при возврате в viewport.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -32,7 +31,6 @@ const Hero = () => {
     observer.observe(section);
 
     return () => {
-      // Codex: cleanup при размонтировании.
       observer.disconnect();
       video.pause();
     };
@@ -40,7 +38,6 @@ const Hero = () => {
 
   return (
     <section className="mountain-hero" ref={heroRef}>
-      {/* Codex: preload metadata, чтобы не грузить весь ролик заранее. */}
       <video className="hero-video" ref={videoRef} autoPlay muted loop playsInline preload="metadata">
         <source src={`${process.env.PUBLIC_URL}/hero-videoo.mp4`} type="video/mp4" />
       </video>

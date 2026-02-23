@@ -1,4 +1,3 @@
-// Header.jsx - С ДОПОЛНИТЕЛЬНОЙ ОТЛАДКОЙ
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
@@ -102,13 +101,30 @@ const Header = () => {
           
           <div className="mountain-actions">
             <div className="cart-icon-wrapper" onClick={() => setIsCartOpen(true)}>
-              <div className="mountain-cart-icon">👜</div>
+              <div className="mountain-cart-icon">
+                <span
+                  className="mountain-cart-icon-img"
+                  style={{ '--cart-icon-url': `url(${process.env.PUBLIC_URL}/cart.svg)` }}
+                  aria-hidden="true"
+                />
+              </div>
               {totalCount > 0 && (
                 <span className="cart-count pulse">{totalCount}</span>
               )}
             </div>
             
-            <button className="mountain-btn" onClick={toggleMenu}>☰</button>
+            <button
+              className="mountain-btn menu-btn"
+              onClick={toggleMenu}
+              type="button"
+              aria-label={isMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+            >
+              {/* Кастомный бургер из двух полос */}
+              <span className="burger-icon" aria-hidden="true">
+                <span className="burger-line" />
+                <span className="burger-line" />
+              </span>
+            </button>
           </div>
         </div>
         

@@ -58,10 +58,10 @@
   margin-right: auto;
 }
 .mountain-cta {
-  background: #5D4037;
+  background: rgba(26, 18, 11, 0.35);
   color: #FDF6E3;
   padding: 1.2rem 2.5rem;
-  border: none;
+  border: 0.5px solid rgba(212, 175, 55, 0.35);
   border-radius: 30px;
   font-family: 'Philosopher', serif;
   font-size: 1rem;
@@ -71,7 +71,9 @@
   text-decoration: none;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(93, 64, 55, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
 }
 
 /* Анимация при загрузке - блеск каждые 3 секунды */
@@ -105,9 +107,9 @@
 }
 
 .mountain-cta:hover {
-  background: #2C1810;
+  background: rgba(26, 18, 11, 0.5);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(93, 64, 55, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
 /* Ключевые кадры для автоматической анимации */
