@@ -85,7 +85,7 @@
 }
 
 .mountain-btn:hover {
-  background: #D4AF37;
+  background: rgba(212, 175, 55, 0.38);
   color: #2C1810;
   transform: scale(1.1);
 }
@@ -93,10 +93,12 @@
 .mountain-nav {
   margin-top: 1.5rem;
   display: none;
-  background: #2C1810;
+  background: rgba(26, 18, 11, 0.35);
   padding: 1.5rem;
   border-radius: 8px;
-  border: 0.5px solid #5D4037;
+  border: 0.5px solid rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .mountain-nav.active {
   display: block;
@@ -118,12 +120,15 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
 .mountain-nav li {
-  margin-bottom: 1rem;
-  border-bottom: 0.5px solid #E8D5B7;
-  padding-bottom: 1rem;
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .mountain-nav li:last-child {
@@ -139,7 +144,7 @@
   font-family: 'Philosopher', serif;
   font-size: 1rem;
   display: block;
-  padding: 0.5rem 0;
+  padding: 0.6rem 0;
   transition: all 0.3s ease;
   background: none;
   border: none;
@@ -219,7 +224,7 @@
 
 .mountain-cart-icon:hover {
   color: #2C1810;
-  background: #D4AF37;
+  background: rgba(212, 175, 55, 0.38);
   transform: scale(1.1);
 }
 
