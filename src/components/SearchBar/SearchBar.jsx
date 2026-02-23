@@ -3,11 +3,18 @@ import React, { useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './SearchBar.css';
 import { useSearch } from '../../hooks/useSearch';
+import { useFilter } from '../../context/FilterContext';
 import { products } from '../../data/products'; // ✅ ДЛЯ ПРОВЕРКИ НА ГЛАВНОЙ
 
 const SearchBar = ({onResultClick}) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const {
+    filteredProductsHome,
+    filteredProductsCollection,
+    isFilterActive,
+    resetFilter,
+  } = useFilter();
   
   const {
     searchQuery,
@@ -64,6 +71,12 @@ const SearchBar = ({onResultClick}) => {
     return true;
   };
 
+  const runAfterRender = (callback) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(callback);
+    });
+  };
+
   const handleResultClick = (product) => {
     if (onResultClick) {
       onResultClick();
@@ -73,23 +86,45 @@ const SearchBar = ({onResultClick}) => {
 
     const currentPath = location.pathname;
     const isOnHomePage = products.some((p) => p.id === product.id);
+    const isCollectionPage = currentPath === '/collection';
 
-    if (currentPath === '/' && isOnHomePage) {
-      requestAnimationFrame(() => {
-        focusProductCard(product.id);
-      });
-      return;
-    }
+    const visibleProducts =
+      currentPath === '/' && isOnHomePage
+        ? filteredProductsHome
+        : filteredProductsCollection;
+    const isHiddenByFilter =
+      isFilterActive && !visibleProducts.some((item) => item.id === product.id);
 
-    if (currentPath === '/collection' && focusProductCard(product.id)) {
-      return;
-    }
-
-    navigate('/collection', {
-      state: {
-        scrollToProductId: product.id
+    const openSelectedProduct = () => {
+      if (currentPath === '/' && isOnHomePage) {
+        if (!focusProductCard(product.id)) {
+          navigate('/collection', {
+            state: {
+              scrollToProductId: product.id
+            }
+          });
+        }
+        return;
       }
-    });
+
+      if (isCollectionPage && focusProductCard(product.id)) {
+        return;
+      }
+
+      navigate('/collection', {
+        state: {
+          scrollToProductId: product.id
+        }
+      });
+    };
+
+    if (isHiddenByFilter) {
+      resetFilter();
+      runAfterRender(openSelectedProduct);
+      return;
+    }
+
+    openSelectedProduct();
   };
 
   const clearSearch = () => {
