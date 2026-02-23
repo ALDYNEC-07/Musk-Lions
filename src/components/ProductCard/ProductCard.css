@@ -7,25 +7,22 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: visible;
-  box-shadow: 0 5px 20px rgba(44, 24, 16, 0.1);
-  border: 1px solid  #5D4037;
 }
 .mountain-product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
 }
 
 .mountain-product-image {
   height: 300px;
   margin: 0 auto;
   overflow: visible;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
 }
 .img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 .mountain-product-info {
   padding: 1.3rem;
@@ -45,31 +42,54 @@
   font-weight: 300;
 }
 
-.mountain-product-price {
-  font-family: 'Philosopher', serif;
-  font-size: 1.4rem;
-  color: #fffaec;
-  margin-bottom: 1.2rem;
-  text-align: center;
-  font-weight: 500;
+.product-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  margin-top: 0.2rem;
 }
 
+
+.mountain-product-price {
+  font-family: 'Philosopher', serif;
+  font-size: 1.32rem;
+  color: #F5E8C8;
+  margin-bottom: 0;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 0.5px solid rgba(212, 175, 55, 0.28);
+}
+
+
 .mountain-add-to-cart {
-  background: #5D4037;
-  color: #fffaec;
-  border: none;
-  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #6D4E43 0%, #5D4037 55%, #4A332C 100%);
+  color: #FFF7E3;
+  border: 0.5px solid rgba(212, 175, 55, 0.35);
+  padding: 0.72rem 2.3rem;
   border-radius: 25px;
   font-family: 'Philosopher', serif;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 100%;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
+
 .mountain-add-to-cart:hover {
-  border: 0.1px solid rgba(212, 175, 55);
   transform: translateY(-2px);
+  background: linear-gradient(135deg, #7B5A4C 0%, #6A493E 55%, #553A32 100%);
+  border-color: rgba(212, 175, 55, 0.6);
 }
+
 
 @media (max-width: 425px) {
 .mountain-product-card {
@@ -84,7 +104,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center 65%;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
 }
 }
 @media (max-width: 360px) {
@@ -93,7 +113,6 @@
   width: 100%;
   height: 170px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 }
-

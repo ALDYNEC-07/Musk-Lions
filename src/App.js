@@ -27,7 +27,6 @@ function HomePage() {
       <section className="mountain-collection" id="products-section">
         <div className="mountain-section-header">
           <h2>5 ручных авторских композиций</h2>
-          <p>Ограниченный тираж, только для истинных ценителей</p>
         </div>
 
         {isFilterActive && (

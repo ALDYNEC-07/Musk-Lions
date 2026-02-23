@@ -102,14 +102,16 @@ const CollectionPage = () => {
             <div className="collection-product-info">
               <h3>{product.name}</h3>
               <p>{product.description}</p>
-              <div className="collection-product-price">{product.price}</div>
-              <button 
-                className={`collection-add-to-cart ${activeProductId === product.id ? 'adding' : ''}`}
-                onClick={(e) => handleAddToCart(product, e)}
-                disabled={activeProductId === product.id}
-              >
-                {activeProductId === product.id ? 'Добавлено! ✓' : 'В корзину'}
-              </button>
+              <div className="collection-card-actions">
+                <div className="collection-product-price">{product.price}</div>
+                <button 
+                  className={`collection-add-to-cart ${activeProductId === product.id ? 'adding' : ''}`}
+                  onClick={(e) => handleAddToCart(product, e)}
+                  disabled={activeProductId === product.id}
+                >
+                  {activeProductId === product.id ? 'Добавлено! ✓' : 'В корзину'}
+                </button>
+              </div>
             </div>
           </div>
         ))}

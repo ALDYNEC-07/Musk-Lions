@@ -40,15 +40,16 @@ const handleAddToCart = (event) => {
       <div className="mountain-product-info">
         <h2>{product.name}</h2>
         <p>{product.description}</p>
-        <div className="mountain-product-price">{product.price}</div>
-
-      <button 
-        className={`mountain-add-to-cart ${isAdded ? 'added' : ''}`}
-        onClick={handleAddToCart}
-        disabled={isAdded}
-      >
-        {isAdded ? 'Добавлено ✓' : 'В корзину'}
-      </button>
+        <div className="product-card-actions">
+          <div className="mountain-product-price">{product.price}</div>
+          <button 
+            className={`mountain-add-to-cart ${isAdded ? 'added' : ''}`}
+            onClick={handleAddToCart}
+            disabled={isAdded}
+          >
+            {isAdded ? 'Добавлено ✓' : 'В корзину'}
+          </button>
+        </div>
       
       {showSmoke && (
         <SmokeAnimation
