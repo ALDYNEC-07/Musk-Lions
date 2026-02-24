@@ -69,7 +69,7 @@ const CollectionPage = () => {
   return (
     <div className="collection-page">
       <div className="collection-header">
-        <h1>ПОЛНАЯ КОЛЛЕКЦИЯ</h1>
+        <h1 className="section-title-accent">ПОЛНАЯ КОЛЛЕКЦИЯ</h1>
         
         {isFilterActive && (
           <div className="collection-filter-info">

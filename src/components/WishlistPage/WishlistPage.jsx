@@ -63,7 +63,7 @@ const WishlistPage = () => {
   return (
     <div className="wishlist-page">
       <div className="wishlist-header">
-        <h1>Избранное</h1>
+        <h1 className="section-title-accent">Избранное</h1>
       </div>
       
       <div className="wishlist-grid">
