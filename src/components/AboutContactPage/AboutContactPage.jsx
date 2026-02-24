@@ -22,7 +22,7 @@ const AboutContactPage = () => {
   return (
     <div className="about-contact-page">
       <div className="about-contact-header">
-        <h1>О НАС И СВЯЗЬ</h1>
+        <h1 className="section-title-accent">О НАС И СВЯЗЬ</h1>
       </div>
 
       <section id="about" className="about-contact-card">

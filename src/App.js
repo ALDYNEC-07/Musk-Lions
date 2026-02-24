@@ -26,7 +26,7 @@ function HomePage() {
       <Hero />
       <section className="mountain-collection" id="products-section">
         <div className="mountain-section-header">
-          <h2>АВТОРСКИЕ</h2>
+          <h2 className="section-title-accent">АВТОРСКИЕ</h2>
         </div>
 
         {isFilterActive && (

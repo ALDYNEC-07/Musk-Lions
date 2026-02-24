@@ -25,10 +25,12 @@ const WishlistButton = ({ product }) => {
     <button 
       className={`wishlist-btn ${inWishlist ? 'active' : ''}`}
       onClick={handleClick}
+      type="button"
       aria-label={inWishlist ? 'Удалить из избранного' : 'Добавить в избранное'}
     >
-      {/* Показываем сердечко: заполненное или пустое */}
-      {inWishlist ? '💛' : '🩶'}
+      <span className="wishlist-heart" aria-hidden="true">
+        {inWishlist ? '♥' : '♡'}
+      </span>
     </button>
   );
 };

@@ -108,6 +108,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 0.2rem 0.55rem 0;
 }
 
 .wishlist-product-info h3 {
@@ -173,6 +174,21 @@
 
 .wishlist-add-to-cart:hover {
   transform: translateY(-1px);
+}
+
+/* Десктоп/планшет: корректные пропорции изображения */
+@media (min-width: 769px) {
+  .wishlist-product-image {
+    height: clamp(185px, 16vw, 235px);
+  }
+
+  .wishlist-product-image img {
+    object-position: center 60%;
+  }
+
+  .wishlist-product-info {
+    padding: 0.95rem 0.7rem 0.85rem;
+  }
 }
 
 /* СТИЛИ ДЛЯ ПУСТОГО ИЗБРАННОГО */

@@ -41,6 +41,29 @@ body {
   color: #FDF6E3;
 }
 
+/* Унифицированный декоративный акцент под ключевыми заголовками */
+.section-title-accent {
+  display: inline-block;
+  position: relative;
+}
+
+.section-title-accent::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -0.28rem;
+  transform: translateX(-50%);
+  width: clamp(84px, 12vw, 132px);
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0) 0%,
+    rgba(212, 175, 55, 0.7) 50%,
+    rgba(212, 175, 55, 0) 100%
+  );
+}
+
 .mountain-section-header p {
   color: #F5E8C8;
   font-size: 1rem;
@@ -51,7 +74,7 @@ body {
 .mountain-products {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 /* Паттерн для декора */
@@ -94,7 +117,7 @@ body {
   
   .mountain-products {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 1.35rem;
   }
 }
 
@@ -115,7 +138,7 @@ body {
   
   .mountain-products {
     grid-template-columns: 1fr;
-    gap: 0.8rem;
+    gap: 1rem;
   }
   
   .home-filter-info {

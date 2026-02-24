@@ -15,7 +15,7 @@
 
 .mountain-product-image {
   width: 100%;
-  height: 230px;
+  height: clamp(320px, 36vw, 370px);
   margin: 0 auto;
   overflow: hidden;
   border-radius: 12px;
@@ -31,7 +31,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 1rem 0.3rem;
+  padding: 1rem 0.65rem 0.9rem;
 }
 
 .mountain-product-title {
@@ -108,7 +108,8 @@
 
 @media (max-width: 768px) {
   .mountain-product-image {
-    height: 150px;
+    width: 100%;
+    height: 235px;
   }
 
   .mountain-product-title {
