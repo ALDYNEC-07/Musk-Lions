@@ -34,7 +34,6 @@ const Features = () => {
             onClick={() => handleFeatureClick(index)}
           >
             <div className="feature-content">
-              <div className="mountain-feature-icon">{feature.icon}</div>
               <div className="feature-text">
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
