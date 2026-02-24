@@ -108,6 +108,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 0.2rem 0.55rem 0;
 }
 
 .wishlist-product-info h3 {
@@ -186,7 +187,7 @@
   }
 
   .wishlist-product-info {
-    padding: 0.95rem 0.6rem 0.85rem;
+    padding: 0.95rem 0.7rem 0.85rem;
   }
 }
 
